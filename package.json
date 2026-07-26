@@ -1,13 +1,15 @@
 {
+  "packageManager": "pnpm@11.3.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "update:foods": "node scripts/update-matvaretabellen.mjs",
+    "check:plans": "tsc --module commonjs --moduleResolution node --target es2023 --esModuleInterop --skipLibCheck --outDir /tmp/matkompass-plan-check --rootDir . scripts/check-meal-plans.ts src/lib/meal-plan.ts src/content/meal-plan.ts src/content/matvaretabellen.generated.ts && NODE_PATH=$PWD/node_modules node /tmp/matkompass-plan-check/scripts/check-meal-plans.js",
+    "check:units": "node scripts/check-recipe-units.mjs"
   },
   "dependencies": {
-    "classnames": "^2.5.1",
-    "date-fns": "^3.6.0",
     "gray-matter": "^4.0.3",
     "next": "latest",
     "react": "^19",

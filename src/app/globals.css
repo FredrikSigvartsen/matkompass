@@ -1,3 +1,1461 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --ink: #1d2a24;
+  --ink-soft: #536158;
+  --paper: #f4f0e6;
+  --paper-light: #fbf8f0;
+  --line: #d7d0c0;
+  --moss: #325a42;
+  --moss-dark: #1d3828;
+  --sage: #b9c9b0;
+  --clay: #bd6746;
+  --sun: #e3b94f;
+  --berry: #7d4855;
+  --radius: 1.4rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 18%, rgb(255 255 255 / 55%), transparent 28rem),
+    var(--paper);
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.65rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--ink);
+  color: var(--paper-light);
+  font-size: 0.85rem;
+  font-weight: 750;
+  text-decoration: none;
+  transform: translateY(calc(-100% - 1rem));
+}
+
+.skip-link:focus-visible {
+  outline-color: var(--paper-light);
+  transform: translateY(0);
+}
+
+.site-shell {
+  min-height: calc(100vh - 12rem);
+}
+
+.site-header {
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header__inner,
+.site-footer__inner,
+.content-page,
+.home-page,
+.recipe-page {
+  width: min(100% - 2rem, 76rem);
+  margin-inline: auto;
+}
+
+.site-header__inner {
+  display: flex;
+  min-height: 5.25rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 750;
+  letter-spacing: -0.025em;
+  text-decoration: none;
+}
+
+.wordmark__mark {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border-radius: 50% 50% 48% 52%;
+  background: var(--moss);
+  color: var(--paper-light);
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.8rem, 3vw, 2.2rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-nav a {
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-weight: 650;
+  text-decoration: none;
+  text-underline-offset: 0.35rem;
+}
+
+.main-nav a:hover {
+  color: var(--moss);
+  text-decoration: underline;
+}
+
+.main-nav a.is-active {
+  color: var(--moss);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--moss);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.home-hero {
+  display: grid;
+  min-height: 38rem;
+  align-items: center;
+  gap: 3rem;
+  padding-block: clamp(4rem, 10vw, 8rem);
+}
+
+.home-hero__copy {
+  max-width: 48rem;
+}
+
+.home-hero h1,
+.page-intro h1,
+.recipe-header h1 {
+  margin: 0.4rem 0 1.4rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.2rem, 9vw, 7.6rem);
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 0.92;
+}
+
+.home-hero__copy > p:not(.eyebrow) {
+  max-width: 40rem;
+  margin: 0 0 2rem;
+  color: var(--ink-soft);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+}
+
+.primary-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.4rem;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.primary-link:hover {
+  color: var(--ink);
+  border-color: var(--clay);
+}
+
+.home-hero__compass {
+  position: relative;
+  display: none;
+  width: min(34vw, 22rem);
+  aspect-ratio: 1;
+  place-items: center;
+  justify-self: end;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 24%);
+}
+
+.home-hero__compass::before,
+.home-hero__compass::after {
+  position: absolute;
+  content: "";
+  background: var(--line);
+}
+
+.home-hero__compass::before {
+  width: 1px;
+  height: 90%;
+}
+
+.home-hero__compass::after {
+  width: 90%;
+  height: 1px;
+}
+
+.compass__north {
+  position: absolute;
+  top: 1rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.compass__needle {
+  position: absolute;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  border-right: 1.2rem solid transparent;
+  border-bottom: 6.5rem solid var(--clay);
+  border-left: 1.2rem solid transparent;
+  transform: rotate(28deg) translateY(-1.5rem);
+  transform-origin: 50% 100%;
+}
+
+.compass__label {
+  position: absolute;
+  right: -1rem;
+  bottom: 2rem;
+  z-index: 2;
+  padding: 0.35rem 0.7rem;
+  background: var(--paper);
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.home-sections,
+.food-section,
+.avoid-section,
+.numbered-principles {
+  padding-block: clamp(4rem, 8vw, 7rem);
+  border-top: 1px solid var(--line);
+}
+
+.section-heading {
+  margin-bottom: 2.5rem;
+}
+
+.section-heading h2,
+.editorial-panel h2,
+.note-block h2,
+.temporary-note h2 {
+  margin: 0.4rem 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.home-card-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.home-card {
+  display: flex;
+  min-height: 20rem;
+  flex-direction: column;
+  padding: clamp(1.5rem, 4vw, 2.4rem);
+  border-radius: var(--radius);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 180ms ease;
+}
+
+.home-card:hover {
+  transform: translateY(-0.35rem);
+}
+
+.home-card > span {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.home-card h3 {
+  margin: auto 0 0.5rem;
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.home-card p {
+  max-width: 24rem;
+  margin: 0;
+}
+
+.home-card--principles {
+  background: var(--sage);
+}
+
+.home-card--food {
+  background: #dfbd8f;
+}
+
+.home-card--recipes {
+  background: #d18a6f;
+}
+
+.home-card--dinners {
+  background: #d9c66b;
+}
+
+.home-card--fredrik {
+  background: #9fb7a2;
+}
+
+.content-page,
+.recipe-page {
+  padding-bottom: clamp(5rem, 10vw, 9rem);
+}
+
+.not-found-page {
+  display: flex;
+  min-height: 65vh;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.not-found-page h1 {
+  max-width: 52rem;
+  margin: 0.5rem 0 1rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+}
+
+.not-found-page > p:not(.eyebrow) {
+  margin: 0 0 2rem;
+  color: var(--ink-soft);
+  font-size: 1.1rem;
+}
+
+.page-intro {
+  max-width: 60rem;
+  padding-block: clamp(4.5rem, 10vw, 8rem);
+}
+
+.page-intro h1 {
+  font-size: clamp(3.4rem, 11vw, 8rem);
+}
+
+.page-intro__description {
+  max-width: 47rem;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: clamp(1.08rem, 2.4vw, 1.45rem);
+}
+
+.numbered-principles ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.numbered-principles li {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 1rem;
+  padding: 1.35rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.numbered-principles li > span {
+  color: var(--clay);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.numbered-principles li p {
+  max-width: 56rem;
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  line-height: 1.25;
+}
+
+.editorial-grid {
+  display: grid;
+  gap: 1rem;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.editorial-panel {
+  padding: clamp(1.8rem, 5vw, 4rem);
+  border-radius: var(--radius);
+}
+
+.editorial-panel--dark {
+  background: var(--moss-dark);
+  color: var(--paper-light);
+}
+
+.editorial-panel--dark .eyebrow {
+  color: var(--sage);
+}
+
+.editorial-panel--paper {
+  border: 1px solid var(--line);
+  background: var(--paper-light);
+}
+
+.compact-steps,
+.priority-list {
+  margin: 2.5rem 0 0;
+  padding-left: 1.4rem;
+}
+
+.compact-steps li,
+.priority-list li {
+  padding: 0.65rem 0 0.65rem 0.4rem;
+  border-bottom: 1px solid rgb(255 255 255 / 15%);
+}
+
+.priority-list li {
+  border-color: var(--line);
+}
+
+.note-block,
+.temporary-note {
+  display: grid;
+  gap: 2rem;
+  padding: clamp(2rem, 6vw, 4rem) 0;
+  border-block: 1px solid var(--line);
+}
+
+.note-block p {
+  max-width: 41rem;
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+}
+
+.status-key {
+  display: grid;
+  gap: 0.7rem;
+  margin-bottom: 4rem;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 30%);
+}
+
+.status-key p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.food-grid,
+.avoid-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.food-card,
+.avoid-grid article {
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 24%);
+  content-visibility: auto;
+}
+
+.food-card h3,
+.avoid-grid h3 {
+  margin: 0 0 0.6rem;
+  font-family: Georgia, serif;
+  font-size: 1.55rem;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.food-card > p {
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.food-card ul,
+.avoid-grid ul,
+.temporary-note ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.food-card li,
+.avoid-grid li,
+.temporary-note li {
+  padding: 0.2rem 0;
+}
+
+.avoid-section {
+  margin-top: 2rem;
+}
+
+.avoid-grid article {
+  border-color: #c89883;
+  background: #ead1c4;
+}
+
+.temporary-note {
+  margin-top: 4rem;
+}
+
+.category-nav {
+  display: flex;
+  max-width: 100%;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+  padding-bottom: 0.4rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.category-nav__link {
+  flex: 0 0 auto;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 100vmax;
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.category-nav__link:hover,
+.category-nav__link.is-active {
+  border-color: var(--moss);
+  background: var(--moss);
+  color: var(--paper-light);
+}
+
+.recipe-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.recipe-search__field {
+  max-width: 48rem;
+  margin-bottom: 1rem;
+}
+
+.recipe-search__input-wrap {
+  position: relative;
+  margin-top: 0.65rem;
+}
+
+.recipe-search input {
+  width: 100%;
+  min-height: 3.6rem;
+  padding: 0.8rem 3.25rem 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  background: var(--paper-light);
+  color: var(--ink);
+  font: inherit;
+}
+
+.recipe-search input::placeholder {
+  color: #6a746d;
+}
+
+.recipe-search input:focus-visible {
+  border-color: var(--ink);
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.recipe-search__input-wrap > span {
+  position: absolute;
+  top: 50%;
+  right: 1.1rem;
+  color: var(--moss);
+  font-size: 1.5rem;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+.recipe-search__count {
+  margin: 0 0 1.5rem;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.recipe-search__empty {
+  padding: clamp(3rem, 8vw, 6rem) 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.recipe-search__empty h2 {
+  margin: 0 0 0.5rem;
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.recipe-search__empty p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.recipe-card {
+  --recipe-color: var(--sage);
+
+  position: relative;
+  display: flex;
+  min-height: 17rem;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  background: var(--recipe-color);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgb(29 42 36 / 10%);
+}
+
+.recipe-card--lunsj,
+.recipe-header--lunsj {
+  --recipe-color: #dfbd8f;
+}
+
+.recipe-card--middag,
+.recipe-header--middag {
+  --recipe-color: #bd8067;
+}
+
+.recipe-card--dessert,
+.recipe-header--dessert {
+  --recipe-color: #c89aa5;
+}
+
+.recipe-card--snacks,
+.recipe-header--snacks {
+  --recipe-color: #d9c66b;
+}
+
+.recipe-card__number {
+  position: absolute;
+  top: 0.4rem;
+  right: 1rem;
+  color: rgb(29 42 36 / 12%);
+  font-family: Georgia, serif;
+  font-size: 5rem;
+  line-height: 1;
+}
+
+.recipe-card__category,
+.recipe-card__yield {
+  position: relative;
+  z-index: 1;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.recipe-card h2 {
+  position: relative;
+  z-index: 1;
+  max-width: 21rem;
+  margin: auto 0 0.8rem;
+  font-family: Georgia, serif;
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.recipe-card__yield {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.recipe-card__action {
+  margin-top: 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 750;
+}
+
+.recipe-page {
+  padding-top: 2rem;
+}
+
+.recipe-page article {
+  max-width: 58rem;
+  margin-inline: auto;
+}
+
+.recipe-header {
+  --recipe-color: var(--sage);
+
+  padding: clamp(2rem, 7vw, 5rem);
+  border-radius: var(--radius);
+  background: var(--recipe-color);
+}
+
+.recipe-header h1 {
+  max-width: 50rem;
+  font-size: clamp(2.8rem, 8vw, 6.2rem);
+}
+
+.recipe-back-link {
+  display: inline-block;
+  margin-bottom: 4rem;
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.recipe-back-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+.recipe-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.recipe-meta span {
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgb(29 42 36 / 28%);
+  border-radius: 100vmax;
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+.recipe-body {
+  padding: clamp(2.5rem, 7vw, 5rem) clamp(0rem, 3vw, 2rem);
+}
+
+.recipe-body h2 {
+  margin: 3.5rem 0 1.25rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+
+.recipe-body h2:first-child {
+  margin-top: 0;
+}
+
+.recipe-body h3 {
+  margin: 2rem 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.recipe-body ul,
+.recipe-body ol {
+  margin: 0;
+  padding-left: 1.4rem;
+}
+
+.recipe-body li {
+  padding: 0.45rem 0 0.45rem 0.35rem;
+}
+
+.recipe-body p {
+  max-width: 66ch;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.recipe-source {
+  padding: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--paper-light);
+}
+
+.recipe-source p:not(.eyebrow) {
+  max-width: 43rem;
+  margin: 0.6rem 0 1rem;
+  color: var(--ink-soft);
+}
+
+.recipe-source a {
+  color: var(--moss);
+  font-weight: 750;
+  text-underline-offset: 0.25rem;
+}
+
+.plan-page {
+  width: min(100% - 2rem, 82rem);
+}
+
+.plan-intro {
+  max-width: 68rem;
+  padding-bottom: clamp(3rem, 7vw, 5rem);
+}
+
+.plan-intro h1 {
+  max-width: 11ch;
+}
+
+.plan-intro__dates {
+  margin: 1.5rem 0 0;
+  color: var(--moss);
+  font-size: 0.85rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.plan-rules {
+  display: grid;
+  gap: 2rem;
+  padding: clamp(1.8rem, 5vw, 3.5rem);
+  border-radius: var(--radius);
+  background: var(--moss-dark);
+  color: var(--paper-light);
+}
+
+.plan-rules .eyebrow {
+  color: var(--sage);
+}
+
+.plan-rules h2 {
+  margin: 0.4rem 0 0;
+  font-family: Georgia, serif;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.plan-rules dl {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.plan-rules dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgb(255 255 255 / 15%);
+}
+
+.plan-rules dt {
+  color: var(--sage);
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.plan-rules dd {
+  margin: 0;
+  text-align: right;
+}
+
+.plan-week {
+  padding-block: clamp(4rem, 9vw, 7rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.plan-week__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.plan-week__header h2,
+.macro-key h2,
+.plan-source h2 {
+  margin: 0.35rem 0 0;
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.plan-week__header > p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dinner-plan-list {
+  border-top: 1px solid var(--ink);
+}
+
+.dinner-plan-day {
+  border-bottom: 1px solid var(--line);
+}
+
+.dinner-plan-day summary {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  min-height: 7.2rem;
+  padding: 1rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.dinner-plan-day summary::-webkit-details-marker {
+  display: none;
+}
+
+.dinner-plan-day summary:focus-visible {
+  border-radius: 0.5rem;
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.dinner-plan-day__date {
+  display: flex;
+  flex-direction: column;
+  color: var(--ink-soft);
+  font-size: 0.76rem;
+}
+
+.dinner-plan-day__date strong {
+  color: var(--moss);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dinner-plan-day__title {
+  font-family: Georgia, serif;
+  font-size: clamp(1.35rem, 3.5vw, 2.15rem);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.dinner-plan-day__badges {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+.dinner-plan-day__badges span {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 100vmax;
+  color: var(--ink-soft);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.dinner-plan-day__toggle {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  font-size: 1.2rem;
+  transition: transform 160ms ease;
+}
+
+.dinner-plan-day[open] .dinner-plan-day__toggle {
+  transform: rotate(45deg);
+}
+
+.dinner-plan-day[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.dinner-plan-day__body {
+  display: grid;
+  gap: 2rem;
+  padding: clamp(1.5rem, 5vw, 3rem) 0 clamp(2.5rem, 6vw, 4rem);
+}
+
+.dinner-plan-day__column {
+  min-width: 0;
+}
+
+.amount-list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.amount-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.52rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.amount-list li span {
+  min-width: 0;
+}
+
+.amount-list li strong {
+  flex: 0 0 auto;
+  color: var(--moss);
+  font-size: 0.83rem;
+  white-space: nowrap;
+}
+
+.amount-list--extras strong {
+  white-space: normal;
+  text-align: right;
+}
+
+.seasoning-line,
+.meal-card__detail {
+  margin: 1rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+}
+
+.plan-subheading {
+  margin-top: 2.5rem;
+}
+
+.plan-steps {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.plan-steps li {
+  padding: 0.4rem 0 0.4rem 0.35rem;
+}
+
+.dinner-plan-day__portions {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.nutrition-summary {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: rgb(255 255 255 / 28%);
+}
+
+.nutrition-summary > p {
+  margin: 0 0 0.8rem;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nutrition-summary dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem 1rem;
+  margin: 0;
+}
+
+.nutrition-summary dt {
+  color: var(--ink-soft);
+  font-size: 0.68rem;
+}
+
+.nutrition-summary dd {
+  margin: 0.05rem 0 0;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 750;
+}
+
+.nutrition-summary dd span {
+  color: var(--ink-soft);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.plan-source {
+  display: grid;
+  gap: 1rem;
+  margin-block: clamp(4rem, 8vw, 7rem);
+  padding: clamp(2rem, 6vw, 4rem);
+  border-radius: var(--radius);
+  background: #d9c66b;
+}
+
+.plan-source h2 {
+  max-width: 16ch;
+}
+
+.plan-source > p:not(.eyebrow) {
+  max-width: 54rem;
+  margin: 0;
+}
+
+.plan-source a {
+  width: fit-content;
+  color: var(--ink);
+  font-weight: 750;
+  text-underline-offset: 0.25rem;
+}
+
+.week-jump-nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 3rem;
+  padding: 0.75rem;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 100vmax;
+  background: rgb(244 240 230 / 92%);
+  backdrop-filter: blur(0.8rem);
+}
+
+.week-jump-nav a {
+  flex: 1 0 3.2rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 100vmax;
+  color: var(--ink);
+  font-size: 0.76rem;
+  font-weight: 750;
+  text-align: center;
+  text-decoration: none;
+}
+
+.week-jump-nav a:hover {
+  background: var(--moss);
+  color: var(--paper-light);
+}
+
+.macro-key {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 5vw, 3rem) 0;
+  border-block: 1px solid var(--line);
+}
+
+.macro-key > p {
+  max-width: 40rem;
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.fredrik-days {
+  padding-top: clamp(3rem, 7vw, 5rem);
+}
+
+.fredrik-day {
+  padding: clamp(2.5rem, 7vw, 5rem) 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 6rem;
+}
+
+.fredrik-day__header {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.fredrik-day__header h2 {
+  margin: 0.3rem 0 0;
+  font-family: Georgia, serif;
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+}
+
+.fredrik-day__header time {
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+}
+
+.meal-timeline {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.meal-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--paper-light);
+}
+
+.meal-card__time {
+  margin: 0;
+  color: var(--moss);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.meal-card h3 {
+  margin: 0.4rem 0 0;
+  font-family: Georgia, serif;
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.meal-card h3 a {
+  color: var(--ink);
+  text-decoration-color: var(--clay);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2rem;
+}
+
+.meal-card .nutrition-summary {
+  margin-top: auto;
+  padding: 1rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+}
+
+.site-footer__inner {
+  display: flex;
+  min-height: 8rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.1rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer p:first-child {
+  font-weight: 800;
+}
+
+.site-footer p:last-child {
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+
+@media (min-width: 42rem) {
+  .site-header__inner,
+  .site-footer__inner,
+  .content-page,
+  .home-page,
+  .recipe-page,
+  .plan-page {
+    width: min(100% - 4rem, 76rem);
+  }
+
+  .plan-page {
+    width: min(100% - 4rem, 82rem);
+  }
+
+  .home-card-grid,
+  .food-grid,
+  .recipe-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .status-key {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .plan-rules,
+  .macro-key {
+    grid-template-columns: minmax(12rem, 0.75fr) minmax(0, 1.25fr);
+    align-items: end;
+  }
+
+  .dinner-plan-day summary {
+    grid-template-columns: 4rem minmax(16rem, 1fr) minmax(12rem, 0.75fr) 2rem;
+  }
+
+  .dinner-plan-day__badges {
+    display: flex;
+  }
+
+  .dinner-plan-day__body {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dinner-plan-day__portions,
+  .dinner-plan-day__body > .primary-link {
+    grid-column: 1 / -1;
+  }
+
+  .dinner-plan-day__portions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .fredrik-day__header {
+    grid-template-columns: minmax(12rem, 0.65fr) minmax(24rem, 1.35fr);
+    align-items: end;
+  }
+
+  .meal-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section-heading--split,
+  .note-block,
+  .temporary-note {
+    grid-template-columns: minmax(10rem, 0.7fr) minmax(0, 1.3fr);
+  }
+
+  .numbered-principles li {
+    grid-template-columns: 4rem 1fr;
+  }
+
+  .avoid-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .site-footer__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 64rem) {
+  .home-hero {
+    grid-template-columns: minmax(0, 1.45fr) minmax(17rem, 0.55fr);
+  }
+
+  .home-hero__compass {
+    display: grid;
+  }
+
+  .home-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .editorial-grid {
+    grid-template-columns: 1.35fr 0.65fr;
+  }
+
+  .food-grid,
+  .recipe-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .meal-timeline {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .site-header__inner {
+    min-height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-block: 1rem;
+  }
+
+  .main-nav {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 0.35rem;
+    scrollbar-width: thin;
+  }
+
+  .main-nav a {
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  .plan-week__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .home-card,
+  .recipe-card,
+  .dinner-plan-day__toggle {
+    transition: none;
+  }
+}

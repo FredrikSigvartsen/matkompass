@@ -1,0 +1,23 @@
+{
+  "skill_name": "legg-til-oppskrift",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Legg til en mild familiemiddag med kilden https://example.com/kylling. Tittel: Ovnsbakt sitronkylling. Kategori: middag. 4 porsjoner. Ingredienser: 800 g kyllinglår, 600 g brokkoli, 600 g søtpotet, 2 ss avokadoolje, saften av 1 sitron, 2 fedd hvitløk, havsalt og pepper. Fremgangsmåte: Bak søtpotet og kyllinglår med avokadoolje ved 200 °C i 25 minutter, legg til brokkoli og bak til kyllingen er gjennomstekt. Server brokkolien først, deretter kylling og søtpotet. Press over sitron. Forklaring: Proteinrik middag med grønnsaker og fiber. Søtpoteten gir langsomme karbohydrater til restitusjon etter en aktiv dag.",
+      "expected_output": "Validerer hver ingrediens mot Mat vi spiser, dokumenterer hvert relevant prinsipp og oppretter én norsk middagsoppskrift uten å endre regelgrunnlaget.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Legg inn Pastamiddag fra https://example.com/pasta som middag for 4. Ingredienser: 500 g vanlig hvit pasta, 300 g ferdig pesto med solsikkeolje, 100 g parmesan. Kok pastaen, vend inn pesto og topp med parmesan.",
+      "expected_output": "Stopper før filendring fordi raffinert pasta og frøolje bryter portene og parmesan er uavklart, og foreslår godkjente alternativer uten å endre matlisten automatisk.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Lagre Bærkake fra https://example.com/baerkake som dessert, 8 porsjoner. Ingredienser: 200 g mandelmel, 3 egg fra frittgående høner, 30 g rå usøtet kakao, 250 g blåbær og 60 g agavesirup. Bland alt, ha i form og stek ved 175 °C i 25 minutter.",
+      "expected_output": "Godkjenner de matchende ingrediensene, men stopper på agavesirup fordi den ikke står i Mat vi spiser, og ber om en beslutning eller godkjent erstatning.",
+      "files": []
+    }
+  ]
+}

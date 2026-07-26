@@ -1,20 +1,19 @@
 import Footer from "@/app/_components/footer";
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
+import Header from "@/app/_components/header";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import cn from "classnames";
-import { ThemeSwitcher } from "./_components/theme-switcher";
 
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: `Next.js Blog Example with ${CMS_NAME}`,
-  description: `A statically generated blog example using Next.js and ${CMS_NAME}.`,
-  openGraph: {
-    images: [HOME_OG_IMAGE_URL],
+  title: {
+    default: "Matkompass",
+    template: "%s | Matkompass",
   },
+  description:
+    "Familiens matprinsipper, råvarer og oppskrifter samlet på ett sted.",
 };
 
 export default function RootLayout({
@@ -23,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="nb">
       <head>
         <link
           rel="apple-touch-icon"
@@ -54,14 +53,16 @@ export default function RootLayout({
           name="msapplication-config"
           content="/favicon/browserconfig.xml"
         />
-        <meta name="theme-color" content="#000" />
-        <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+        <meta name="theme-color" content="#f4f0e6" />
       </head>
-      <body
-        className={cn(inter.className, "dark:bg-slate-900 dark:text-slate-400")}
-      >
-        <ThemeSwitcher />
-        <div className="min-h-screen">{children}</div>
+      <body className={inter.className}>
+        <a href="#hovedinnhold" className="skip-link">
+          Hopp til innhold
+        </a>
+        <Header />
+        <div id="hovedinnhold" tabIndex={-1} className="site-shell">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>
