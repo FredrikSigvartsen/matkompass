@@ -3,21 +3,33 @@ title: "Grønnsaks- og eggemuffins for stabilt blodsukker"
 category: frokost
 source: "https://members.theultimatehuman.com/posts/recipes-blood-sugar-balancing-veggie-egg-muffins"
 yield: "6 muffins"
+baseAdultPortions: 3
+ingredients:
+  - items:
+      - amount: 4
+        text: "egg fra beitehøns"
+      - amount: 1.2
+        unit: "dl"
+        text: "spinat, hakket"
+      - amount: 0.6
+        unit: "dl"
+        text: "paprika, hakket"
+      - amount: 0.6
+        unit: "dl"
+        text: "sopp eller squash, hakket"
+      - amount: 2
+        unit: "ss"
+        text: "kokosmelk"
+      - text: "Havsalt, sort pepper og hvitløkspulver etter smak"
+      - text: "næringsgjær eller smuldret geitost"
+        optional: true
 tags:
   - "Måltidsforberedelse"
   - "Proteinrik"
   - "Kortisolregulering"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 4 egg fra beitehøns
-- 1,2 dl spinat, hakket
-- 0,6 dl paprika, hakket
-- 0,6 dl sopp eller squash, hakket
-- 2 ss kokosmelk
-- Havsalt, sort pepper og hvitløkspulver etter smak
-- Valgfritt: næringsgjær eller smuldret geitost
 
 ## Fremgangsmåte
 

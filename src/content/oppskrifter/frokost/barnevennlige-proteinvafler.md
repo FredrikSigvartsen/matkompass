@@ -3,22 +3,34 @@ title: "Barnevennlige proteinvafler"
 category: frokost
 source: "https://members.theultimatehuman.com/posts/recipes-kid-approved-protein-waffles"
 yield: "4 små vafler"
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 2
+        text: "egg fra beitehøns"
+      - amount: 1
+        text: "moden banan"
+      - amount: 1
+        unit: "måleskje"
+        text: "PerfectAminos med vaniljesmak eller kollagen"
+        optional: true
+      - amount: 1
+        unit: "ss"
+        text: "mandelmel"
+      - amount: 0.5
+        unit: "ts"
+        text: "ceylonkanel"
+      - text: "En klype Baja Gold-havsalt"
+      - text: "Kokosolje til smøring"
+      - text: "Til servering: cottage cheese"
+      - text: "Valgfritt tilbehør: økologiske bær, nøttesmør, kokosyoghurt"
 tags:
   - "Uten korn"
   - "Ingen sukkerkrasj"
   - "Støtte for tarm og hjerne"
+adapted: true
+adaptationNote: "Aminosyre- eller kollagenpulver er gjort valgfritt. Planversjonen serveres med cottage cheese som proteinkilde fra vanlig mat."
 ---
-
-## Ingredienser
-
-- 2 egg fra beitehøns
-- 1 moden banan
-- 1 måleskje PerfectAminos med vaniljesmak eller kollagen
-- 1 ss mandelmel
-- ½ ts ceylonkanel
-- En klype Baja Gold-havsalt
-- Kokosolje til smøring
-- Valgfritt tilbehør: økologiske bær, nøttesmør, kokosyoghurt
 
 ## Fremgangsmåte
 

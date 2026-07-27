@@ -3,22 +3,38 @@ title: Ren kremet ranch-dipp
 category: snacks
 source: https://members.theultimatehuman.com/posts/recipes-clean-creamy-ranch-dip
 yield: ""
+ingredients:
+  - items:
+      - amount: 1.2
+        unit: "dl"
+        text: "usøtet kokosyoghurt"
+      - amount: 1
+        unit: "ss"
+        text: "sitronjuice"
+      - amount: 1
+        unit: "ts"
+        text: "tørket dill"
+      - amount: 0.5
+        unit: "ts"
+        text: "hvitløkspulver"
+      - amount: 0.5
+        unit: "ts"
+        text: "løkpulver"
+      - amount: 0.5
+        unit: "ts"
+        text: "havsalt"
+      - amount: 1
+        unit: "ss"
+        text: "olivenolje eller avokadoolje"
+      - text: "hakket gressløk eller fersk persille"
+        optional: true
 tags:
   - Uten frøolje
   - Tarmvennlig
   - Godkjent av barn
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 1,2 dl usøtet kokosyoghurt
-- 1 ss sitronjuice
-- 1 ts tørket dill
-- ½ ts hvitløkspulver
-- ½ ts løkpulver
-- ½ ts havsalt
-- 1 ss olivenolje eller avokadoolje
-- Valgfritt: hakket gressløk eller fersk persille
 
 ## Fremgangsmåte
 

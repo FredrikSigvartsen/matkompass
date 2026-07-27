@@ -3,19 +3,28 @@ title: Fylte egg med olivenolje og gurkemeie
 category: snacks
 source: https://members.theultimatehuman.com/posts/recipes-deviled-eggs-with-olive-oil-turmeric
 yield: "Gir 4 halvdeler"
+ingredients:
+  - items:
+      - amount: 2
+        text: "hardkokte egg fra beitehøns"
+      - amount: 1
+        unit: "ss"
+        text: "olivenolje"
+      - amount: 0.5
+        unit: "ts"
+        text: "gurkemeie"
+      - text: "En klype hvitløkspulver, Baja Gold-havsalt og paprikapulver"
+      - amount: 0.25
+        unit: "ts"
+        text: "eplecidereddik"
+        optional: true
 tags:
   - Kolin for hjernen
   - Hormonreparasjon
   - Blodsukkerbalanse
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 2 hardkokte egg fra beitehøns
-- 1 ss olivenolje
-- ½ ts gurkemeie
-- En klype hvitløkspulver, Baja Gold-havsalt og paprikapulver
-- Valgfritt: ¼ ts eplecidereddik
 
 ## Fremgangsmåte
 

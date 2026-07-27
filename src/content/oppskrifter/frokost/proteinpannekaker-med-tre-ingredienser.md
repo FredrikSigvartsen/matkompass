@@ -3,18 +3,25 @@ title: "Proteinpannekake med tre ingredienser"
 category: frokost
 source: "https://members.theultimatehuman.com/posts/recipes-3-ingredient-protein-pancake"
 yield: "4 pannekaker"
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 2
+        text: "egg fra beitehøns"
+      - amount: 1
+        text: "moden banan"
+      - amount: 1
+        unit: "måleskje"
+        text: "PerfectAminos med vaniljesmak eller kollagenprotein"
+      - text: "kanel, vaniljeekstrakt eller kakaonibs"
+        optional: true
 tags:
   - "Uten korn"
   - "Ingen oppblåsthet"
   - "Stabilt blodsukker"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 2 egg fra beitehøns
-- 1 moden banan
-- 1 måleskje PerfectAminos med vaniljesmak eller kollagenprotein
-- Valgfritt: kanel, vaniljeekstrakt eller kakaonibs
 
 ## Fremgangsmåte
 

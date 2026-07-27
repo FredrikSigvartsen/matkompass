@@ -50,6 +50,7 @@ export const foodSections: FoodSection[] = [
     title: "Fisk, sjømat og egg",
     items: [
       "Villfanget laks",
+      "Norsk røkt laks med kun laks og salt i ingredienslisten",
       "Sardiner",
       "Torsk",
       "Villfangede reker",

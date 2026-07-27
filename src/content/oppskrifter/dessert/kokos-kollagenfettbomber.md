@@ -3,21 +3,35 @@ title: "Kokos- og kollagenfettbomber"
 category: dessert
 source: "https://members.theultimatehuman.com/posts/recipes-coconut-collagen-fat-bombs"
 yield: "Gir ~12 biter"
+ingredients:
+  - items:
+      - amount: 1.2
+        unit: "dl"
+        text: "kokossmør eller kokoskrem"
+      - amount: 1
+        unit: "ss"
+        text: "kokosolje"
+      - amount: 1
+        unit: "måleskje"
+        text: "kollagenpeptider uten smak"
+      - amount: 1
+        unit: "ts"
+        text: "vaniljeekstrakt"
+      - amount: 1
+        unit: "ts"
+        text: "ceylonkanel"
+      - amount: 1
+        maxAmount: 2
+        unit: "ts"
+        text: "munkefrukt eller rå honning"
+      - text: "En klype Baja Gold-havsalt"
 tags:
   - "Ketovennlig"
   - "Søvnstøttende"
   - "Drivstoff for mitokondriene"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 1,2 dl kokossmør eller kokoskrem
-- 1 ss kokosolje
-- 1 måleskje kollagenpeptider uten smak
-- 1 ts vaniljeekstrakt
-- 1 ts ceylonkanel
-- 1–2 ts munkefrukt eller rå honning
-- En klype Baja Gold-havsalt
 
 ## Fremgangsmåte
 

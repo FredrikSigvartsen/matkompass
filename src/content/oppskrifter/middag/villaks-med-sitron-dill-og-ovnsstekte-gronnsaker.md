@@ -3,25 +3,37 @@ title: "Villaks med sitron, dill og ovnsstekte grønnsaker"
 category: middag
 source: "https://members.theultimatehuman.com/posts/recipes-lemon-dill-wild-salmon-with-roasted-veggies"
 yield: "2 porsjoner"
+baseAdultPortions: 2
+ingredients:
+  - items:
+      - amount: 2
+        text: "fileter av villfanget laks (115–170 g hver)"
+      - amount: 1
+        text: "sitron, saft og revet skall"
+      - amount: 1
+        unit: "ss"
+        text: "ghee"
+      - amount: 1
+        unit: "ss"
+        text: "fersk dill, hakket"
+      - amount: 1
+        text: "fedd hvitløk, finhakket"
+      - amount: 1
+        text: "squash, hakket"
+      - amount: 2.4
+        unit: "dl"
+        text: "brokkolibuketter"
+      - text: "Havsalt og svart pepper etter smak"
 tags: ["Omega-3-økning", "Avgiftning av østrogen", "Støtte for hud og hjerne"]
+adapted: true
+adaptationNote: "Olivenolje er erstattet med ghee fordi retten stekes ved 190 °C."
 ---
-
-## Ingredienser
-
-- 2 fileter av villfanget laks (115–170 g hver)
-- Saft og revet skall av 1 sitron
-- 1 ss olivenolje
-- 1 ss fersk dill, hakket
-- 1 fedd hvitløk, finhakket
-- 1 squash, hakket
-- 2,4 dl brokkolibuketter
-- Havsalt og svart pepper etter smak
 
 ## Fremgangsmåte
 
 Forvarm ovnen til 190 °C. Legg laksen på et bakepapirkledd stekebrett.
 
-Bland sitronsaft, sitronskall, olivenolje, hvitløk og dill. Fordel over fisken med en skje.
+Bland sitronsaft, sitronskall, smeltet ghee, hvitløk og dill. Fordel over fisken med en skje.
 
 Fordel grønnsakene rundt laksen.
 
@@ -29,4 +41,4 @@ Stek i 15–18 minutter til laksen er gjennomstekt og grønnsakene er møre.
 
 ## Hvorfor den fungerer
 
-Villaks er et av de mest omega-3-rike proteinene som finnes, noe som er avgjørende for å opprettholde integriteten til mitokondriemembranene, støtte produksjonen av nevrotransmittere og regulere humøret. Brokkoli gir indol-3-karbinol og DIM, forbindelser som aktivt støtter fase II-avgiftning av østrogen gjennom leveren. Sitronskall og olivenolje forbedrer gallestrømmen og opptaket av fettløselige næringsstoffer, og fullfører syklusen for avgiftning og hormonstøtte uten en eneste blodsukkerstigning.
+Villaks er et av de mest omega-3-rike proteinene som finnes, noe som er avgjørende for å opprettholde integriteten til mitokondriemembranene, støtte produksjonen av nevrotransmittere og regulere humøret. Brokkoli gir indol-3-karbinol og DIM, forbindelser som aktivt støtter fase II-avgiftning av østrogen gjennom leveren. Sitronskall og ghee forbedrer opptaket av fettløselige næringsstoffer, og fullfører syklusen for avgiftning og hormonstøtte uten en eneste blodsukkerstigning.

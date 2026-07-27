@@ -3,18 +3,31 @@ title: "Histaminfattig kalkun- og squashpanne"
 category: middag
 source: "https://members.theultimatehuman.com/posts/recipes-low-histamine-turkey-zucchini-skillet"
 yield: "2 porsjoner"
+baseAdultPortions: 2
+ingredients:
+  - items:
+      - amount: 450
+        unit: "g"
+        text: "økologisk kalkunkjøttdeig (tilberedt fersk)"
+      - amount: 1
+        text: "squash, hakket"
+      - amount: 0.5
+        text: "purre eller vårløk, kun de hvite delene"
+      - amount: 1
+        unit: "ss"
+        text: "olivenolje"
+      - amount: 1
+        unit: "ts"
+        text: "timian"
+      - text: "Havsalt etter smak"
+      - amount: 1.2
+        unit: "dl"
+        text: "fersk persille, hakket"
+        optional: true
 tags: ["Oppblåsthetsfri", "Skånsom mot tarmen", "Betennelsesdempende"]
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 450 g økologisk kalkunkjøttdeig (tilberedt fersk)
-- 1 squash, hakket
-- ½ purre eller vårløk, kun de hvite delene
-- 1 ss olivenolje
-- 1 ts timian
-- Havsalt etter smak
-- Valgfritt: 1,2 dl fersk persille, hakket
 
 ## Fremgangsmåte
 

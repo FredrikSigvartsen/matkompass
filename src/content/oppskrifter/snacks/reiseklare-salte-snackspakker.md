@@ -3,19 +3,28 @@ title: Reiseklare salte mellommåltidspakker
 category: snacks
 source: https://members.theultimatehuman.com/posts/recipes-travel-ready-savory-snack-packs
 yield: "1 porsjon"
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 2
+        text: "kokte egg fra beitehøns"
+      - amount: 0.25
+        text: "avokado (drypp over sitronjuice for å hindre at den blir brun)"
+      - amount: 1
+        unit: "ss"
+        text: "gresskarkjerner"
+      - text: "En håndfull økologiske agurk- eller gulrotstaver"
+      - amount: 1
+        unit: "ts"
+        text: "kokosaminos til å dyppe i"
+        optional: true
 tags:
   - Stabilt blodsukker
   - Ingen bearbeidede ingredienser
   - Spis på farten
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 2 kokte egg fra beitehøns
-- ¼ avokado (drypp over sitronjuice for å hindre at den blir brun)
-- 1 ss gresskarkjerner
-- En håndfull økologiske agurk- eller gulrotstaver
-- Valgfritt: 1 ts kokosaminos til å dyppe i
 
 ## Fremgangsmåte
 

@@ -3,20 +3,30 @@ title: "Kakao- og tahinikonfektruter"
 category: dessert
 source: "https://members.theultimatehuman.com/posts/recipes-cacao-tahini-fudge-squares"
 yield: "Gir 6 ruter"
+ingredients:
+  - items:
+      - amount: 0.6
+        unit: "dl"
+        text: "tahini"
+      - amount: 2
+        unit: "ss"
+        text: "kakaopulver"
+      - amount: 2
+        unit: "ss"
+        text: "kokosolje"
+      - amount: 1
+        unit: "ts"
+        text: "ceylonkanel"
+      - text: "1 ts munkefrukt eller 1 medjooldaddel"
+        scalable: false
+      - text: "En klype havsalt"
 tags:
   - "Økt magnesium og jern"
   - "Drivstoff for mitokondriene"
   - "Hormonstøtte"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 0,6 dl tahini
-- 2 ss kakaopulver
-- 2 ss kokosolje
-- 1 ts ceylonkanel
-- 1 ts munkefrukt eller 1 medjooldaddel
-- En klype havsalt
 
 ## Fremgangsmåte
 

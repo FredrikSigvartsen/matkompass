@@ -3,21 +3,35 @@ title: Blodsukkervennlig turmiks
 category: snacks
 source: https://members.theultimatehuman.com/posts/recipes-blood-sugar-safe-trail-mix
 yield: "Gir ca. 3,6 dl"
+ingredients:
+  - items:
+      - amount: 0.6
+        unit: "dl"
+        text: "rå valnøtter"
+      - amount: 0.6
+        unit: "dl"
+        text: "paranøtter"
+      - amount: 0.6
+        unit: "dl"
+        text: "gresskarkjerner"
+      - amount: 2
+        unit: "ss"
+        text: "kakaonibs"
+      - amount: 2
+        unit: "ss"
+        text: "usøtede kokosflak"
+      - amount: 1
+        unit: "ss"
+        text: "frysetørkede bringebær eller gojibær"
+      - text: "en klype Baja Gold-havsalt og kanel"
+        optional: true
 tags:
   - På farten
   - Motvirker energikrasj
   - Mineralrik
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 0,6 dl rå valnøtter
-- 0,6 dl paranøtter
-- 0,6 dl gresskarkjerner
-- 2 ss kakaonibs
-- 2 ss usøtede kokosflak
-- 1 ss frysetørkede bringebær eller gojibær
-- Valgfritt: en klype Baja Gold-havsalt og kanel
 
 ## Fremgangsmåte
 

@@ -3,17 +3,28 @@ title: "Hvitløksreker med squashnudler i én panne"
 category: middag
 source: "https://members.theultimatehuman.com/posts/recipes-one-pan-garlic-shrimp-with-zucchini-noodles"
 yield: "2 porsjoner"
+baseAdultPortions: 2
+ingredients:
+  - items:
+      - amount: 450
+        unit: "g"
+        text: "villfangede reker, skrelt og renset"
+      - amount: 2
+        text: "squash, spiralisert"
+      - amount: 1
+        text: "fedd hvitløk, finhakket"
+      - amount: 2
+        unit: "ss"
+        text: "olivenolje"
+      - amount: 0.5
+        text: "sitron, saften"
+      - text: "Havsalt og grovkvernet svart pepper etter smak"
+      - text: "chiliflak, servert separat"
+        optional: true
 tags: ["Støtte for mitokondriene", "Magert protein", "Lett og mettende"]
+adapted: true
+adaptationNote: "Chiliflak er gjort valgfrie og serveres separat for å holde familiemiddagen mild."
 ---
-
-## Ingredienser
-
-- 450 g villfangede reker, skrelt og renset
-- 2 squash, spiralisert
-- 1 fedd hvitløk, finhakket
-- 2 ss olivenolje
-- Saften av ½ sitron
-- Havsalt, grovkvernet svart pepper og chiliflak etter smak
 
 ## Fremgangsmåte
 

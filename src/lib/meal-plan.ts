@@ -3,6 +3,7 @@ import {
   daytimeMeals,
   dinnerRotation,
   longTrainingSnack,
+  mealPlanNutritionMetadata,
   nutritionTargets,
   trainingSnack,
   type DayProfile,
@@ -48,12 +49,16 @@ export interface FamilyCarbExtra {
   label: string;
 }
 
+export interface ResolvedIngredientAmount extends IngredientAmount {
+  label: string;
+}
+
 export type FamilyMember = keyof typeof familyShares;
 
 export interface FredrikMeal {
   title: string;
   href?: string;
-  ingredients: IngredientAmount[];
+  ingredients: ResolvedIngredientAmount[];
   details?: string[];
   time: string;
   nutrition: Nutrition;
@@ -72,8 +77,15 @@ const familyShares = {
 } as const;
 
 const foodsById = new Map(foods.map((food) => [food.id, food]));
+const rotationEpoch = Date.UTC(2026, 6, 20);
+const millisecondsPerWeek = 7 * 86_400_000;
 
-export { familyShares, foodDataSource, nutritionTargets };
+export {
+  familyShares,
+  foodDataSource,
+  mealPlanNutritionMetadata,
+  nutritionTargets,
+};
 
 export function calculateNutrition(ingredients: IngredientAmount[]): Nutrition {
   return ingredients.reduce<Nutrition>(
@@ -93,6 +105,22 @@ export function calculateNutrition(ingredients: IngredientAmount[]): Nutrition {
     },
     { calories: 0, protein: 0, fat: 0, carbs: 0 },
   );
+}
+
+export function getFoodLabel(foodId: IngredientAmount["foodId"]): string {
+  const food = foodsById.get(foodId);
+
+  if (!food) {
+    throw new Error(`Mangler matvare ${foodId}`);
+  }
+
+  return food.name;
+}
+
+export function getPlannedDinnerIngredients(
+  dinner: DinnerDefinition,
+): ResolvedIngredientAmount[] {
+  return resolveIngredientLabels(dinner.plannedIngredients);
 }
 
 export function sumNutrition(items: Nutrition[]): Nutrition {
@@ -137,7 +165,7 @@ export function getFamilyCarbExtras(
 export function getFredrikDinnerIngredients(
   dinner: DinnerDefinition,
   profile: DayProfile,
-): IngredientAmount[] {
+): ResolvedIngredientAmount[] {
   return getDinnerIngredients("Fredrik", dinner, profile);
 }
 
@@ -145,8 +173,8 @@ export function getDinnerIngredients(
   person: FamilyMember,
   dinner: DinnerDefinition,
   profile: DayProfile,
-): IngredientAmount[] {
-  const ingredients = dinner.plannedIngredients.map((ingredient) => ({
+): ResolvedIngredientAmount[] {
+  const ingredients = resolveIngredientLabels(dinner.plannedIngredients).map((ingredient) => ({
     ...ingredient,
     grams: ingredient.grams * familyShares[person],
   }));
@@ -159,7 +187,7 @@ export function getDinnerIngredients(
     ingredients.push({
       foodId: dinner.carbFoodId,
       grams: extra.grams,
-      label: `ekstra ${dinner.carbLabel}`,
+      label: `Ekstra ${extra.label.toLocaleLowerCase("nb")}`,
     });
   }
 
@@ -167,9 +195,10 @@ export function getDinnerIngredients(
 }
 
 export function getFredrikPlanDay(day: DatedPlanDay): FredrikPlanDay {
+  const mealsForDay = daytimeMeals[day.profile.name];
   const meals: FredrikMeal[] = [
-    createFredrikMeal("Kl. 10–11", daytimeMeals[day.date.getUTCDay() === 0 ? 6 : day.date.getUTCDay() - 1][0]),
-    createFredrikMeal("Kl. 14", daytimeMeals[day.date.getUTCDay() === 0 ? 6 : day.date.getUTCDay() - 1][1]),
+    createFredrikMeal("Kl. 10–11", mealsForDay[0]),
+    createFredrikMeal("Kl. 14", mealsForDay[1]),
   ];
 
   if (day.profile.fredrikTrains) {
@@ -207,6 +236,10 @@ export function getCurrentPlanWeeks(now = new Date()): [DatedPlanWeek, DatedPlan
   return [createPlanWeek(currentMonday), createPlanWeek(addDays(currentMonday, 7))];
 }
 
+export function getTodayInOslo(now = new Date()): Date {
+  return getOsloDate(now);
+}
+
 export function formatDate(date: Date, options?: Intl.DateTimeFormatOptions): string {
   return new Intl.DateTimeFormat("nb-NO", {
     timeZone: "UTC",
@@ -220,6 +253,11 @@ export function formatDateRange(start: Date, end: Date): string {
   return `${formatDate(start)}–${formatDate(end, { day: "numeric", month: "short", year: "numeric" })}`;
 }
 
+export function formatGrams(grams: number): string {
+  const rounded = grams >= 100 ? Math.round(grams / 5) * 5 : Math.round(grams);
+  return `${rounded} g`;
+}
+
 function createFredrikMeal(time: string, meal: PlannedMeal): FredrikMeal {
   const recipe = meal.recipe ? resolveRecipeReference(meal.recipe) : undefined;
   const title = meal.title ?? recipe?.title;
@@ -231,7 +269,7 @@ function createFredrikMeal(time: string, meal: PlannedMeal): FredrikMeal {
   return {
     title,
     href: recipe?.href,
-    ingredients: meal.ingredients,
+    ingredients: resolveIngredientLabels(meal.ingredients),
     details: meal.details,
     time,
     nutrition: calculateNutrition(meal.ingredients),
@@ -257,11 +295,23 @@ function createCarbExtra(
   };
 }
 
+function resolveIngredientLabels(
+  ingredients: IngredientAmount[],
+): ResolvedIngredientAmount[] {
+  return ingredients.map((ingredient) => ({
+    ...ingredient,
+    label: ingredient.label ?? getFoodLabel(ingredient.foodId),
+  }));
+}
+
 function createPlanWeek(monday: Date): DatedPlanWeek {
   const weekNumber = getIsoWeek(monday);
-  const type = weekNumber % 2 === 0 ? "A" : "B";
+  const weeksSinceEpoch = Math.floor(
+    (monday.getTime() - rotationEpoch) / millisecondsPerWeek,
+  );
+  const type = ((weeksSinceEpoch % 2) + 2) % 2 === 0 ? "A" : "B";
   const days = dayProfiles.map((profile, index) => {
-    const dinner = dinnerRotation[type][index];
+    const dinner = dinnerRotation[type][profile.name];
 
     return {
       date: addDays(monday, index),

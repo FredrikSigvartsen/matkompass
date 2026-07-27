@@ -1,4 +1,5 @@
 import { RecipeCategoryNav } from "@/app/_components/recipe-category-nav";
+import { ScalableIngredients } from "@/app/oppskrifter/[kategori]/[slug]/scalable-ingredients";
 import markdownToHtml from "@/lib/markdownToHtml";
 import {
   getAllRecipes,
@@ -63,6 +64,11 @@ export default async function RecipePage({ params }: RecipePageProps) {
             {recipe.tags.map((tag) => <span key={tag}>{tag}</span>)}
           </div>
         </header>
+        <ScalableIngredients
+          baseAdultPortions={recipe.baseAdultPortions}
+          groups={recipe.ingredients}
+          yieldLabel={recipe.yield}
+        />
         <div
           className="recipe-body"
           dangerouslySetInnerHTML={{ __html: content }}

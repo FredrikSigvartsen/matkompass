@@ -3,19 +3,26 @@ title: "Fastebrytingsmåltid nr. 2: Tallerken med avokado og bløtkokt egg"
 category: frokost
 source: "https://members.theultimatehuman.com/posts/recipes-fasting-break-meal-2-avocado-soft-boiled-egg-plate"
 yield: ""
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 1
+        text: "bløtkokt egg fra beitehøns"
+      - amount: 0.5
+        text: "moden avokado, skivet"
+      - amount: 1
+        unit: "ss"
+        text: "gresskarkjerner"
+      - text: "Havsalt, sort pepper og en skvis sitron"
+      - text: "mikrogrønt eller en skvett olivenolje"
+        optional: true
 tags:
   - "Mitokondrievennlig"
   - "Stabilt blodsukker"
   - "Rask å tilberede"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 1 bløtkokt egg fra beitehøns
-- ½ moden avokado, skivet
-- 1 ss gresskarkjerner
-- Havsalt, sort pepper og en skvis sitron
-- Valgfritt: mikrogrønt eller en skvett olivenolje
 
 ## Fremgangsmåte
 

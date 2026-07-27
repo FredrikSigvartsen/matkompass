@@ -3,21 +3,29 @@ title: Grillet kylling-«avgiftningstallerken»
 category: lunsj
 source: https://members.theultimatehuman.com/posts/recipes-grilled-chicken-detox-plate
 yield: "2 porsjoner"
+baseAdultPortions: 2
+ingredients:
+  - items:
+      - amount: 170
+        unit: "g"
+        text: "økologisk grillet kyllingbryst"
+      - amount: 2.4
+        unit: "dl"
+        text: "dampet eller ovnsstekt brokkoli"
+      - amount: 0.5
+        text: "avokado"
+      - text: "En håndfull fersk persille eller ruccola"
+      - amount: 0.5
+        text: "sitron, saften"
+      - text: "En skvett olivenolje"
+      - text: "Havsalt og sort pepper etter smak"
 tags:
   - Avgiftning av østrogen
   - Betennelsesdempende
   - Støtter blodsukkeret
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 170 g økologisk grillet kyllingbryst
-- 2,4 dl dampet eller ovnsstekt brokkoli
-- ½ avokado
-- En håndfull fersk persille eller ruccola
-- Saften av ½ sitron
-- En skvett olivenolje
-- Havsalt og sort pepper etter smak
 
 ## Fremgangsmåte
 

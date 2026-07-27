@@ -1,13 +1,18 @@
 import { NutritionSummary } from "@/app/_components/nutrition-summary";
+import { ScrollToToday } from "@/app/middagsplan/scroll-to-today";
 import {
   calculateNutrition,
   familyShares,
   foodDataSource,
   formatDate,
   formatDateRange,
+  formatGrams,
   getCurrentPlanWeeks,
   getDinnerIngredients,
   getFamilyCarbExtras,
+  getPlannedDinnerIngredients,
+  getTodayInOslo,
+  mealPlanNutritionMetadata,
 } from "@/lib/meal-plan";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -24,9 +29,11 @@ const familyMembers = ["Fredrik", "Kamilla", "Josefine"] as const;
 export default async function DinnerPlanPage() {
   await connection();
   const weeks = getCurrentPlanWeeks();
+  const today = getTodayInOslo().toISOString().slice(0, 10);
 
   return (
     <main className="content-page plan-page">
+      <ScrollToToday />
       <header className="page-intro plan-intro">
         <p className="eyebrow">Denne og neste kalenderuke</p>
         <h1>Middagsplan</h1>
@@ -74,13 +81,22 @@ export default async function DinnerPlanPage() {
           <div className="dinner-plan-list">
             {week.days.map((day, dayIndex) => {
               const extras = getFamilyCarbExtras(day.dinner, day.profile);
+              const date = day.date.toISOString().slice(0, 10);
+              const isToday = date === today;
 
               return (
-                <details className="dinner-plan-day" key={day.date.toISOString()} open={weekIndex === 0 && dayIndex === 0}>
-                  <summary>
+                <details
+                  className={`dinner-plan-day${isToday ? " dinner-plan-day--today" : ""}`}
+                  key={day.date.toISOString()}
+                  open={isToday}
+                >
+                  <summary id={isToday ? "middag-i-dag" : undefined}>
                     <span className="dinner-plan-day__date">
                       <strong>{day.profile.shortName}</strong>
-                      <time dateTime={day.date.toISOString().slice(0, 10)}>{formatDate(day.date)}</time>
+                      <time dateTime={date} aria-current={isToday ? "date" : undefined}>
+                        {formatDate(day.date)}
+                      </time>
+                      {isToday ? <span className="dinner-plan-day__today-label">I dag</span> : null}
                     </span>
                     <span className="dinner-plan-day__title">{day.dinner.title}</span>
                     <span className="dinner-plan-day__badges">
@@ -95,7 +111,7 @@ export default async function DinnerPlanPage() {
                     <div className="dinner-plan-day__column">
                       <p className="eyebrow">Planmengder til grunnretten</p>
                       <ul className="amount-list">
-                        {day.dinner.plannedIngredients.map((ingredient) => (
+                        {getPlannedDinnerIngredients(day.dinner).map((ingredient) => (
                           <li key={`${ingredient.foodId}-${ingredient.label}`}>
                             <span>{ingredient.label}</span>
                             <strong>{formatGrams(ingredient.grams)}</strong>
@@ -121,7 +137,7 @@ export default async function DinnerPlanPage() {
                       <p className="eyebrow plan-subheading">Tilberedning</p>
                       <ol className="plan-steps">
                         {day.dinner.instructions.map((step) => <li key={step}>{step}</li>)}
-                        <li>Tilpass mengden {day.dinner.carbLabel} til planmengden og tilleggene over.</li>
+                        <li>Tilpass mengden {extras[0].label.toLocaleLowerCase("nb")} til planmengden og tilleggene over.</li>
                       </ol>
                     </div>
 
@@ -151,16 +167,13 @@ export default async function DinnerPlanPage() {
         <h2 id="beregning">Representative verdier, praktiske porsjoner.</h2>
         <p>
           Energi og makroer er beregnet fra råvarevekt med data fra {foodDataSource.name},
-          hentet {foodDataSource.retrievedAt}. Krydder, sitrus og kraft med ubetydelig
-          energibidrag er ikke tatt med i totalsummene.
+          hentet {foodDataSource.retrievedAt}. Planen ble beregnet
+          {` ${mealPlanNutritionMetadata.calculatedAt}`}. Krydder, sitrus og kraft med
+          ubetydelig energibidrag er ikke tatt med i totalsummene.
         </p>
+        {mealPlanNutritionMetadata.notes.map((note) => <p key={note}>{note}</p>)}
         <a href="https://www.matvaretabellen.no/" rel="noreferrer">Se Matvaretabellen</a>
       </aside>
     </main>
   );
-}
-
-function formatGrams(grams: number): string {
-  const rounded = grams >= 100 ? Math.round(grams / 5) * 5 : Math.round(grams);
-  return `${rounded} g`;
 }

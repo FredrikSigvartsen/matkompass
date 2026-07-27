@@ -3,19 +3,23 @@ title: Mellommåltidsfat med sprø tang og avokado
 category: snacks
 source: https://members.theultimatehuman.com/posts/recipes-crispy-seaweed-avocado-snack-plate
 yield: "1 porsjon"
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 0.5
+        text: "avokado, i skiver"
+      - amount: 1
+        text: "pakke økologisk ristet tang (kun oliven- eller avokadoolje)"
+      - text: "Et dryss sesamfrø eller hampfrø"
+      - text: "En skvis sitron"
+      - text: "En klype havsalt eller tareflak"
 tags:
   - Jodboost
   - Støtter skjoldbruskkjertelen
   - Reisevennlig
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- ½ avokado, i skiver
-- 1 pakke økologisk ristet tang (kun oliven- eller avokadoolje)
-- Et dryss sesamfrø eller hampfrø
-- En skvis sitron
-- En klype havsalt eller tareflak
 
 ## Fremgangsmåte
 

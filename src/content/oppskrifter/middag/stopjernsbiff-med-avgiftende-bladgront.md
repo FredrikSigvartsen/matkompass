@@ -3,17 +3,27 @@ title: "Støpejernsbiff med avgiftende bladgrønt"
 category: middag
 source: "https://members.theultimatehuman.com/posts/recipes-cast-iron-steak-detox-greens"
 yield: "2 porsjoner"
+baseAdultPortions: 2
+ingredients:
+  - items:
+      - amount: 2
+        text: "fileter av gressfôret storfe (115–170 g hver)"
+      - amount: 1
+        unit: "ss"
+        text: "olivenolje eller ghee"
+      - amount: 4.8
+        unit: "dl"
+        text: "økologisk grønnkål eller mangold"
+      - amount: 1
+        text: "fedd hvitløk, finhakket"
+      - amount: 1
+        unit: "ss"
+        text: "sitronsaft"
+      - text: "Havsalt og grovkvernet svart pepper etter smak"
 tags: ["Muskelrestitusjon", "Jernstøtte", "Fase II-avgiftning i leveren"]
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 2 fileter av gressfôret storfe (115–170 g hver)
-- 1 ss olivenolje eller ghee
-- 4,8 dl økologisk grønnkål eller mangold
-- 1 fedd hvitløk, finhakket
-- 1 ss sitronsaft
-- Havsalt og grovkvernet svart pepper etter smak
 
 ## Fremgangsmåte
 

@@ -3,23 +3,39 @@ title: Rene energikuler
 category: snacks
 source: https://members.theultimatehuman.com/posts/recipes-clean-energy-bites
 yield: "Gir 6–8 kuler"
+ingredients:
+  - items:
+      - amount: 0.6
+        unit: "dl"
+        text: "økologisk mandelsmør"
+      - amount: 1
+        unit: "ss"
+        text: "chiafrø"
+      - amount: 1
+        unit: "ss"
+        text: "hampfrø"
+      - amount: 1
+        unit: "ss"
+        text: "kakaonibs"
+      - amount: 1
+        unit: "måleskje"
+        text: "PerfectAminos eller kollagen"
+      - amount: 1
+        unit: "ts"
+        text: "kanel"
+      - amount: 1
+        unit: "ss"
+        text: "kokosflak"
+      - text: "1 medjooldaddel eller 1 ts munkefrukt"
+        scalable: false
+      - text: "En klype Baja Gold-havsalt"
 tags:
   - Energi midt på dagen
   - Stabilt blodsukker
   - Støtter mitokondriene
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 0,6 dl økologisk mandelsmør
-- 1 ss chiafrø
-- 1 ss hampfrø
-- 1 ss kakaonibs
-- 1 måleskje PerfectAminos eller kollagen
-- 1 ts kanel
-- 1 ss kokosflak
-- 1 medjooldaddel eller 1 ts munkefrukt
-- En klype Baja Gold-havsalt
 
 ## Fremgangsmåte
 

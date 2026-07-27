@@ -3,21 +3,31 @@ title: "Frokostpanne"
 category: frokost
 source: "https://members.theultimatehuman.com/posts/recipes-morning-hash"
 yield: "2 porsjoner"
+baseAdultPortions: 2
+ingredients:
+  - items:
+      - amount: 0.5
+        text: "japansk søtpotet, skåret i terninger"
+      - amount: 0.5
+        text: "squash, hakket"
+      - amount: 0.25
+        text: "rødløk, skivet"
+      - amount: 1.2
+        unit: "dl"
+        text: "økologisk spinat, hakket"
+      - amount: 2
+        text: "egg fra beitehøns"
+      - amount: 1
+        unit: "ss"
+        text: "ghee eller avokadoolje"
+      - text: "Havsalt, gurkemeie og grovkvernet sort pepper etter smak"
 tags:
   - "Støtter avgiftning"
   - "Uten korn"
   - "Blodsukkervennlig"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- ½ japansk søtpotet, skåret i terninger
-- ½ squash, hakket
-- ¼ rødløk, skivet
-- 1,2 dl økologisk spinat, hakket
-- 2 egg fra beitehøns
-- 1 ss ghee eller avokadoolje
-- Havsalt, gurkemeie og grovkvernet sort pepper etter smak
 
 ## Fremgangsmåte
 

@@ -3,27 +3,42 @@ title: "Rene kalkunkjøttboller med blomkålmos"
 category: middag
 source: "https://members.theultimatehuman.com/posts/recipes-clean-turkey-meatballs-with-cauli-mash"
 yield: "3–4 porsjoner"
+baseAdultPortions: 4
+ingredients:
+  - title: "Kjøttboller"
+    items:
+      - amount: 450
+        unit: "g"
+        text: "økologisk kalkunkjøttdeig fra beiteoppdrett"
+      - amount: 1
+        text: "fedd hvitløk, finhakket"
+      - amount: 1
+        unit: "ts"
+        text: "tørket oregano"
+      - amount: 0.5
+        unit: "ts"
+        text: "havsalt"
+      - amount: 1
+        text: "egg fra beitehøns"
+      - amount: 1
+        unit: "ss"
+        text: "mandelmel"
+  - title: "Blomkålmos"
+    items:
+      - amount: 1
+        text: "blomkålhode, dampet"
+      - amount: 2
+        unit: "ss"
+        text: "olivenolje eller ghee"
+      - amount: 1
+        text: "fedd hvitløk"
+      - text: "Baja Gold-havsalt og svart pepper etter smak"
+      - text: "et dryss næringsgjær"
+        optional: true
 tags: ["Trøstemat", "Proteinrik", "Blodsukkerbalanse"]
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-**Kjøttboller**
-
-- 450 g økologisk kalkunkjøttdeig fra beiteoppdrett
-- 1 fedd hvitløk, finhakket
-- 1 ts tørket oregano
-- ½ ts havsalt
-- 1 egg fra beitehøns
-- 1 ss mandelmel
-
-**Blomkålmos**
-
-- 1 blomkålhode, dampet
-- 2 ss olivenolje eller ghee
-- 1 fedd hvitløk
-- Baja Gold-havsalt og svart pepper etter smak
-- Valgfritt: et dryss næringsgjær
 
 ## Fremgangsmåte
 

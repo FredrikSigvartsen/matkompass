@@ -3,22 +3,38 @@ title: "Grønn smoothie for leverstøtte"
 category: frokost
 source: "https://members.theultimatehuman.com/posts/recipes-liver-support-green-smoothie"
 yield: ""
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 2.4
+        unit: "dl"
+        text: "løvetanngrønt eller grønnkål"
+      - amount: 0.5
+        text: "agurk"
+      - amount: 0.5
+        text: "grønt eple"
+      - amount: 0.5
+        text: "sitron, saften"
+      - amount: 1
+        unit: "ss"
+        text: "chiafrø eller malte linfrø"
+      - amount: 1
+        unit: "måleskje"
+        text: "kollagen fra gressfôrede dyr eller PerfectAminos"
+      - amount: 2.4
+        unit: "dl"
+        text: "hydrogenvann eller filtrert vann"
+      - amount: 1
+        unit: "ts"
+        text: "mariatistelpulver eller rødbetpulver"
+        optional: true
 tags:
   - "Stimulerer gallestrømmen"
   - "Fase I- og II-avgiftning i leveren"
   - "Støtter daglig avføring"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 2,4 dl løvetanngrønt eller grønnkål
-- ½ agurk
-- ½ grønt eple
-- Saften av ½ sitron
-- 1 ss chiafrø eller malte linfrø
-- 1 måleskje kollagen fra gressfôrede dyr eller PerfectAminos
-- 2,4 dl hydrogenvann eller filtrert vann
-- Valgfritt: 1 ts mariatistelpulver eller rødbetpulver
 
 ## Fremgangsmåte
 

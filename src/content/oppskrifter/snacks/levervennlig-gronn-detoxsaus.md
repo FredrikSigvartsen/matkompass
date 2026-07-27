@@ -3,24 +3,35 @@ title: Levervennlig grønn avgiftningssaus
 category: snacks
 source: https://members.theultimatehuman.com/posts/recipes-liver-loving-green-detox-sauce
 yield: ""
+ingredients:
+  - items:
+      - amount: 1
+        text: "bunt fersk koriander"
+      - amount: 0.5
+        text: "bunt fersk persille"
+      - amount: 1
+        text: "hvitløksfedd"
+      - amount: 1
+        text: "sitron, saften"
+      - amount: 2
+        unit: "ss"
+        text: "olivenolje"
+      - amount: 1
+        unit: "ss"
+        text: "eplecidereddik"
+      - text: "En klype havsalt"
+      - amount: 0.5
+        text: "avokado for en mer kremet konsistens"
+        optional: true
 tags:
   - Støtter gallen
   - Avgiftning av østrogen
   - Binder tungmetaller
+adapted: false
+adaptationNote: ""
 ---
 
 Server med grillet biff fra gressfôret storfe, villfanget laks, kylling fra beitehøns eller ovnsstekte korsblomstrede grønnsaker. Fungerer også som salatdressing eller helt over eggerøre om morgenen.
-
-## Ingredienser
-
-- 1 bunt fersk koriander
-- ½ bunt fersk persille
-- 1 hvitløksfedd
-- Juice av 1 sitron
-- 2 ss olivenolje
-- 1 ss eplecidereddik
-- En klype havsalt
-- Valgfritt: ½ avokado for en mer kremet konsistens
 
 ## Fremgangsmåte
 

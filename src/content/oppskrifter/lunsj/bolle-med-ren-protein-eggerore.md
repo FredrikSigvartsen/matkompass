@@ -3,21 +3,34 @@ title: Bolle med ren protein-eggerøre
 category: lunsj
 source: https://members.theultimatehuman.com/posts/recipes-clean-protein-scramble-bowl
 yield: "2 porsjoner"
+baseAdultPortions: 2
+ingredients:
+  - items:
+      - amount: 3
+        text: "egg fra beitehøns"
+      - amount: 1
+        unit: "ss"
+        text: "olivenolje eller ghee"
+      - amount: 0.5
+        text: "squash, hakket"
+      - amount: 0.6
+        unit: "dl"
+        text: "rød paprika, hakket"
+      - amount: 1
+        text: "håndfull ruccola eller spinat"
+      - amount: 0.25
+        text: "avokado, i skiver"
+      - amount: 1
+        unit: "ts"
+        text: "næringsgjær eller hampfrø"
+        optional: true
 tags:
   - Raskt drivstoff for mitokondriene
   - Angstdempende
   - Stabilt blodsukker
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 3 egg fra beitehøns
-- 1 ss olivenolje eller ghee
-- ½ squash, hakket
-- 0,6 dl rød paprika, hakket
-- 1 håndfull ruccola eller spinat
-- ¼ avokado, i skiver
-- Valgfritt: 1 ts næringsgjær eller hampfrø
 
 ## Fremgangsmåte
 

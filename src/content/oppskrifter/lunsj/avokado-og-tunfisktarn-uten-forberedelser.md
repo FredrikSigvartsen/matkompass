@@ -3,20 +3,29 @@ title: Avokado- og tunfisktårn uten forberedelser
 category: lunsj
 source: https://members.theultimatehuman.com/posts/recipes-no-prep-avocado-tuna-stack
 yield: "1 porsjon"
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 1
+        text: "BPA-fri boks villfanget tunfisk i olivenolje"
+      - amount: 0.5
+        text: "moden avokado"
+      - amount: 1
+        unit: "ss"
+        text: "rødløk, hakket"
+      - amount: 1
+        unit: "ss"
+        text: "agurk, hakket"
+      - amount: 0.5
+        text: "sitron, saften"
+      - text: "Havsalt, sort pepper og valgfritt gurkemeie eller chiliflak"
 tags:
   - Proteinrik
   - Trygg på reise
   - Måltid på 3 minutter
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 1 BPA-fri boks villfanget tunfisk i olivenolje
-- ½ moden avokado
-- 1 ss rødløk, hakket
-- 1 ss agurk, hakket
-- Saften av ½ sitron
-- Havsalt, sort pepper og valgfritt gurkemeie eller chiliflak
 
 ## Fremgangsmåte
 

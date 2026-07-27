@@ -3,23 +3,40 @@ title: "Avslapningsbiter"
 category: dessert
 source: "https://members.theultimatehuman.com/posts/recipes-chill-mode-bites"
 yield: "Gir 8–10 biter"
+ingredients:
+  - items:
+      - amount: 1.2
+        unit: "dl"
+        text: "mandelmel"
+      - amount: 2
+        unit: "ss"
+        text: "mandelsmør eller solsikkefrøsmør"
+      - amount: 1
+        unit: "ss"
+        text: "malte linfrø"
+      - amount: 1
+        unit: "måleskje"
+        text: "glysinpulver (ca. 3g)"
+      - amount: 0.5
+        unit: "ts"
+        text: "ashwagandhapulver"
+      - amount: 1
+        unit: "ts"
+        text: "knuste kakaobønner"
+      - text: "1 ss rå honning eller 3–4 dråper munkefrukt"
+        scalable: false
+      - text: "En klype havsalt"
+      - amount: 1
+        unit: "ts"
+        text: "maca- eller løvemankepulver"
+        optional: true
 tags:
   - "Angstdempende"
   - "Drevet av adaptogener"
   - "Blodsukkervennlig"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 1,2 dl mandelmel
-- 2 ss mandelsmør eller solsikkefrøsmør
-- 1 ss malte linfrø
-- 1 måleskje glysinpulver (ca. 3g)
-- ½ ts ashwagandhapulver
-- 1 ts knuste kakaobønner
-- 1 ss rå honning eller 3–4 dråper munkefrukt
-- En klype havsalt
-- Valgfritt: 1 ts maca- eller løvemankepulver
 
 ## Fremgangsmåte
 

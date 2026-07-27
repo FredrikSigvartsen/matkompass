@@ -3,29 +3,59 @@ title: Kopi av Erewhon-smoothie
 category: snacks
 source: https://members.theultimatehuman.com/posts/recipes-erewhon-smoothie-dupe
 yield: "1 porsjon"
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 2.4
+        unit: "dl"
+        text: "økologisk kokosmelk"
+      - amount: 1.2
+        unit: "dl"
+        text: "hydrogenvann"
+      - amount: 1
+        unit: "måleskje"
+        text: "PerfectAminos sjokoladepulver"
+      - amount: 1
+        unit: "ss"
+        text: "kakaopulver"
+      - amount: 1
+        unit: "ss"
+        text: "økologisk mandelsmør"
+      - amount: 0.25
+        text: "økologisk avokado"
+      - amount: 1
+        unit: "ss"
+        text: "økologiske chiafrø"
+      - amount: 1
+        unit: "ts"
+        text: "MCT-olje"
+      - amount: 0.8
+        unit: "dl"
+        text: "økologiske bringebær (ferske eller frosne)"
+      - amount: 0.6
+        unit: "dl"
+        text: "økologisk blomkålris (dampet og avkjølt)"
+      - amount: 2
+        unit: "ss"
+        text: "økologisk kokoskrem"
+      - amount: 2
+        text: "økologiske dadler, uten stein"
+      - amount: 1
+        unit: "ts"
+        text: "økologisk keto-lønnesirup"
+      - amount: 0.5
+        unit: "ts"
+        text: "reishipulver"
+      - amount: 0.5
+        unit: "ts"
+        text: "ashwagandhapulver"
 tags:
   - Rik på antioksidanter
   - Adaptogen
   - Støtter hjernen og restitusjon
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 2,4 dl økologisk kokosmelk
-- 1,2 dl hydrogenvann
-- 1 måleskje PerfectAminos sjokoladepulver
-- 1 ss kakaopulver
-- 1 ss økologisk mandelsmør
-- ¼ økologisk avokado
-- 1 ss økologiske chiafrø
-- 1 ts MCT-olje
-- 0,8 dl økologiske bringebær (ferske eller frosne)
-- 0,6 dl økologisk blomkålris (dampet og avkjølt)
-- 2 ss økologisk kokoskrem
-- 2 økologiske dadler, uten stein
-- 1 ts økologisk keto-lønnesirup
-- ½ ts reishipulver
-- ½ ts ashwagandhapulver
 
 ## Fremgangsmåte
 

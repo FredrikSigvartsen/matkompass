@@ -3,20 +3,38 @@ title: "Biffbiter"
 category: middag
 source: "https://members.theultimatehuman.com/posts/recipes-steak-tips"
 yield: "2 porsjoner"
+baseAdultPortions: 2
+ingredients:
+  - items:
+      - amount: 450
+        unit: "g"
+        text: "biffbiter av gressfôret storfe (entrecôte eller ytrefilet)"
+      - amount: 3
+        unit: "ss"
+        text: "kaldpresset ekstra jomfruolivenolje"
+      - amount: 3
+        text: "fedd hvitløk, finhakket"
+      - amount: 2
+        unit: "ss"
+        text: "fersk sitronsaft"
+      - amount: 1
+        unit: "ss"
+        text: "kokosaminos"
+      - amount: 1
+        unit: "ts"
+        text: "Baja Gold-havsalt"
+      - amount: 1
+        unit: "ts"
+        text: "grovkvernet svart pepper"
+      - amount: 1
+        unit: "ss"
+        text: "fersk rosmarin eller timian"
+      - text: "en klype chiliflak"
+        optional: true
 tags: ["Gressfôret", "Hormonstøtte", "Drivstoff for hjernen"]
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 450 g biffbiter av gressfôret storfe (entrecôte eller ytrefilet)
-- 3 ss kaldpresset ekstra jomfruolivenolje
-- 3 fedd hvitløk, finhakket
-- 2 ss fersk sitronsaft
-- 1 ss kokosaminos
-- 1 ts Baja Gold-havsalt
-- 1 ts grovkvernet svart pepper
-- 1 ss fersk rosmarin eller timian
-- Valgfritt: en klype chiliflak
 
 ## Fremgangsmåte
 

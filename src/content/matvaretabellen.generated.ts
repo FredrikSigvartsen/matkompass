@@ -2,7 +2,7 @@
 export const foodDataSource = {
   name: "Matvaretabellen 2026",
   url: "https://www.matvaretabellen.no/api/nb/foods.json",
-  retrievedAt: "2026-07-25",
+  retrievedAt: "2026-07-26",
 } as const;
 
 export const foods = [
@@ -26,6 +26,17 @@ export const foods = [
       "protein": 13,
       "fat": 10.7,
       "carbs": 0.3
+    }
+  },
+  {
+    "id": "02.002",
+    "name": "Eggehvite, rå",
+    "uri": "https://www.matvaretabellen.no/eggehvite-ra/",
+    "per100g": {
+      "calories": 42,
+      "protein": 10.2,
+      "fat": 0,
+      "carbs": 0.4
     }
   },
   {
@@ -102,6 +113,17 @@ export const foods = [
       "calories": 182,
       "protein": 19.7,
       "fat": 11.5,
+      "carbs": 0
+    }
+  },
+  {
+    "id": "04.018",
+    "name": "Laks, røkt",
+    "uri": "https://www.matvaretabellen.no/laks-rokt/",
+    "per100g": {
+      "calories": 225,
+      "protein": 23.2,
+      "fat": 14.7,
       "carbs": 0
     }
   },

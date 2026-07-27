@@ -3,22 +3,37 @@ title: Beinkraft
 category: snacks
 source: https://members.theultimatehuman.com/posts/recipes-bone-broth
 yield: ""
+ingredients:
+  - items:
+      - amount: 900
+        unit: "g"
+        text: "ferske bein fra økologisk kylling eller gressfôret storfe"
+      - amount: 1
+        unit: "ss"
+        text: "Baja Gold-havsalt"
+      - amount: 1
+        unit: "ss"
+        text: "ferskpresset sitronjuice"
+      - amount: 1
+        text: "liten økologisk gulrot (valgfritt)"
+      - amount: 1
+        text: "liten økologisk stilk stangselleri (valgfritt)"
+      - amount: 1
+        unit: "ts"
+        text: "økologisk gurkemeie"
+      - amount: 0.5
+        unit: "ts"
+        text: "nykvernet svart pepper"
+      - amount: 1.9
+        unit: "l"
+        text: "kildevann eller filtrert vann"
 tags:
   - Reparerer tarmen
   - Støtter leddene
   - Styrker immunforsvaret
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 900 g ferske bein fra økologisk kylling eller gressfôret storfe
-- 1 ss Baja Gold-havsalt
-- 1 ss ferskpresset sitronjuice
-- 1 liten økologisk gulrot (valgfritt)
-- 1 liten økologisk stilk stangselleri (valgfritt)
-- 1 ts økologisk gurkemeie
-- ½ ts nykvernet svart pepper
-- 1,9 l kildevann eller filtrert vann
 
 ## Fremgangsmåte
 

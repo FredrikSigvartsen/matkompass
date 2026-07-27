@@ -4,7 +4,7 @@
     {
       "id": 1,
       "prompt": "Legg til en mild familiemiddag med kilden https://example.com/kylling. Tittel: Ovnsbakt sitronkylling. Kategori: middag. 4 porsjoner. Ingredienser: 800 g kyllinglår, 600 g brokkoli, 600 g søtpotet, 2 ss avokadoolje, saften av 1 sitron, 2 fedd hvitløk, havsalt og pepper. Fremgangsmåte: Bak søtpotet og kyllinglår med avokadoolje ved 200 °C i 25 minutter, legg til brokkoli og bak til kyllingen er gjennomstekt. Server brokkolien først, deretter kylling og søtpotet. Press over sitron. Forklaring: Proteinrik middag med grønnsaker og fiber. Søtpoteten gir langsomme karbohydrater til restitusjon etter en aktiv dag.",
-      "expected_output": "Validerer hver ingrediens mot Mat vi spiser, dokumenterer hvert relevant prinsipp og oppretter én norsk middagsoppskrift uten å endre regelgrunnlaget.",
+      "expected_output": "Validerer hver ingrediens mot Mat vi spiser, dokumenterer hvert relevant prinsipp og oppretter én norsk middagsoppskrift med strukturerte ingredienser og baseAdultPortions: 4 uten å endre regelgrunnlaget.",
       "files": []
     },
     {

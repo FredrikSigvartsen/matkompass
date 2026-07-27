@@ -3,21 +3,33 @@ title: "Kjeks med mandelsmør og kakao"
 category: dessert
 source: "https://members.theultimatehuman.com/posts/recipes-almond-butter-cacao-cookies"
 yield: "Gir 6–8 kjeks"
+ingredients:
+  - items:
+      - amount: 1.2
+        unit: "dl"
+        text: "økologisk mandelsmør"
+      - amount: 1
+        text: "egg fra beitehøns"
+      - amount: 2
+        unit: "ss"
+        text: "kokossukker eller munkefrukt"
+      - amount: 1
+        unit: "ss"
+        text: "kakaopulver"
+      - amount: 1
+        unit: "måleskje"
+        text: "PerfectAminos eller kollagen"
+      - amount: 0.5
+        unit: "ts"
+        text: "aluminiumsfri natron"
+      - text: "En klype Baja Gold-havsalt"
 tags:
   - "Kornfri"
   - "Proteinrik"
   - "Godkjent av barn"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 1,2 dl økologisk mandelsmør
-- 1 egg fra beitehøns
-- 2 ss kokossukker eller munkefrukt
-- 1 ss kakaopulver
-- 1 måleskje PerfectAminos eller kollagen
-- ½ ts aluminiumsfri natron
-- En klype Baja Gold-havsalt
 
 ## Fremgangsmåte
 

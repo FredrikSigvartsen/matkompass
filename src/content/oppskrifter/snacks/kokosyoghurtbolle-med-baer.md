@@ -3,20 +3,33 @@ title: Kokosyoghurtbolle med bær
 category: snacks
 source: https://members.theultimatehuman.com/posts/recipes-coconut-yogurt-berry-bowl
 yield: "1 porsjon"
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 1.2
+        unit: "dl"
+        text: "usøtet kokosyoghurt (uten gummistoffer, uten tilsatt sukker)"
+      - amount: 0.6
+        unit: "dl"
+        text: "ville blåbær eller bringebær"
+      - amount: 1
+        unit: "ss"
+        text: "chiafrø eller malte linfrø"
+      - amount: 1
+        unit: "ss"
+        text: "revet kokos"
+      - text: "En dæsj kanel"
+      - amount: 1
+        unit: "ts"
+        text: "PerfectAminos eller kollagenpulver"
+        optional: true
 tags:
   - Tarmhelse
   - Støtter hormonene
   - Betennelsesdempende
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 1,2 dl usøtet kokosyoghurt (uten gummistoffer, uten tilsatt sukker)
-- 0,6 dl ville blåbær eller bringebær
-- 1 ss chiafrø eller malte linfrø
-- 1 ss revet kokos
-- En dæsj kanel
-- Valgfritt: 1 ts PerfectAminos eller kollagenpulver
 
 ## Fremgangsmåte
 

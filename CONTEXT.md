@@ -26,7 +26,7 @@ En voksen som har en planlagt treningsøkt den aktuelle dagen. Personen får den
 
 ## Langkjøringsdag
 
-Lørdag er langkjøringsdag og bruker et samlet karbohydrattillegg på 150 g sammenlignet med hviledagsgrunnlaget. Tillegget fordeles som 90 g tidligere på dagen, inkludert eventuell næring under økten, og 60 g til middag.
+Lørdag er langkjøringsdag. Fredriks dagsmål holdes rundt 1 900 kcal og 238 g karbohydrat også denne dagen fordi planen arbeider innenfor et fast energiunderskudd. Mellommåltidet før økten er litt større enn på andre treningsdager, mens resten av karbohydratet fordeles mellom hovedmåltidene og middagen. Ved tydelig prestasjonsfall, dårlig restitusjon eller økende MTSS-symptomer skal energimålet revurderes før underskuddet strammes inn.
 
 ## Josefines karbohydrattillegg
 
@@ -68,19 +68,25 @@ Rotasjonen har nøyaktig to biffmiddager hver uke. `Histaminfattig kalkun- og sq
 Matvaretabellen er autoritativ kilde for energi, protein, fett og karbohydrat. Oppskrifter og porsjoner beregnes fra ingrediensvekt og den best passende matvaren i Matvaretabellen. De valgte matvaretreffene lagres sammen med planen med kilde og beregningsdato, slik at publiserte tall ikke endres uventet når API-et oppdateres.
 Daglige mål regnes som oppfylt når planen ligger innenfor 100 kcal og 5 g av hvert makromål for protein, fett og karbohydrat.
 
+Fredriks gjeldende mål er omtrent 1 900 kcal hver dag. Protein holdes på 152 g på hviledager og 157 g på aktive dager og langkjøringsdagen. Karbohydrat holdes rundt 238 g for å støtte glykogen, løping og trening i varme. Fett holdes rundt 36–38 g. Dette tilsvarer omtrent 33 energiprosent protein, 50 energiprosent karbohydrat og 17 energiprosent fett. Fettkilder som egg, olivenolje, avokado, kokosmelk og fet fisk beholdes, men måles slik at de ikke fortrenger karbohydrat innenfor energirammen.
+
 ## Fredriks måltidsrytme
 
 Hviledager har tre måltider: første måltid mellom kl. 10 og 11, andre måltid kl. 14 og familiemiddag kl. 17. Treningsdager har i tillegg et måltid knyttet til treningsøkten. Det skal ikke legges inn et fast fjerde måltid på hviledager.
 Det ekstra måltidet vises med etiketten `Før treningsøkt`, uten klokkeslett eller antakelse om økttype.
 `Før treningsøkt` er et mellommåltid med samme sammensetning rundt hver økt. Porsjonen er større på lørdag for å støtte langkjøringen.
-Mellommåltidet består av banan og egg, med rå honning ved behov. Vanlige treningsdager dimensjoneres mot 50 g karbohydrat. Lørdag dimensjoneres mot 90 g karbohydrat; honning kan da begrense hvor mange bananer som trengs.
+Mellommåltidet består av banan og ett egg, med rå honning ved behov. Vanlige treningsdager dimensjoneres mot omtrent 50 g karbohydrat. Lørdagsporsjonen er litt større, men resten av dagsinntaket justeres slik at det samlede målet fortsatt er rundt 238 g karbohydrat.
 
 Frokost og lunsj følger samme ukedagsmønster i uke A og uke B. Porsjonene kan suppleres med fisk, kylling eller storfe for å treffe proteinmålet. Frokostoppskrifter med aminosyre- eller kollagenpulver er tillatt, selv om pulver ikke skal være standardgrunnlaget for nye måltider.
+
+Mandag og torsdag er kontordager med de samme enkle rettene: cottage cheese med banan og honning til frokost, og avokado- og tunfisktårn med batchbakt søtpotet til lunsj. Mengdene kan variere fordi mandag er aktiv dag og torsdag er hviledag. Tirsdag og onsdag bruker den samme eggerørebasen med karbonadedeig og den samme hormonbalansebollen med kylling; tirsdagens porsjoner lages dobbelt og onsdagens varmes opp. Fredag bruker eggerøren med ytrefilet og hormonbalansebollen med norsk røkt laks. Norsk røkt laks er et uttrykkelig godkjent unntak når ingredienslisten kun inneholder laks og salt. Lørdag og søndag følger de eksisterende måltidene.
+
+Søtpotet bakes i større porsjoner søndag og onsdag. Når familiemiddagen allerede krever villris eller quinoa, kan det kokes ekstra og fryses i porsjoner, men søtpotet er standard karbohydrat til Fredriks frokoster og lunsjer. Mat som skal spises senere i uken kjøles raskt ned og fryses fremfor å stå i kjøleskapet hele uken.
 
 ## Implementerte plansider
 
 `/middagsplan` viser inneværende og neste kalenderuke med familieingredienser, tilberedning, prosentfordeling og personlige karbohydrattillegg. `/fredriks-ukeplan` viser inneværende kalenderuke med gramvekter og makroer per måltid og dag.
 
-Markdown-filen under `src/content/oppskrifter/` er eneste sannhetskilde for oppskriftens tittel, ingrediensliste og fremgangsmåte. Plandata refererer til oppskriften med kategori og slug og lagrer bare planens makrotilpassede gramvekter og tillegg.
+Markdown-filen under `src/content/oppskrifter/` er eneste sannhetskilde for oppskriftens tittel, ingredienser og fremgangsmåte. Ingrediensene ligger strukturert i frontmatter. Oppskriftssiden kan skalere deklarerte mengder fra oppskriftens `baseAdultPortions`; én voksen tilsvarer Fredriks grunnporsjon, og ett barn tilsvarer 0,35 voksenporsjon. Ingredienser uten en sikker mengde, som «etter smak», skaleres ikke. Plandata refererer til oppskriften med kategori og slug og lagrer bare planens makrotilpassede gramvekter og tillegg. Treningstillegg beregnes fortsatt bare i planlaget.
 
 Det versjonerte uttrekket fra Matvaretabellen oppdateres med `pnpm run update:foods`. Begge A/B-ukene valideres mot makrotoleransene med `pnpm run check:plans`.

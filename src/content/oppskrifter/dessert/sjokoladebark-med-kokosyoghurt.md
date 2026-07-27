@@ -3,21 +3,33 @@ title: "Sjokoladeflak med kokosyoghurt"
 category: dessert
 source: "https://members.theultimatehuman.com/posts/recipes-coconut-yogurt-chocolate-bark"
 yield: "Gir ~10 biter"
+ingredients:
+  - items:
+      - amount: 1.2
+        unit: "dl"
+        text: "usøtet kokosyoghurt"
+      - amount: 2
+        unit: "ss"
+        text: "kakaopulver"
+      - amount: 1
+        unit: "ts"
+        text: "munkefrukt"
+      - amount: 1
+        unit: "ss"
+        text: "chiafrø"
+      - amount: 1
+        unit: "ss"
+        text: "revet kokos"
+      - text: "En klype havsalt"
+      - text: "knuste kakaobønner eller frysetørkede bær"
+        optional: true
 tags:
   - "Støtte for tarm og humør"
   - "Høyt innhold av antioksidanter"
   - "Lett og tilfredsstillende"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 1,2 dl usøtet kokosyoghurt
-- 2 ss kakaopulver
-- 1 ts munkefrukt
-- 1 ss chiafrø
-- 1 ss revet kokos
-- En klype havsalt
-- Valgfritt: knuste kakaobønner eller frysetørkede bær
 
 ## Fremgangsmåte
 

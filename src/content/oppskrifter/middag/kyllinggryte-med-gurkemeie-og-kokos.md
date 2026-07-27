@@ -3,21 +3,41 @@ title: "Kyllinggryte med gurkemeie og kokos"
 category: middag
 source: "https://members.theultimatehuman.com/posts/recipes-turmeric-coconut-chicken-stew"
 yield: "3–4 porsjoner"
+baseAdultPortions: 4
+ingredients:
+  - items:
+      - amount: 450
+        unit: "g"
+        text: "økologiske kyllinglår, i terninger"
+      - amount: 2.4
+        unit: "dl"
+        text: "kokosmelk (uten gummi eller tilsetningsstoffer)"
+      - amount: 0.5
+        text: "løk, i terninger"
+      - amount: 1
+        text: "fedd hvitløk, finhakket"
+      - amount: 1
+        unit: "ts"
+        text: "gurkemeie"
+      - amount: 0.5
+        unit: "ts"
+        text: "malt ingefær"
+      - amount: 1
+        unit: "ss"
+        text: "kokosolje"
+      - amount: 2.4
+        unit: "dl"
+        text: "squash, hakket"
+      - amount: 1.2
+        unit: "dl"
+        text: "beinbuljong"
+      - text: "Havsalt og svart pepper etter smak"
+      - text: "server med blomkålris"
+        optional: true
 tags: ["Betennelsesdempende", "Tarmhelende", "Trøstende og funksjonell"]
+adapted: true
+adaptationNote: "Kokosoljen som brukes i fremgangsmåten er lagt til ingredienslisten."
 ---
-
-## Ingredienser
-
-- 450 g økologiske kyllinglår, i terninger
-- 2,4 dl kokosmelk (uten gummi eller tilsetningsstoffer)
-- ½ løk, i terninger
-- 1 fedd hvitløk, finhakket
-- 1 ts gurkemeie
-- ½ ts malt ingefær
-- 2,4 dl squash, hakket
-- 1,2 dl beinbuljong
-- Havsalt og svart pepper etter smak
-- Valgfritt: server med blomkålris
 
 ## Fremgangsmåte
 

@@ -3,21 +3,34 @@ title: Ren chimichurri-saus
 category: snacks
 source: https://members.theultimatehuman.com/posts/recipes-clean-chimichurri-sauce
 yield: ""
+ingredients:
+  - items:
+      - amount: 1
+        text: "bunt fersk persille"
+      - amount: 3
+        text: "hvitløksfedd"
+      - amount: 0.5
+        unit: "ts"
+        text: "havsalt"
+      - amount: 0.5
+        unit: "ts"
+        text: "chiliflak"
+      - amount: 1
+        text: "sitron, saften"
+      - amount: 1.2
+        unit: "dl"
+        text: "olivenolje"
+      - amount: 1
+        unit: "ss"
+        text: "eplecidereddik"
+        optional: true
 tags:
   - Støtter avgiftning
   - Smak uten inflammasjon
   - Null søppel
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 1 bunt fersk persille
-- 3 hvitløksfedd
-- ½ ts havsalt
-- ½ ts chiliflak
-- Juice av 1 sitron
-- 1,2 dl olivenolje
-- Valgfritt: 1 ss eplecidereddik
 
 ## Fremgangsmåte
 

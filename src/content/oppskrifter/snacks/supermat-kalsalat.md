@@ -3,32 +3,56 @@ title: Supermat-kålsalat
 category: snacks
 source: https://members.theultimatehuman.com/posts/recipes-superfood-slaw
 yield: "4 porsjoner"
+baseAdultPortions: 4
+ingredients:
+  - title: "Kålsalat"
+    items:
+      - amount: 115
+        unit: "g"
+        text: "rødkål, finsnittet"
+      - amount: 115
+        unit: "g"
+        text: "grønn hodekål, finsnittet"
+      - amount: 0.5
+        text: "rødløk, finsnittet"
+      - amount: 55
+        unit: "g"
+        text: "gulrøtter, revet"
+      - amount: 2
+        text: "bunter vårløk, hakket"
+  - title: "Dressing"
+    items:
+      - amount: 170
+        unit: "g"
+        text: "mandel- eller peanøttsmør"
+      - amount: 55
+        unit: "g"
+        text: "rå honning"
+      - amount: 30
+        unit: "g"
+        text: "fersk ingefær, finhakket"
+      - amount: 30
+        unit: "g"
+        text: "hvitløk, finhakket"
+      - amount: 60
+        unit: "ml"
+        text: "riseddik"
+      - amount: 60
+        unit: "ml"
+        text: "limejuice"
+      - amount: 30
+        unit: "ml"
+        text: "fiskesaus"
+      - amount: 90
+        unit: "ml"
+        text: "vann"
 tags:
   - Næringstett tilbehør
   - Støtter tarmen
   - Biooptimalisert
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-### Kålsalat
-
-- 115 g rødkål, finsnittet
-- 115 g grønn hodekål, finsnittet
-- ½ rødløk, finsnittet
-- 55 g gulrøtter, revet
-- 2 bunter vårløk, hakket
-
-### Dressing
-
-- 170 g mandel- eller peanøttsmør
-- 55 g rå honning
-- 30 g fersk ingefær, finhakket
-- 30 g hvitløk, finhakket
-- 60 ml riseddik
-- 60 ml limejuice
-- 30 ml fiskesaus
-- 90 ml vann
 
 ## Fremgangsmåte
 

@@ -3,22 +3,35 @@ title: "Eggerøre til frokost"
 category: frokost
 source: "https://members.theultimatehuman.com/posts/recipes-morning-scramble"
 yield: "1 porsjon"
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 2
+        text: "egg fra beitehøns"
+      - amount: 55
+        unit: "g"
+        text: "kjøttdeig av gressfôret storfe"
+      - amount: 2.4
+        unit: "dl"
+        text: "økologisk spinat"
+      - amount: 0.6
+        unit: "dl"
+        text: "sopp, hakket"
+      - amount: 1
+        unit: "ss"
+        text: "avokadoolje eller ghee"
+      - amount: 0.25
+        unit: "ts"
+        text: "gurkemeie"
+      - text: "En klype sort pepper"
+      - text: "Baja Gold-havsalt etter smak"
 tags:
   - "Proteinrik"
   - "Mitokondriell energi"
   - "Hormonstøtte"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 2 egg fra beitehøns
-- 55 g kjøttdeig av gressfôret storfe
-- 2,4 dl økologisk spinat
-- 0,6 dl sopp, hakket
-- 1 ss avokadoolje eller ghee
-- ¼ ts gurkemeie
-- En klype sort pepper
-- Baja Gold-havsalt etter smak
 
 ## Fremgangsmåte
 

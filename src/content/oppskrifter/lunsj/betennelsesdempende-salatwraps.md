@@ -3,21 +3,32 @@ title: Betennelsesdempende salatruller
 category: lunsj
 source: https://members.theultimatehuman.com/posts/recipes-anti-inflammatory-lettuce-wraps
 yield: "2 porsjoner"
+baseAdultPortions: 2
+ingredients:
+  - items:
+      - amount: 225
+        unit: "g"
+        text: "økologisk kvernet kalkun eller gressfôret storfekjøtt"
+      - amount: 1
+        unit: "ss"
+        text: "kokosaminos"
+      - amount: 1
+        unit: "ts"
+        text: "fersk ingefær, revet"
+      - amount: 0.5
+        text: "hvitløksfedd, finhakket"
+      - amount: 1
+        unit: "ss"
+        text: "olivenolje eller avokadoolje"
+      - text: "Blader av hjertesalat eller romanosalat"
+      - text: "Strimlede gulrøtter, agurkskiver og mikrogrønt til garnityr"
 tags:
   - Proteinrik
   - Lite karbohydrater
   - Tarmvennlig
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 225 g økologisk kvernet kalkun eller gressfôret storfekjøtt
-- 1 ss kokosaminos
-- 1 ts fersk ingefær, revet
-- ½ hvitløksfedd, finhakket
-- 1 ss olivenolje eller avokadoolje
-- Blader av hjertesalat eller romanosalat
-- Strimlede gulrøtter, agurkskiver og mikrogrønt til garnityr
 
 ## Fremgangsmåte
 

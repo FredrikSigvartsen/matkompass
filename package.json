@@ -7,6 +7,7 @@
     "start": "next start",
     "update:foods": "node scripts/update-matvaretabellen.mjs",
     "check:plans": "tsc --module commonjs --moduleResolution node --target es2023 --esModuleInterop --skipLibCheck --outDir /tmp/matkompass-plan-check --rootDir . scripts/check-meal-plans.ts src/lib/meal-plan.ts src/content/meal-plan.ts src/content/matvaretabellen.generated.ts && NODE_PATH=$PWD/node_modules node /tmp/matkompass-plan-check/scripts/check-meal-plans.js",
+    "check:recipes": "tsc --module commonjs --moduleResolution node --target es2023 --esModuleInterop --skipLibCheck --outDir /tmp/matkompass-recipe-check --rootDir . scripts/check-recipes.ts src/lib/recipes.ts src/lib/recipe-categories.ts src/lib/recipe-ingredients.ts && NODE_PATH=$PWD/node_modules node /tmp/matkompass-recipe-check/scripts/check-recipes.js",
     "check:units": "node scripts/check-recipe-units.mjs"
   },
   "dependencies": {

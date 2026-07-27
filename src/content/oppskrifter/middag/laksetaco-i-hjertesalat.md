@@ -3,32 +3,46 @@ title: "Laksetaco i hjertesalat"
 category: middag
 source: "https://oda.com/no/recipes/913-matbloggen-julie-ilona-balas-laksetaco-i-hjertesalat/"
 yield: "4 porsjoner"
+baseAdultPortions: 4
+ingredients:
+  - title: "Laks og guacamole"
+    items:
+      - amount: 500
+        unit: "g"
+        text: "villfanget laksefilet"
+      - text: "Havsalt og sort pepper etter smak"
+      - amount: 2
+        text: "lime, saften"
+      - amount: 1.5
+        text: "avokado"
+      - amount: 2
+        text: "fedd hvitløk"
+      - amount: 1
+        text: "rødløk"
+      - amount: 75
+        unit: "g"
+        text: "cherrytomater"
+      - amount: 1
+        text: "pakke hjertesalat"
+      - amount: 1
+        text: "liten håndfull koriander"
+  - title: "Agurk- og tomatsalsa"
+    items:
+      - amount: 1
+        text: "agurk"
+      - amount: 75
+        unit: "g"
+        text: "cherrytomater"
+      - amount: 1
+        text: "rødløk"
+      - amount: 1
+        text: "lime, saften"
+      - amount: 1
+        text: "liten håndfull koriander"
 tags: ["Fisk", "Grønnsaksrik", "Mild familiemiddag"]
 adapted: true
 adaptationNote: "Chili, mango og reddik er utelatt. Salsaen er gjort mild med agurk, tomat, rødløk, lime og koriander."
 ---
-
-## Ingredienser
-
-### Laks og guacamole
-
-- 500 g villfanget laksefilet
-- Havsalt og sort pepper etter smak
-- Saften av 2 lime
-- 1½ avokado
-- 2 fedd hvitløk
-- 1 rødløk
-- 75 g cherrytomater
-- 1 pakke hjertesalat
-- 1 liten håndfull koriander
-
-### Agurk- og tomatsalsa
-
-- 1 agurk
-- 75 g cherrytomater
-- 1 rødløk
-- Saften av 1 lime
-- 1 liten håndfull koriander
 
 ## Fremgangsmåte
 

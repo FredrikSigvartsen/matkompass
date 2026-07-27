@@ -5,6 +5,10 @@ import {
   recipeCategories,
   type RecipeCategory,
 } from "./recipe-categories";
+import type {
+  RecipeIngredient,
+  RecipeIngredientGroup,
+} from "./recipe-ingredients";
 
 export {
   getCategoryLabel,
@@ -19,6 +23,8 @@ export interface Recipe {
   category: RecipeCategory;
   source: string;
   yield: string;
+  baseAdultPortions?: number;
+  ingredients: RecipeIngredientGroup[];
   tags: string[];
   adapted: boolean;
   adaptationNote: string;
@@ -33,7 +39,6 @@ export interface RecipeReference {
 export interface ResolvedRecipeReference {
   title: string;
   href: string;
-  ingredients: string[];
   instructions: string[];
 }
 
@@ -81,19 +86,17 @@ export function resolveRecipeReference(
     );
   }
 
-  const ingredients = readMarkdownSection(recipe.content, "Ingredienser");
   const instructions = readMarkdownSection(recipe.content, "Fremgangsmåte");
 
-  if (ingredients.length === 0 || instructions.length === 0) {
+  if (instructions.length === 0) {
     throw new Error(
-      `Oppskriften ${reference.category}/${reference.slug} mangler ingredienser eller fremgangsmåte`,
+      `Oppskriften ${reference.category}/${reference.slug} mangler fremgangsmåte`,
     );
   }
 
   return {
     title: recipe.title,
     href: `/oppskrifter/${reference.category}/${reference.slug}`,
-    ingredients,
     instructions,
   };
 }
@@ -107,9 +110,11 @@ function readRecipe(category: RecipeCategory, slug: string): Recipe {
     data.category !== category ||
     typeof data.source !== "string" ||
     typeof data.yield !== "string" ||
-    (data.adapted !== undefined && typeof data.adapted !== "boolean") ||
-    (data.adapted === true && typeof data.adaptationNote !== "string") ||
-    (data.adaptationNote !== undefined && typeof data.adaptationNote !== "string") ||
+    (data.baseAdultPortions !== undefined &&
+      (!Number.isFinite(data.baseAdultPortions) || data.baseAdultPortions <= 0)) ||
+    !isIngredientGroups(data.ingredients) ||
+    typeof data.adapted !== "boolean" ||
+    typeof data.adaptationNote !== "string" ||
     !Array.isArray(data.tags) ||
     !data.tags.every((tag) => typeof tag === "string")
   ) {
@@ -122,11 +127,91 @@ function readRecipe(category: RecipeCategory, slug: string): Recipe {
     category,
     source: data.source,
     yield: data.yield,
+    baseAdultPortions: data.baseAdultPortions,
+    ingredients: data.ingredients,
     tags: data.tags,
-    adapted: data.adapted === true,
-    adaptationNote: data.adaptationNote ?? "",
+    adapted: data.adapted,
+    adaptationNote: data.adaptationNote,
     content,
   };
+}
+
+function isIngredientGroups(value: unknown): value is RecipeIngredientGroup[] {
+  const groupKeys = new Set(["title", "items"]);
+
+  return (
+    Array.isArray(value) &&
+    value.length > 0 &&
+    value.every(
+      (group) =>
+        isRecord(group) &&
+        Object.keys(group).every((key) => groupKeys.has(key)) &&
+        (group.title === undefined || typeof group.title === "string") &&
+        Array.isArray(group.items) &&
+        group.items.length > 0 &&
+        group.items.every(isIngredient),
+    )
+  );
+}
+
+function isIngredient(value: unknown): value is RecipeIngredient {
+  const ingredientKeys = new Set([
+    "amount",
+    "maxAmount",
+    "unit",
+    "text",
+    "approximate",
+    "optional",
+    "scalable",
+  ]);
+
+  if (!isRecord(value) || typeof value.text !== "string" || !value.text.trim()) {
+    return false;
+  }
+
+  if (!Object.keys(value).every((key) => ingredientKeys.has(key))) {
+    return false;
+  }
+
+  if (
+    value.amount !== undefined &&
+    (!Number.isFinite(value.amount) || (value.amount as number) <= 0)
+  ) {
+    return false;
+  }
+
+  if (
+    value.maxAmount !== undefined &&
+    (value.amount === undefined ||
+      !Number.isFinite(value.maxAmount) ||
+      (value.maxAmount as number) < (value.amount as number))
+  ) {
+    return false;
+  }
+
+  if (
+    value.amount === undefined &&
+    (value.maxAmount !== undefined ||
+      value.unit !== undefined ||
+      value.approximate !== undefined)
+  ) {
+    return false;
+  }
+
+  if (value.scalable === false && value.amount !== undefined) {
+    return false;
+  }
+
+  return (
+    (value.unit === undefined || typeof value.unit === "string") &&
+    (value.approximate === undefined || typeof value.approximate === "boolean") &&
+    (value.optional === undefined || typeof value.optional === "boolean") &&
+    (value.scalable === undefined || value.scalable === false)
+  );
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
 }
 
 function readMarkdownSection(content: string, heading: string): string[] {

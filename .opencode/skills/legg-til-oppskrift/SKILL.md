@@ -24,7 +24,7 @@ Les disse filene på nytt ved hver kjøring:
 
 Ikke oppretthold en egen ingrediensliste i skillen. Nettsidens innhold er den eneste sannhetskilden.
 
-En oppskriftsfil beskriver kilderetten og dens ordinære porsjonsantall. Personfordeling, dagstype og faste karbohydrattillegg beregnes i Middagsplan og skal ikke bakes inn i oppskriftsfilen med mindre brukeren uttrykkelig ber om en familievariant.
+En oppskriftsfil beskriver kilderetten og dens ordinære porsjonsantall. Ingrediensene lagres strukturert i filens frontmatter. `baseAdultPortions` angir hvor mange voksenporsjoner originalmengden tilsvarer og er påkrevd for frokost, lunsj og middag. Personfordeling, dagstype og faste karbohydrattillegg beregnes i Middagsplan og skal ikke bakes inn i oppskriftsfilen.
 
 ## Arbeidsflyt
 
@@ -50,7 +50,7 @@ Steget er ferdig når hver ingrediens har en eksplisitt godkjent match og ingen 
 
 ### 3. Skaff resten av oppskriften
 
-Etter at ingrediensporten består, avklar tittel, kategori, kilde, porsjonsantall, nøyaktige mengder, fremgangsmåte og eventuell forklaring. Bevar brukerens mengder og metode.
+Etter at ingrediensporten består, avklar tittel, kategori, kilde, visningstekst for utbytte, antall voksenporsjoner i originalen, nøyaktige mengder, fremgangsmåte og eventuell forklaring. Bevar brukerens mengder og metode. Ikke utled `baseAdultPortions` automatisk fra et intervall som «3–4 porsjoner»; velg et eksplisitt grunnlag fra kilden eller avklar med brukeren.
 
 Normaliser alle brukerrettede mål til norsk metrisk praksis: temperatur i °C, vekt i g eller kg og volum i ml, dl eller l. `ss` og `ts` kan brukes som norske kjøkkenmål. Konverter Fahrenheit, pund, unser, cups, pints og andre amerikanske enheter til praktisk avrundede metriske verdier uten å endre den tilsvarende mengden. Produktspesifikke måleskjeer kan beholdes når gramvekten avhenger av produktet; oppgi gram i tillegg når kilden gjør det kjent.
 
@@ -106,14 +106,25 @@ title: "Norsk tittel"
 category: frokost | lunsj | middag | dessert | snacks
 source: "https://..."
 yield: "N porsjoner"
+baseAdultPortions: N
+ingredients:
+  - items:
+      - amount: 450
+        unit: g
+        text: "kyllinglår"
+      - amount: 1
+        maxAmount: 2
+        unit: ts
+        text: "oregano"
+      - text: "havsalt og pepper etter smak"
+      - amount: 1
+        unit: ss
+        text: "ferske urter"
+        optional: true
 tags: ["Kort norsk emneknagg"]
 adapted: false
 adaptationNote: ""
 ---
-
-## Ingredienser
-
-- Mengde og ingrediens
 
 ## Fremgangsmåte
 
@@ -124,14 +135,16 @@ adaptationNote: ""
 En nøktern forklaring som ikke introduserer nye medisinske påstander.
 ```
 
+Bruk `amount` som tall, `maxAmount` for intervaller, `unit` når måleenheten er eksplisitt, og `text` for ingrediensnavn og tilberedningsmerknad. Ingredienser som «etter smak» lagres bare med `text` og skaleres derfor ikke. Når én linje inneholder alternative mengder som ikke kan uttrykkes med ett `amount`, behold hele mengden i `text` og sett `scalable: false`; brukergrensesnittet merker da ingrediensen for manuell skalering. Bruk `optional: true` når hele ingrediensen er valgfri. Bevar undergrupper som egne elementer under `ingredients` med `title` og `items`. Ikke legg til en separat `## Ingredienser`-seksjon i Markdown-innholdet.
+
 Sett `adapted: true` når råvarer, mengder eller metode er endret fra oppskriften brukeren leverte eller fra innholdet på kildeadressen, og skriv en konkret norsk `adaptationNote`. Sett `adapted: false` og `adaptationNote: ""` når den innsendte oppskriften skrives uten slike endringer. Ved import fra bare en URL må kildeinnholdet leses før feltene kan avgjøres. Kildeadressen skal fortsatt peke på opphavet. Stopp hvis sluggen allerede finnes; denne skillen redigerer aldri eksisterende oppskrifter.
 
-Steget er ferdig når filen følger skjemaet i `src/lib/recipes.ts` og all brukerrettet tekst er norsk.
+Steget er ferdig når filen følger skjemaet i `src/lib/recipes.ts`, skalerbare mengder er numeriske, og all brukerrettet tekst er norsk.
 
 ### 7. Verifiser
 
 1. Les den ferdige filen og kjør både ingrediensporten og prinsippporten én gang til.
-2. Søk etter ingredienser fra `avoidSections`, uforklarte engelske rester og amerikanske måleenheter. Kjør `pnpm run check:units`.
+2. Søk etter ingredienser fra `avoidSections`, uforklarte engelske rester, amerikanske måleenheter og en eventuell duplisert `## Ingredienser`-seksjon. Kjør `pnpm run check:recipes` og `pnpm run check:units`.
 3. Bekreft at kontrollsummen til `src/content/site-content.ts` er identisk med den registrerte kontrollsummen. Ved avvik: stopp og slett bare den nye filen som denne kjøringen opprettet. Ikke endre regelgrunnlaget eller noen fil som eksisterte før kjøringen.
 4. Kjør `pnpm run build`.
 5. Rapporter filbane, kategori, kilde, om oppskriften er tilpasset, og resultatet fra begge porter.

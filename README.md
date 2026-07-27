@@ -24,7 +24,7 @@ pnpm run build
 - `src/content/meal-plan.ts`: måltider, middagsrotasjon og gramvekter
 - `CONTEXT.md`: avklarte domenebegreper og planregler
 
-Markdown-oppskriftene er eneste sannhetskilde for oppskriftstitler, ingredienslister og fremgangsmåter. Ukeplanene refererer til dem med kategori og slug og lagrer bare planjusterte mengder og tillegg.
+Markdown-oppskriftene er eneste sannhetskilde for oppskriftstitler, ingredienser og fremgangsmåter. Ingrediensene lagres strukturert i filens frontmatter, slik at mengdene kan skaleres til voksne og barn. Ukeplanene refererer til oppskriftene med kategori og slug og lagrer bare planjusterte mengder og tillegg.
 
 ## Matvaretabellen
 

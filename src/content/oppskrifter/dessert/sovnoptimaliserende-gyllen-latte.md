@@ -3,22 +3,39 @@ title: "Søvnoptimaliserende gyllen latte"
 category: dessert
 source: "https://members.theultimatehuman.com/posts/recipes-sleep-optimizing-golden-latte"
 yield: ""
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 2.4
+        unit: "dl"
+        text: "usøtet kokosmelk"
+      - amount: 0.5
+        unit: "ts"
+        text: "økologisk gurkemeie"
+      - amount: 0.25
+        unit: "ts"
+        text: "ceylonkanel"
+      - text: "En klype svart pepper"
+      - amount: 0.5
+        unit: "ts"
+        text: "ashwagandhapulver"
+      - amount: 1
+        unit: "ts"
+        text: "rå honning eller munkefrukt (valgfritt)"
+      - amount: 1
+        unit: "måleskje"
+        text: "glysinpulver"
+      - amount: 1
+        unit: "ts"
+        text: "reishisopppulver eller magnesiumglysinat"
+        optional: true
 tags:
   - "Kortisolreduksjon"
   - "Ro for nervesystemet"
   - "Støtte til det glymfatiske systemet"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 2,4 dl usøtet kokosmelk
-- ½ ts økologisk gurkemeie
-- ¼ ts ceylonkanel
-- En klype svart pepper
-- ½ ts ashwagandhapulver
-- 1 ts rå honning eller munkefrukt (valgfritt)
-- 1 måleskje glysinpulver
-- Valgfritt: 1 ts reishisopppulver eller magnesiumglysinat
 
 ## Fremgangsmåte
 

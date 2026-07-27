@@ -3,19 +3,27 @@ title: Søtpotetskive med ekstra energi
 category: lunsj
 source: https://members.theultimatehuman.com/posts/recipes-sweet-potato-power-toast
 yield: "1 porsjon"
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 1
+        text: "tykk skive japansk søtpotet"
+      - amount: 1
+        unit: "ss"
+        text: "mandelsmør"
+      - amount: 1
+        unit: "ts"
+        text: "hampfrø"
+      - text: "Et dryss kanel"
+      - text: "ferske bringebær eller kakaobiter"
+        optional: true
 tags:
   - Drivstoff før trening
   - Barnevennlig
   - Støtter humøret
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 1 tykk skive japansk søtpotet
-- 1 ss mandelsmør
-- 1 ts hampfrø
-- Et dryss kanel
-- Valgfritt: ferske bringebær eller kakaobiter
 
 ## Fremgangsmåte
 

@@ -3,19 +3,31 @@ title: "Søvnmat: kokos- og surkirsebærgelébiter"
 category: dessert
 source: "https://members.theultimatehuman.com/posts/recipes-sleep-snack-coconut-tart-cherry-gummies"
 yield: "Gir 12 små gelébiter"
+ingredients:
+  - items:
+      - amount: 2.4
+        unit: "dl"
+        text: "usøtet surkirsebærjuice"
+      - amount: 1
+        unit: "ss"
+        text: "gelatin fra gressfôrede dyr"
+      - amount: 1
+        unit: "ss"
+        text: "kokoskrem"
+      - amount: 0.5
+        unit: "ts"
+        text: "ceylonkanel"
+      - amount: 1
+        unit: "ts"
+        text: "glysinpulver"
+        optional: true
 tags:
   - "Økt melatonin"
   - "Hjelp til dyp søvn"
   - "Trygg for blodsukkeret"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 2,4 dl usøtet surkirsebærjuice
-- 1 ss gelatin fra gressfôrede dyr
-- 1 ss kokoskrem
-- ½ ts ceylonkanel
-- Valgfritt: 1 ts glysinpulver
 
 ## Fremgangsmåte
 

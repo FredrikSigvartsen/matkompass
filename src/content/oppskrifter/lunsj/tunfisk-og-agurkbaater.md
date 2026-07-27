@@ -3,20 +3,29 @@ title: Tunfisk- og agurkbåter
 category: lunsj
 source: https://members.theultimatehuman.com/posts/recipes-tuna-cucumber-boats
 yield: "1 porsjon"
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 1
+        text: "BPA-fri boks villfanget tunfisk i olivenolje"
+      - amount: 1
+        unit: "ss"
+        text: "rødløk, hakket"
+      - amount: 1
+        unit: "ts"
+        text: "sitronsaft"
+      - amount: 0.5
+        text: "avokado"
+      - amount: 1
+        text: "stor agurk, delt på langs og hulet ut"
+      - text: "Havsalt og dill etter smak"
 tags:
   - Drivstoff på farten
   - Histaminfattig
   - Proteinrik
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 1 BPA-fri boks villfanget tunfisk i olivenolje
-- 1 ss rødløk, hakket
-- 1 ts sitronsaft
-- ½ avokado
-- 1 stor agurk, delt på langs og hulet ut
-- Havsalt og dill etter smak
 
 ## Fremgangsmåte
 

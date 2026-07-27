@@ -3,22 +3,36 @@ title: "Tarmvennlig sjokolademousse"
 category: dessert
 source: "https://members.theultimatehuman.com/posts/recipes-gut-loving-chocolate-mousse"
 yield: "2 porsjoner"
+baseAdultPortions: 2
+ingredients:
+  - items:
+      - amount: 1
+        text: "moden avokado"
+      - amount: 2
+        unit: "ss"
+        text: "kakaopulver"
+      - amount: 1
+        unit: "måleskje"
+        text: "kollagen uten smak eller PerfectAminos"
+      - amount: 1
+        unit: "ss"
+        text: "mandelsmør"
+      - amount: 1
+        maxAmount: 2
+        unit: "ts"
+        text: "rå honning eller munkefrukt"
+      - amount: 0.25
+        unit: "ts"
+        text: "ceylonkanel"
+      - text: "En skvett usøtet kokosmelk"
+      - text: "Valgfritt til toppen: kokosflak, knuste kakaobønner eller flaksalt"
 tags:
   - "Økt kollagen"
   - "Trygg for blodsukkeret"
   - "Dessert som leger"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 1 moden avokado
-- 2 ss kakaopulver
-- 1 måleskje kollagen uten smak eller PerfectAminos
-- 1 ss mandelsmør
-- 1–2 ts rå honning eller munkefrukt
-- ¼ ts ceylonkanel
-- En skvett usøtet kokosmelk
-- Valgfritt til toppen: kokosflak, knuste kakaobønner eller flaksalt
 
 ## Fremgangsmåte
 

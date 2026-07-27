@@ -6,7 +6,7 @@ export type FoodId = (typeof foods)[number]["id"];
 export interface IngredientAmount {
   foodId: FoodId;
   grams: number;
-  label: string;
+  label?: string;
 }
 
 export interface PlannedMeal {
@@ -24,9 +24,17 @@ export interface DinnerDefinition {
 }
 
 export type DayKind = "active" | "rest" | "long";
+export type DayName =
+  | "Mandag"
+  | "Tirsdag"
+  | "Onsdag"
+  | "Torsdag"
+  | "Fredag"
+  | "Lørdag"
+  | "Søndag";
 
 export interface DayProfile {
-  name: string;
+  name: DayName;
   shortName: string;
   kind: DayKind;
   fredrikTrains: boolean;
@@ -94,9 +102,19 @@ export const dayProfiles: DayProfile[] = [
 ];
 
 export const nutritionTargets = {
-  active: { calories: 2350, protein: 165, fat: 80, carbs: 245 },
-  rest: { calories: 1950, protein: 160, fat: 85, carbs: 135 },
-  long: { calories: 2550, protein: 165, fat: 80, carbs: 285 },
+  active: { calories: 1900, protein: 157, fat: 36, carbs: 238 },
+  rest: { calories: 1900, protein: 152, fat: 38, carbs: 238 },
+  long: { calories: 1900, protein: 157, fat: 36, carbs: 238 },
+} as const;
+
+export const mealPlanNutritionMetadata = {
+  calculatedAt: "2026-07-27",
+  notes: [
+    "Fredriks plan er periodisert rundt 1 900 kcal med 152–157 g protein, omtrent 238 g karbohydrat og 36–38 g fett.",
+    "Karbohydrat prioriteres for glykogen og treningskvalitet; oljer, avokado, kokosmelk, nøtter, hele egg og fet fisk brukes i målte mengder.",
+    "Fettandelen er en midlertidig periodisering innenfor en stram energiramme, ikke et mål om å unngå fett. Revurder ved prestasjonsfall, vedvarende sult, dårlig restitusjon eller økende MTSS-symptomer.",
+    "Kalkunkjøttdeig bruker Kalkun, kjøtt med skinn, rå som nærmeste tilgjengelige Matvaretabellen-verdi.",
+  ],
 } as const;
 
 const recipeRef = (
@@ -104,159 +122,173 @@ const recipeRef = (
   slug: string,
 ): RecipeReference => ({ category, slug });
 
-const officeBreakfast = (cottageCheese: number, walnuts: number): PlannedMeal => ({
-  title: "Cottage cheese med valnøtter og honning",
+const officeBreakfast = (
+  cottageCheese: number,
+  eggWhites: number,
+  banana: number,
+  honey: number,
+): PlannedMeal => ({
+  title: "Cottage cheese med banan og honning",
   ingredients: [
     { foodId: "01.028", grams: cottageCheese, label: "cottage cheese" },
-    { foodId: "06.560", grams: walnuts, label: "valnøtter" },
-    { foodId: "09.003", grams: 30, label: "rå honning" },
+    { foodId: "02.002", grams: eggWhites, label: "eggehvite" },
+    { foodId: "06.525", grams: banana, label: "banan" },
+    { foodId: "09.003", grams: honey, label: "rå honning" },
   ],
-  details: ["Pakkes kvelden før og oppbevares kaldt."],
+  details: ["Eggehvitene stekes i batch. Resten pakkes på under to minutter kvelden før."],
 });
 
-export const daytimeMeals: PlannedMeal[][] = [
-  [
-    officeBreakfast(250, 20),
-    {
-      recipe: recipeRef("lunsj", "avokado-og-tunfisktarn-uten-forberedelser"),
-      ingredients: [
-        { foodId: "04.107", grams: 200, label: "tunfisk i olje, avrent" },
-        { foodId: "06.524", grams: 40, label: "avokado" },
-        { foodId: "06.010", grams: 100, label: "agurk" },
-        { foodId: "06.136", grams: 330, label: "søtpotet" },
-      ],
-      details: ["Søtpoteten bakes på forhånd og serveres kald eller lun."],
-    },
+const officeLunch = (
+  tuna: number,
+  avocado: number,
+  sweetPotato: number,
+): PlannedMeal => ({
+  recipe: recipeRef("lunsj", "avokado-og-tunfisktarn-uten-forberedelser"),
+  ingredients: [
+    { foodId: "04.107", grams: tuna, label: "tunfisk i olje, avrent" },
+    { foodId: "06.524", grams: avocado, label: "avokado" },
+    { foodId: "06.010", grams: 100, label: "agurk" },
+    { foodId: "06.136", grams: sweetPotato, label: "søtpotet" },
   ],
-  [
+  details: ["Søtpoteten bakes i batch; tunfisk og avokado åpnes når måltidet settes sammen."],
+});
+
+const morningScramble = (
+  protein: "karbonadedeig" | "ytrefilet",
+  proteinGrams: number,
+  eggWhites: number,
+  sweetPotato: number,
+  details: string[],
+): PlannedMeal => ({
+  recipe: recipeRef("frokost", "morgeneggerore"),
+  ingredients: [
+    { foodId: "02.001", grams: 50, label: "egg, ca. 1 stk." },
+    { foodId: "02.002", grams: eggWhites, label: "eggehvite" },
     {
-      recipe: recipeRef("frokost", "gronnsaks-og-eggemuffins-for-stabilt-blodsukker"),
-      ingredients: [
-        { foodId: "02.001", grams: 200, label: "egg, ca. 4 stk." },
-        { foodId: "03.205", grams: 50, label: "kyllingfilet" },
-        { foodId: "06.701", grams: 40, label: "kokosmelk" },
-        { foodId: "06.064", grams: 100, label: "spinat" },
-        { foodId: "06.048", grams: 100, label: "rød paprika" },
-      ],
+      foodId: protein === "karbonadedeig" ? "03.126" : "03.066",
+      grams: proteinGrams,
+      label: protein,
     },
-    {
-      recipe: recipeRef("lunsj", "kalkun-og-kraftbolle-for-tarmreparasjon"),
-      ingredients: [
-        { foodId: "03.004", grams: 222, label: "kalkunkjøtt" },
-        { foodId: "05.340", grams: 330, label: "kokt villris" },
-        { foodId: "06.064", grams: 100, label: "spinat" },
-        { foodId: "06.016", grams: 150, label: "blomkålris" },
-        { foodId: "06.524", grams: 65, label: "avokado" },
-      ],
-      details: ["Tilsett 2 dl hjemmelaget eller ren kyllingkraft."],
-    },
+    { foodId: "06.064", grams: 100, label: "spinat" },
+    { foodId: "06.062", grams: 100, label: "sjampinjong" },
+    { foodId: "06.136", grams: sweetPotato, label: "søtpotet" },
   ],
-  [
+  details,
+});
+
+const hormoneHarmonyBowl = (
+  protein: "kyllingfilet" | "norsk røkt laks",
+  proteinGrams: number,
+  sweetPotato: number,
+  avocado: number,
+  details: string[],
+): PlannedMeal => ({
+  recipe: recipeRef("lunsj", "hormonbalansebolle"),
+  ingredients: [
+    {
+      foodId: protein === "kyllingfilet" ? "03.205" : "04.018",
+      grams: proteinGrams,
+      label: protein,
+    },
+    { foodId: "06.136", grams: sweetPotato, label: "søtpotet" },
+    { foodId: "06.035", grams: 100, label: "grønnkål" },
+    { foodId: "06.524", grams: avocado, label: "avokado" },
+  ],
+  details,
+});
+
+export const daytimeMeals: Record<DayName, [PlannedMeal, PlannedMeal]> = {
+  Mandag: [
+    officeBreakfast(90, 250, 200, 20),
+    officeLunch(195, 10, 120),
+  ],
+  Tirsdag: [
+    morningScramble("karbonadedeig", 70, 200, 450, [
+      "Lag dobbel kjøtt- og grønnsaksbase; halvparten settes kaldt til onsdag.",
+    ]),
+    hormoneHarmonyBowl("kyllingfilet", 175, 625, 55, [
+      "Lag to boller samtidig. Onsdagsporsjonen oppbevares kaldt uten avokado.",
+    ]),
+  ],
+  Onsdag: [
+    morningScramble("karbonadedeig", 50, 325, 170, [
+      "Varm opp basen fra tirsdag og tilsett dagens egg og eggehvite.",
+    ]),
+    hormoneHarmonyBowl("kyllingfilet", 163, 236, 0, [
+      "Bruk den ferdige kyllingen og søtpoteten fra tirsdag; tilsett grønnkål ved servering.",
+    ]),
+  ],
+  Torsdag: [
+    officeBreakfast(190, 340, 400, 20),
+    officeLunch(195, 15, 520),
+  ],
+  Fredag: [
+    morningScramble("ytrefilet", 90, 280, 200, [
+      "Ytrefileten stekes raskt i strimler og vendes inn i samme eggerørebase som tirsdag og onsdag.",
+    ]),
+    hormoneHarmonyBowl("norsk røkt laks", 80, 250, 5, [
+      "Bruk norsk røkt laks med kun laks og salt i ingredienslisten; ingen varmebehandling er nødvendig.",
+    ]),
+  ],
+  Lørdag: [
     {
       recipe: recipeRef("frokost", "frokostpanne"),
       ingredients: [
-        { foodId: "02.001", grams: 150, label: "egg, ca. 3 stk." },
+        { foodId: "02.001", grams: 50, label: "egg, ca. 1 stk." },
+        { foodId: "02.002", grams: 250, label: "eggehvite" },
         { foodId: "06.136", grams: 250, label: "søtpotet" },
         { foodId: "06.085", grams: 100, label: "squash" },
         { foodId: "06.064", grams: 50, label: "spinat" },
-        { foodId: "08.252", grams: 5, label: "ghee" },
-      ],
-    },
-    {
-      recipe: recipeRef("lunsj", "grillet-kylling-avgiftningstallerken"),
-      ingredients: [
-        { foodId: "03.205", grams: 270, label: "kyllingfilet" },
-        { foodId: "06.018", grams: 150, label: "brokkoli" },
-        { foodId: "06.524", grams: 50, label: "avokado" },
-        { foodId: "06.136", grams: 210, label: "søtpotet" },
-      ],
-    },
-  ],
-  [
-    officeBreakfast(350, 15),
-    {
-      title: "Tunfisk og sardiner med søtpotet",
-      ingredients: [
-        { foodId: "04.107", grams: 110, label: "tunfisk i olje, avrent" },
-        { foodId: "04.322", grams: 120, label: "sardiner i olje, avrent" },
-        { foodId: "06.010", grams: 100, label: "agurk" },
-        { foodId: "06.136", grams: 320, label: "søtpotet" },
-      ],
-      details: ["Pakkes som en kald lunsjtallerken til kontoret."],
-    },
-  ],
-  [
-    {
-      recipe: recipeRef("frokost", "gronnsaks-og-eggemuffins-for-stabilt-blodsukker"),
-      ingredients: [
-        { foodId: "02.001", grams: 100, label: "egg, ca. 2 stk." },
-        { foodId: "03.205", grams: 120, label: "kyllingfilet" },
-        { foodId: "06.701", grams: 20, label: "kokosmelk" },
-        { foodId: "06.064", grams: 100, label: "spinat" },
-        { foodId: "06.048", grams: 100, label: "rød paprika" },
-      ],
-    },
-    {
-      recipe: recipeRef("lunsj", "hormonbalansebolle"),
-      ingredients: [
-        { foodId: "04.015", grams: 200, label: "villaks" },
-        { foodId: "06.136", grams: 450, label: "søtpotet" },
-        { foodId: "06.035", grams: 100, label: "grønnkål" },
-      ],
-    },
-  ],
-  [
-    {
-      recipe: recipeRef("frokost", "frokostpanne"),
-      ingredients: [
-        { foodId: "02.001", grams: 150, label: "egg, ca. 3 stk." },
-        { foodId: "06.136", grams: 250, label: "søtpotet" },
-        { foodId: "06.085", grams: 100, label: "squash" },
-        { foodId: "06.064", grams: 50, label: "spinat" },
-        { foodId: "08.252", grams: 5, label: "ghee" },
       ],
     },
     {
       recipe: recipeRef("lunsj", "betennelsesdempende-salatwraps"),
       ingredients: [
-        { foodId: "03.004", grams: 235, label: "kalkunkjøtt" },
+        { foodId: "03.004", grams: 175, label: "kalkunkjøtt" },
         { foodId: "06.138", grams: 100, label: "romanosalat" },
         { foodId: "06.036", grams: 50, label: "gulrot" },
         { foodId: "06.010", grams: 50, label: "agurk" },
-        { foodId: "06.136", grams: 210, label: "søtpotet" },
-        { foodId: "08.112", grams: 5, label: "extra virgin olivenolje" },
+        { foodId: "06.136", grams: 160, label: "søtpotet" },
       ],
     },
   ],
-  [
+  Søndag: [
     {
       recipe: recipeRef("frokost", "morgeneggerore"),
       ingredients: [
-        { foodId: "02.001", grams: 150, label: "egg, ca. 3 stk." },
-        { foodId: "03.126", grams: 200, label: "karbonadedeig" },
+        { foodId: "02.001", grams: 50, label: "egg, ca. 1 stk." },
+        { foodId: "02.002", grams: 190, label: "eggehvite" },
+        { foodId: "03.126", grams: 80, label: "karbonadedeig" },
         { foodId: "06.064", grams: 100, label: "spinat" },
         { foodId: "06.062", grams: 100, label: "sjampinjong" },
+        { foodId: "06.136", grams: 574, label: "søtpotet" },
+        { foodId: "08.252", grams: 5, label: "ghee" },
       ],
+      details: ["Server søtpoteten ved siden av for å dekke hviledagens karbohydratmål."],
     },
     {
-      recipe: recipeRef("lunsj", "gronnsakssuppe-som-styrker-lymfesystemet"),
+      recipe: recipeRef("frokost", "barnevennlige-proteinvafler"),
       ingredients: [
-        { foodId: "03.205", grams: 125, label: "kyllingfilet" },
-        { foodId: "06.262", grams: 400, label: "kokt potet" },
-        { foodId: "06.016", grams: 100, label: "blomkål" },
-        { foodId: "06.036", grams: 100, label: "gulrot" },
-        { foodId: "06.042", grams: 50, label: "gul løk" },
-        { foodId: "08.112", grams: 26, label: "extra virgin olivenolje" },
+        { foodId: "02.001", grams: 50, label: "egg, ca. 1 stk." },
+        { foodId: "02.002", grams: 100, label: "eggehvite" },
+        { foodId: "06.525", grams: 120, label: "banan" },
+        { foodId: "05.420", grams: 5, label: "mandelmel" },
+        { foodId: "08.249", grams: 1, label: "kokosolje til vaffeljernet" },
+        { foodId: "01.028", grams: 80, label: "cottage cheese til servering" },
+        { foodId: "05.340", grams: 300, label: "kokt villris til servering" },
       ],
-      details: ["Tilsett 3 dl hjemmelaget eller ren kyllingkraft."],
+      details: [
+        "Lag omtrent 2,5 ganger oppskriften til hele familien; mengdene under er Fredriks porsjon.",
+        "Planversjonen bruker cottage cheese og ikke valgfritt proteinpulver.",
+      ],
     },
   ],
-];
+};
 
 export const trainingSnack: PlannedMeal = {
   title: "Før treningsøkt",
   ingredients: [
-    { foodId: "02.001", grams: 100, label: "kokte egg, ca. 2 stk." },
+    { foodId: "02.001", grams: 50, label: "kokt egg, ca. 1 stk." },
     { foodId: "06.525", grams: 200, label: "banan" },
     { foodId: "09.003", grams: 14, label: "rå honning" },
   ],
@@ -265,9 +297,9 @@ export const trainingSnack: PlannedMeal = {
 export const longTrainingSnack: PlannedMeal = {
   title: "Før treningsøkt",
   ingredients: [
-    { foodId: "02.001", grams: 100, label: "kokte egg, ca. 2 stk." },
-    { foodId: "06.525", grams: 350, label: "banan" },
-    { foodId: "09.003", grams: 27, label: "rå honning" },
+    { foodId: "02.001", grams: 50, label: "kokt egg, ca. 1 stk." },
+    { foodId: "06.525", grams: 250, label: "banan" },
+    { foodId: "09.003", grams: 6, label: "rå honning" },
   ],
   details: ["Større porsjon for langkjøringsdagen."],
 };
@@ -278,12 +310,12 @@ export const dinnerDefinitions: Record<string, DinnerDefinition> = {
     carbFoodId: "05.340",
     carbLabel: "kokt villris",
     plannedIngredients: [
-      { foodId: "03.332", grams: 430, label: "kyllinglår uten skinn og bein" },
-      { foodId: "05.340", grams: 436, label: "kokt villris" },
-      { foodId: "06.018", grams: 250, label: "brokkoli" },
-      { foodId: "06.048", grams: 200, label: "rød paprika" },
-      { foodId: "06.085", grams: 250, label: "squash" },
-      { foodId: "08.112", grams: 36, label: "extra virgin olivenolje" },
+      { foodId: "03.332", grams: 430 },
+      { foodId: "05.340", grams: 433 },
+      { foodId: "06.018", grams: 250 },
+      { foodId: "06.048", grams: 200 },
+      { foodId: "06.085", grams: 250 },
+      { foodId: "08.252", grams: 5 },
     ],
   },
   salmonTacos: {
@@ -291,13 +323,12 @@ export const dinnerDefinitions: Record<string, DinnerDefinition> = {
     carbFoodId: "05.340",
     carbLabel: "kokt villris",
     plannedIngredients: [
-      { foodId: "04.015", grams: 420, label: "villaks" },
-      { foodId: "05.340", grams: 455, label: "kokt villris" },
-      { foodId: "06.524", grams: 75, label: "avokado" },
-      { foodId: "06.207", grams: 150, label: "hjertesalat" },
-      { foodId: "06.010", grams: 300, label: "agurk" },
-      { foodId: "06.752", grams: 150, label: "cherrytomater" },
-      { foodId: "06.042", grams: 100, label: "løk" },
+      { foodId: "04.015", grams: 420 },
+      { foodId: "05.340", grams: 455 },
+      { foodId: "06.207", grams: 150 },
+      { foodId: "06.010", grams: 300 },
+      { foodId: "06.752", grams: 150 },
+      { foodId: "06.042", grams: 100, label: "rødløk" },
     ],
   },
   steakTips: {
@@ -305,11 +336,11 @@ export const dinnerDefinitions: Record<string, DinnerDefinition> = {
     carbFoodId: "06.262",
     carbLabel: "kokt potet",
     plannedIngredients: [
-      { foodId: "03.066", grams: 410, label: "ytrefilet i biter" },
-      { foodId: "06.262", grams: 580, label: "kokt potet" },
-      { foodId: "06.018", grams: 250, label: "brokkoli" },
-      { foodId: "06.048", grams: 200, label: "rød paprika" },
-      { foodId: "08.112", grams: 55, label: "extra virgin olivenolje" },
+      { foodId: "03.066", grams: 410 },
+      { foodId: "06.262", grams: 580 },
+      { foodId: "06.018", grams: 250 },
+      { foodId: "06.048", grams: 200 },
+      { foodId: "08.112", grams: 5 },
     ],
   },
   castIronSteak: {
@@ -317,10 +348,10 @@ export const dinnerDefinitions: Record<string, DinnerDefinition> = {
     carbFoodId: "06.262",
     carbLabel: "kokt potet",
     plannedIngredients: [
-      { foodId: "03.066", grams: 405, label: "ytrefilet" },
-      { foodId: "06.262", grams: 620, label: "kokt potet" },
-      { foodId: "06.035", grams: 300, label: "grønnkål" },
-      { foodId: "08.252", grams: 52, label: "ghee" },
+      { foodId: "03.066", grams: 405 },
+      { foodId: "06.262", grams: 620 },
+      { foodId: "06.035", grams: 300 },
+      { foodId: "08.252", grams: 5 },
     ],
   },
   salmonPoke: {
@@ -328,12 +359,12 @@ export const dinnerDefinitions: Record<string, DinnerDefinition> = {
     carbFoodId: "06.616",
     carbLabel: "kokt quinoa",
     plannedIngredients: [
-      { foodId: "04.015", grams: 285, label: "villaks" },
-      { foodId: "06.616", grams: 466, label: "kokt quinoa" },
-      { foodId: "06.093", grams: 300, label: "rødkål" },
-      { foodId: "06.036", grams: 150, label: "gulrot" },
-      { foodId: "06.010", grams: 250, label: "agurk" },
-      { foodId: "05.030", grams: 8, label: "sesamfrø" },
+      { foodId: "04.015", grams: 140 },
+      { foodId: "06.616", grams: 466 },
+      { foodId: "06.093", grams: 300 },
+      { foodId: "06.036", grams: 150 },
+      { foodId: "06.010", grams: 250 },
+      { foodId: "08.112", grams: 5 },
     ],
   },
   turkeyMeatballs: {
@@ -341,25 +372,25 @@ export const dinnerDefinitions: Record<string, DinnerDefinition> = {
     carbFoodId: "06.262",
     carbLabel: "kokt potet",
     plannedIngredients: [
-      { foodId: "03.004", grams: 320, label: "kalkunkjøttdeig" },
-      { foodId: "02.001", grams: 100, label: "egg, ca. 2 stk." },
-      { foodId: "05.420", grams: 20, label: "mandelmel" },
-      { foodId: "06.016", grams: 500, label: "blomkål" },
-      { foodId: "06.262", grams: 600, label: "kokt potet" },
-      { foodId: "08.252", grams: 25, label: "ghee" },
+      { foodId: "03.004", grams: 210, label: "kalkunkjøttdeig" },
+      { foodId: "02.001", grams: 100 },
+      { foodId: "05.420", grams: 20 },
+      { foodId: "06.016", grams: 500 },
+      { foodId: "06.262", grams: 600 },
+      { foodId: "08.252", grams: 5 },
     ],
   },
   beefBurgers: {
     recipe: recipeRef("middag", "salatinnpakkede-storfeburgere"),
     carbFoodId: "06.136",
-    carbLabel: "bakt søtpotet",
+    carbLabel: "søtpotet",
     plannedIngredients: [
-      { foodId: "03.126", grams: 560, label: "karbonadedeig" },
-      { foodId: "06.136", grams: 650, label: "søtpotet" },
-      { foodId: "06.524", grams: 180, label: "avokado" },
-      { foodId: "06.138", grams: 150, label: "romanosalat" },
-      { foodId: "06.042", grams: 100, label: "løk" },
-      { foodId: "08.252", grams: 10, label: "ghee" },
+      { foodId: "03.126", grams: 333 },
+      { foodId: "06.136", grams: 650 },
+      { foodId: "06.524", grams: 60 },
+      { foodId: "06.138", grams: 150 },
+      { foodId: "06.042", grams: 100, label: "rødløk" },
+      { foodId: "08.252", grams: 5 },
     ],
   },
   lemonSalmon: {
@@ -367,10 +398,11 @@ export const dinnerDefinitions: Record<string, DinnerDefinition> = {
     carbFoodId: "06.262",
     carbLabel: "kokt potet",
     plannedIngredients: [
-      { foodId: "04.015", grams: 600, label: "villaks" },
-      { foodId: "06.262", grams: 620, label: "kokt potet" },
-      { foodId: "06.018", grams: 250, label: "brokkoli" },
-      { foodId: "06.085", grams: 250, label: "squash" },
+      { foodId: "04.015", grams: 300 },
+      { foodId: "06.262", grams: 620 },
+      { foodId: "06.018", grams: 250 },
+      { foodId: "06.085", grams: 250 },
+      { foodId: "08.252", grams: 5 },
     ],
   },
   chickenCurry: {
@@ -378,25 +410,25 @@ export const dinnerDefinitions: Record<string, DinnerDefinition> = {
     carbFoodId: "05.340",
     carbLabel: "kokt villris",
     plannedIngredients: [
-      { foodId: "03.205", grams: 430, label: "kyllingfilet" },
-      { foodId: "06.701", grams: 280, label: "kokosmelk" },
-      { foodId: "05.340", grams: 470, label: "kokt villris" },
-      { foodId: "06.085", grams: 250, label: "squash" },
-      { foodId: "06.016", grams: 350, label: "blomkålris" },
+      { foodId: "03.205", grams: 430 },
+      { foodId: "06.701", grams: 80 },
+      { foodId: "05.340", grams: 470 },
+      { foodId: "06.085", grams: 250 },
+      { foodId: "06.016", grams: 350 },
+      { foodId: "08.249", grams: 5 },
     ],
   },
   tacoBowl: {
     recipe: recipeRef("middag", "tacobowl-med-sotpotet-og-cottage-cheese"),
     carbFoodId: "06.136",
-    carbLabel: "bakt søtpotet",
+    carbLabel: "søtpotet",
     plannedIngredients: [
-      { foodId: "03.126", grams: 400, label: "karbonadedeig" },
-      { foodId: "01.028", grams: 300, label: "cottage cheese" },
-      { foodId: "06.136", grams: 650, label: "søtpotet" },
-      { foodId: "06.524", grams: 150, label: "avokado" },
-      { foodId: "06.752", grams: 200, label: "cherrytomater" },
-      { foodId: "06.138", grams: 150, label: "romanosalat" },
-      { foodId: "08.252", grams: 15, label: "ghee" },
+      { foodId: "03.126", grams: 423 },
+      { foodId: "01.028", grams: 300 },
+      { foodId: "06.136", grams: 650 },
+      { foodId: "06.752", grams: 200 },
+      { foodId: "06.138", grams: 150 },
+      { foodId: "08.252", grams: 3 },
     ],
   },
   garlicShrimp: {
@@ -404,10 +436,10 @@ export const dinnerDefinitions: Record<string, DinnerDefinition> = {
     carbFoodId: "05.340",
     carbLabel: "kokt villris",
     plannedIngredients: [
-      { foodId: "04.387", grams: 470, label: "villfangede reker" },
-      { foodId: "05.340", grams: 500, label: "kokt villris" },
-      { foodId: "06.085", grams: 600, label: "squashnudler" },
-      { foodId: "08.112", grams: 60, label: "extra virgin olivenolje" },
+      { foodId: "04.387", grams: 470 },
+      { foodId: "05.340", grams: 500 },
+      { foodId: "06.085", grams: 600 },
+      { foodId: "08.112", grams: 5 },
     ],
   },
   chickenStew: {
@@ -415,33 +447,33 @@ export const dinnerDefinitions: Record<string, DinnerDefinition> = {
     carbFoodId: "06.262",
     carbLabel: "kokt potet",
     plannedIngredients: [
-      { foodId: "03.332", grams: 600, label: "kyllinglår uten skinn og bein" },
-      { foodId: "06.701", grams: 120, label: "kokosmelk" },
-      { foodId: "06.262", grams: 620, label: "kokt potet" },
-      { foodId: "06.085", grams: 250, label: "squash" },
-      { foodId: "06.042", grams: 150, label: "gul løk" },
-      { foodId: "08.249", grams: 7, label: "kokosolje" },
+      { foodId: "03.205", grams: 480 },
+      { foodId: "06.701", grams: 20 },
+      { foodId: "06.262", grams: 620 },
+      { foodId: "06.085", grams: 250 },
+      { foodId: "06.042", grams: 150 },
+      { foodId: "08.249", grams: 3 },
     ],
   },
 };
 
 export const dinnerRotation = {
-  A: [
-    dinnerDefinitions.lemonChicken,
-    dinnerDefinitions.steakTips,
-    dinnerDefinitions.salmonPoke,
-    dinnerDefinitions.beefBurgers,
-    dinnerDefinitions.castIronSteak,
-    dinnerDefinitions.chickenCurry,
-    dinnerDefinitions.garlicShrimp,
-  ],
-  B: [
-    dinnerDefinitions.salmonTacos,
-    dinnerDefinitions.castIronSteak,
-    dinnerDefinitions.turkeyMeatballs,
-    dinnerDefinitions.lemonSalmon,
-    dinnerDefinitions.steakTips,
-    dinnerDefinitions.tacoBowl,
-    dinnerDefinitions.chickenStew,
-  ],
+  A: {
+    Mandag: dinnerDefinitions.lemonChicken,
+    Tirsdag: dinnerDefinitions.steakTips,
+    Onsdag: dinnerDefinitions.salmonPoke,
+    Torsdag: dinnerDefinitions.beefBurgers,
+    Fredag: dinnerDefinitions.castIronSteak,
+    Lørdag: dinnerDefinitions.chickenCurry,
+    Søndag: dinnerDefinitions.garlicShrimp,
+  },
+  B: {
+    Mandag: dinnerDefinitions.salmonTacos,
+    Tirsdag: dinnerDefinitions.castIronSteak,
+    Onsdag: dinnerDefinitions.turkeyMeatballs,
+    Torsdag: dinnerDefinitions.lemonSalmon,
+    Fredag: dinnerDefinitions.steakTips,
+    Lørdag: dinnerDefinitions.tacoBowl,
+    Søndag: dinnerDefinitions.chickenStew,
+  },
 } as const;

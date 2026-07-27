@@ -3,20 +3,33 @@ title: "Før trening: MCT-kakao-energishake"
 category: snacks
 source: https://members.theultimatehuman.com/posts/recipes-pre-workout-mct-cacao-energy-shake
 yield: "1 porsjon"
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 2.4
+        unit: "dl"
+        text: "usøtet kokosmelk"
+      - amount: 1
+        unit: "ss"
+        text: "MCT-olje (helst C8)"
+      - amount: 1
+        unit: "ss"
+        text: "rått kakaopulver"
+      - amount: 0.5
+        text: "frossen banan"
+      - amount: 0.5
+        unit: "ts"
+        text: "kanel"
+      - text: "en klype havsalt eller 1 ts macapulver"
+        scalable: false
+        optional: true
 tags:
   - Rask energi
   - Styrker mitokondriene
   - Aktiverer hjernen
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 2,4 dl usøtet kokosmelk
-- 1 ss MCT-olje (helst C8)
-- 1 ss rått kakaopulver
-- ½ frossen banan
-- ½ ts kanel
-- Valgfritt: en klype havsalt eller 1 ts macapulver
 
 ## Fremgangsmåte
 

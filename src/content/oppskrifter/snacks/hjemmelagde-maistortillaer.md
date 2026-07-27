@@ -3,17 +3,24 @@ title: Hjemmelagde maistortillaer (enkle + rene)
 category: snacks
 source: https://members.theultimatehuman.com/posts/recipes-homemade-corn-tortillas-simple-clean
 yield: "Gir 10–12 tortillaer"
+ingredients:
+  - items:
+      - amount: 4.8
+        unit: "dl"
+        text: "økologisk, ikke-genmodifisert masa harina"
+      - amount: 3.6
+        unit: "dl"
+        text: "varmt filtrert vann"
+      - amount: 0.5
+        unit: "ts"
+        text: "mineralsalt (valgfritt)"
 tags:
   - Ikke genmodifisert
   - Uten tilsatt folsyre
   - Tradisjonelle og rene
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 4,8 dl økologisk, ikke-genmodifisert masa harina
-- 3,6 dl varmt filtrert vann
-- ½ ts mineralsalt (valgfritt)
 
 ## Fremgangsmåte
 

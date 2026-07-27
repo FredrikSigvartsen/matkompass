@@ -9,6 +9,7 @@ const OUTPUT_PATH = new URL(
 const selectedFoodIds = [
   "01.028", // Cottage cheese
   "02.001", // Egg, raw
+  "02.002", // Egg white, raw
   "03.004", // Turkey, raw meat with skin
   "03.054", // Beef entrecote, raw
   "03.066", // Beef sirloin, raw
@@ -16,6 +17,7 @@ const selectedFoodIds = [
   "03.205", // Chicken fillet, raw
   "03.332", // Chicken thigh without skin, raw
   "04.015", // Wild salmon, raw
+  "04.018", // Smoked salmon
   "04.107", // Canned tuna in oil, drained
   "04.322", // Canned sprat in oil, drained
   "04.387", // Shrimp, raw

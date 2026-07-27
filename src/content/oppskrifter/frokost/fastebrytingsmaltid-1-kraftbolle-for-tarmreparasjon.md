@@ -3,20 +3,31 @@ title: "Fastebrytingsmåltid nr. 1: Kraftbolle for tarmreparasjon"
 category: frokost
 source: "https://members.theultimatehuman.com/posts/recipes-fasting-break-meal-1-gut-rebuild-broth-bowl"
 yield: "1 porsjon"
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 3.6
+        unit: "dl"
+        text: "økologisk kyllingkraft kokt på bein (uten tilsetningsstoffer)"
+      - amount: 1.2
+        unit: "dl"
+        text: "dampet squash eller spinat"
+      - amount: 1
+        unit: "ss"
+        text: "kokoskrem eller olivenolje"
+      - amount: 1
+        unit: "måleskje"
+        text: "kollagen uten smak eller PerfectAminos"
+      - text: "En klype gurkemeie og havsalt"
+      - text: "en skvett sitronsaft eller eplecidereddik"
+        optional: true
 tags:
   - "Skånsom for fordøyelsen"
   - "Kollagenrik"
   - "Betennelsesdempende"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 3,6 dl økologisk kyllingkraft kokt på bein (uten tilsetningsstoffer)
-- 1,2 dl dampet squash eller spinat
-- 1 ss kokoskrem eller olivenolje
-- 1 måleskje kollagen uten smak eller PerfectAminos
-- En klype gurkemeie og havsalt
-- Valgfritt: en skvett sitronsaft eller eplecidereddik
 
 ## Fremgangsmåte
 

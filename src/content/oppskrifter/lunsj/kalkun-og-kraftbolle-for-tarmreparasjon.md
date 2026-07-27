@@ -3,21 +3,34 @@ title: Kalkun- og kraftbolle for tarmreparasjon
 category: lunsj
 source: https://members.theultimatehuman.com/posts/recipes-gut-repair-turkey-bone-broth-bowl
 yield: "2 porsjoner"
+baseAdultPortions: 2
+ingredients:
+  - items:
+      - amount: 170
+        unit: "g"
+        text: "økologisk kvernet kalkun"
+      - amount: 2.4
+        unit: "dl"
+        text: "økologisk kraft på bein"
+      - amount: 1.2
+        unit: "dl"
+        text: "spinat, hakket"
+      - amount: 1.2
+        unit: "dl"
+        text: "blomkålris"
+      - amount: 0.25
+        unit: "ts"
+        text: "gurkemeie"
+      - text: "Hvitløkspulver og havsalt etter smak"
+      - text: "fersk persille og en skvis sitron"
+        optional: true
 tags:
   - Gjenoppbygger tarmslimhinnen
   - Støtter immunforsvaret
   - Lett, men svært næringsrik
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 170 g økologisk kvernet kalkun
-- 2,4 dl økologisk kraft på bein
-- 1,2 dl spinat, hakket
-- 1,2 dl blomkålris
-- ¼ ts gurkemeie
-- Hvitløkspulver og havsalt etter smak
-- Valgfritt: fersk persille og en skvis sitron
 
 ## Fremgangsmåte
 

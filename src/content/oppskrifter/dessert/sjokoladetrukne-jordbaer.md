@@ -3,18 +3,27 @@ title: "Sjokoladetrukne jordbær"
 category: dessert
 source: "https://members.theultimatehuman.com/posts/recipes-chocolate-covered-strawberries"
 yield: ""
+ingredients:
+  - items:
+      - amount: 350
+        unit: "g"
+        text: "økologiske jordbær"
+        approximate: true
+      - amount: 1.2
+        unit: "dl"
+        text: "kokosolje, smør fra gressfôrede kyr eller ghee"
+      - amount: 0.6
+        unit: "dl"
+        text: "usøtet kakaopulver"
+      - text: "noen dråper alkoholfritt munkefruktekstrakt, en klype kanel eller vaniljepulver"
+        optional: true
 tags:
   - "Rik på antioksidanter"
   - "Blodsukkervennlig"
   - "Uten raffinert sukker"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- ca. 350 g økologiske jordbær
-- 1,2 dl kokosolje, smør fra gressfôrede kyr eller ghee
-- 0,6 dl usøtet kakaopulver
-- Valgfritt: noen dråper alkoholfritt munkefruktekstrakt, en klype kanel eller vaniljepulver
 
 ## Fremgangsmåte
 

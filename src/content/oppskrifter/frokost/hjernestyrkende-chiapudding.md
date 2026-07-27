@@ -3,20 +3,34 @@ title: "Hjernestyrkende chiapudding"
 category: frokost
 source: "https://members.theultimatehuman.com/posts/recipes-brain-boosting-chia-pudding"
 yield: "1 porsjon"
+baseAdultPortions: 1
+ingredients:
+  - items:
+      - amount: 1.2
+        unit: "dl"
+        text: "økologisk kokosmelk"
+      - amount: 1
+        unit: "ss"
+        text: "økologiske chiafrø"
+      - amount: 1
+        unit: "ss"
+        text: "knuste valnøtter"
+      - amount: 0.5
+        unit: "ts"
+        text: "rå honning"
+      - amount: 0.5
+        unit: "ts"
+        text: "kollagenpeptider fra gressfôrede dyr"
+      - amount: 0.5
+        unit: "ts"
+        text: "vaniljeekstrakt"
 tags:
   - "Fettrik"
   - "Lavkarbo"
   - "Støtte for søvn og kognitiv funksjon"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 1,2 dl økologisk kokosmelk
-- 1 ss økologiske chiafrø
-- 1 ss knuste valnøtter
-- ½ ts rå honning
-- ½ ts kollagenpeptider fra gressfôrede dyr
-- ½ ts vaniljeekstrakt
 
 ## Fremgangsmåte
 

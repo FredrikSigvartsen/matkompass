@@ -3,27 +3,41 @@ title: "Bakt bærsmuldrepai"
 category: dessert
 source: "https://members.theultimatehuman.com/posts/recipes-baked-berry-crumble"
 yield: "2–3 porsjoner"
+baseAdultPortions: 3
+ingredients:
+  - title: "Bærbase"
+    items:
+      - amount: 2.4
+        unit: "dl"
+        text: "frosne økologiske bær"
+      - amount: 1
+        unit: "ss"
+        text: "sitronsaft"
+      - amount: 1
+        unit: "ss"
+        text: "chiafrø"
+  - title: "Smuldretopping"
+    items:
+      - amount: 0.6
+        unit: "dl"
+        text: "mandelmel"
+      - amount: 1
+        unit: "ss"
+        text: "kokosolje eller ghee"
+      - amount: 1
+        unit: "ts"
+        text: "kanel"
+      - amount: 1
+        unit: "ts"
+        text: "rå honning eller munkefrukt"
+      - text: "En klype Baja Gold-havsalt"
 tags:
   - "Betennelsesdempende"
   - "Rik på antioksidanter"
   - "Tarmvennlig"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-### Bærbase
-
-- 2,4 dl frosne økologiske bær
-- 1 ss sitronsaft
-- 1 ss chiafrø
-
-### Smuldretopping
-
-- 0,6 dl mandelmel
-- 1 ss kokosolje eller ghee
-- 1 ts kanel
-- 1 ts rå honning eller munkefrukt
-- En klype Baja Gold-havsalt
 
 ## Fremgangsmåte
 

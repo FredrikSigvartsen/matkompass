@@ -3,20 +3,32 @@ title: "Keto mørk sjokoladeterte uten mel"
 category: dessert
 source: "https://members.theultimatehuman.com/posts/recipes-keto-dark-chocolate-flourless-torte"
 yield: ""
+ingredients:
+  - items:
+      - amount: 3
+        unit: "dl"
+        text: "filtrert vann"
+      - amount: 225
+        unit: "g"
+        text: "munkefruktsøtning"
+      - amount: 510
+        unit: "g"
+        text: "bittersøt sjokolade"
+      - amount: 225
+        unit: "g"
+        text: "smør fra gressfôrede kyr"
+      - amount: 2
+        unit: "ss"
+        text: "vaniljeekstrakt"
+      - amount: 10
+        text: "økologiske egg fra beitehøns"
 tags:
   - "Ketovennlig"
   - "Kornfri"
   - "Nytelse uten dårlig samvittighet"
+adapted: false
+adaptationNote: ""
 ---
-
-## Ingredienser
-
-- 3 dl filtrert vann
-- 225 g munkefruktsøtning
-- 510 g bittersøt sjokolade
-- 225 g smør fra gressfôrede kyr
-- 2 ss vaniljeekstrakt
-- 10 økologiske egg fra beitehøns
 
 ## Fremgangsmåte
 
