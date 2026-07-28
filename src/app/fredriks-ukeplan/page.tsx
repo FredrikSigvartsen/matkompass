@@ -1,4 +1,5 @@
 import { NutritionSummary } from "@/app/_components/nutrition-summary";
+import { ScrollToTarget } from "@/app/_components/scroll-to-target";
 import {
   foodDataSource,
   formatDate,
@@ -6,6 +7,7 @@ import {
   formatGrams,
   getCurrentPlanWeeks,
   getFredrikPlanDay,
+  getTodayInOslo,
   mealPlanNutritionMetadata,
 } from "@/lib/meal-plan";
 import type { Metadata } from "next";
@@ -22,9 +24,11 @@ export default async function FredrikWeekPlanPage() {
   await connection();
   const [week] = getCurrentPlanWeeks();
   const days = week.days.map(getFredrikPlanDay);
+  const today = getTodayInOslo().toISOString().slice(0, 10);
 
   return (
     <main className="content-page plan-page fredrik-plan">
+      <ScrollToTarget block="start" targetId="fredriks-plan-i-dag" />
       <header className="page-intro plan-intro">
         <p className="eyebrow">Uke {week.weekNumber} · Plan {week.type}</p>
         <h1>Fredriks ukeplan</h1>
@@ -36,11 +40,19 @@ export default async function FredrikWeekPlanPage() {
       </header>
 
       <nav className="week-jump-nav" aria-label="Hopp til ukedag">
-        {days.map((day) => (
-          <a key={day.profile.name} href={`#${day.profile.name.toLowerCase()}`}>
-            {day.profile.shortName}
-          </a>
-        ))}
+        {days.map((day) => {
+          const isToday = day.date.toISOString().slice(0, 10) === today;
+
+          return (
+            <a
+              aria-current={isToday ? "date" : undefined}
+              href={`#${day.profile.name.toLowerCase()}`}
+              key={day.profile.name}
+            >
+              {day.profile.shortName}
+            </a>
+          );
+        })}
       </nav>
 
       <section className="macro-key" aria-labelledby="dagsmaal">
@@ -93,53 +105,95 @@ export default async function FredrikWeekPlanPage() {
             </ul>
           </section>
         </div>
+        <aside
+          className="prep-guide__note"
+          aria-labelledby="sotpotet-batch-label sotpotet-batch"
+        >
+          <div>
+            <p className="eyebrow" id="sotpotet-batch-label">Søtpotet i batch</p>
+            <h3 id="sotpotet-batch">Hel for minst arbeid, terninger for sprø kanter.</h3>
+          </div>
+          <ul>
+            <li>
+              <strong>Hel:</strong> Skrubb søtpotetene, prikk skallet med en gaffel
+              og bak ved 190 °C i 45–50 minutter, til de er helt møre.
+            </li>
+            <li>
+              <strong>I terninger:</strong> Skjær i omtrent 2 cm store terninger.
+              Vend dem i oljen eller gheen som allerede står oppført i måltidet,
+              krydre med salt og bak ved 200 °C i 25–30 minutter. Vend halvveis.
+            </li>
+            <li>
+              Gramvektene i planen gjelder rå søtpotet. Vei batchen før steking,
+              avkjøl raskt og fordel den etter dagsmengdene. Frys porsjonene som
+              skal spises senere i uken, og tin dem i kjøleskapet.
+            </li>
+          </ul>
+        </aside>
       </section>
 
       <div className="fredrik-days">
-        {days.map((day) => (
-          <article className="fredrik-day" id={day.profile.name.toLowerCase()} key={day.date.toISOString()}>
-            <header className="fredrik-day__header">
-              <div>
-                <p className="eyebrow">
-                  {day.profile.kind === "long"
-                    ? "Langkjøring"
-                    : day.profile.kind === "active"
-                      ? "Aktiv dag"
-                      : "Hviledag"}
-                  {day.profile.officeDay ? " · Kontor" : ""}
-                </p>
-                <h2>{day.profile.name}</h2>
-                <time dateTime={day.date.toISOString().slice(0, 10)}>{formatDate(day.date)}</time>
-              </div>
-              <NutritionSummary
-                label="Planlagt / mål"
-                nutrition={day.nutrition}
-                target={day.target}
-              />
-            </header>
+        {days.map((day) => {
+          const date = day.date.toISOString().slice(0, 10);
+          const dayId = day.profile.name.toLowerCase();
+          const isToday = date === today;
 
-            <div className="meal-timeline">
-              {day.meals.map((meal) => (
-                <section className="meal-card" key={`${meal.time}-${meal.title}`}>
-                  <p className="meal-card__time">{meal.time}</p>
-                  <h3>
-                    {meal.href ? <Link href={meal.href}>{meal.title}</Link> : meal.title}
-                  </h3>
-                  <ul className="amount-list">
-                    {meal.ingredients.map((ingredient) => (
-                      <li key={`${ingredient.foodId}-${ingredient.label}`}>
-                        <span>{ingredient.label}</span>
-                        <strong>{formatGrams(ingredient.grams)}</strong>
-                      </li>
-                    ))}
-                  </ul>
-                  {meal.details?.map((detail) => <p className="meal-card__detail" key={detail}>{detail}</p>)}
-                  <NutritionSummary label="Måltidet" nutrition={meal.nutrition} />
-                </section>
-              ))}
-            </div>
-          </article>
-        ))}
+          return (
+            <article
+              aria-labelledby={`${dayId}-heading`}
+              className={`fredrik-day${isToday ? " fredrik-day--today" : ""}`}
+              id={dayId}
+              key={day.date.toISOString()}
+            >
+              <header
+                className="fredrik-day__header"
+                id={isToday ? "fredriks-plan-i-dag" : undefined}
+              >
+                <div>
+                  <p className="eyebrow">
+                    {day.profile.kind === "long"
+                      ? "Langkjøring"
+                      : day.profile.kind === "active"
+                        ? "Aktiv dag"
+                        : "Hviledag"}
+                    {day.profile.officeDay ? " · Kontor" : ""}
+                  </p>
+                  <h2 id={`${dayId}-heading`}>{day.profile.name}</h2>
+                  <time dateTime={date} aria-current={isToday ? "date" : undefined}>
+                    {formatDate(day.date)}
+                  </time>
+                  {isToday ? <span className="fredrik-day__today-label">I dag</span> : null}
+                </div>
+                <NutritionSummary
+                  label="Planlagt / mål"
+                  nutrition={day.nutrition}
+                  target={day.target}
+                />
+              </header>
+
+              <div className="meal-timeline">
+                {day.meals.map((meal) => (
+                  <section className="meal-card" key={`${meal.time}-${meal.title}`}>
+                    <p className="meal-card__time">{meal.time}</p>
+                    <h3>
+                      {meal.href ? <Link href={meal.href}>{meal.title}</Link> : meal.title}
+                    </h3>
+                    <ul className="amount-list">
+                      {meal.ingredients.map((ingredient) => (
+                        <li key={`${ingredient.foodId}-${ingredient.label}`}>
+                          <span>{ingredient.label}</span>
+                          <strong>{formatGrams(ingredient.grams)}</strong>
+                        </li>
+                      ))}
+                    </ul>
+                    {meal.details?.map((detail) => <p className="meal-card__detail" key={detail}>{detail}</p>)}
+                    <NutritionSummary label="Måltidet" nutrition={meal.nutrition} />
+                  </section>
+                ))}
+              </div>
+            </article>
+          );
+        })}
       </div>
 
       <aside className="plan-source" aria-labelledby="fredrik-beregning">

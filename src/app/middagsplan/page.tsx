@@ -1,5 +1,5 @@
 import { NutritionSummary } from "@/app/_components/nutrition-summary";
-import { ScrollToToday } from "@/app/middagsplan/scroll-to-today";
+import { ScrollToTarget } from "@/app/_components/scroll-to-target";
 import {
   calculateNutrition,
   familyShares,
@@ -32,7 +32,7 @@ export default async function DinnerPlanPage() {
 
   return (
     <main className="content-page plan-page">
-      <ScrollToToday />
+      <ScrollToTarget targetId="middag-i-dag" />
       <header className="page-intro plan-intro">
         <p className="eyebrow">Denne og neste kalenderuke</p>
         <h1>Middagsplan</h1>
