@@ -22,9 +22,7 @@ ingredients:
       - amount: 0.5
         unit: "ts"
         text: "malt ingefær"
-      - amount: 1
-        unit: "ss"
-        text: "kokosolje"
+      - text: "kokosolje til steking"
       - amount: 2.4
         unit: "dl"
         text: "squash, hakket"
@@ -35,8 +33,8 @@ ingredients:
       - text: "server med blomkålris"
         optional: true
 tags: ["Betennelsesdempende", "Tarmhelende", "Trøstende og funksjonell"]
-adapted: true
-adaptationNote: "Kokosoljen som brukes i fremgangsmåten er lagt til ingredienslisten."
+adapted: false
+adaptationNote: ""
 ---
 
 ## Fremgangsmåte

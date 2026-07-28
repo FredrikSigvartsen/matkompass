@@ -18,7 +18,7 @@ ingredients:
       - text: "Baja Gold-havsalt og grovkvernet pepper etter smak"
       - amount: 1
         unit: "ss"
-        text: "ghee"
+        text: "avokadoolje"
       - amount: 4
         text: "store blader romanosalat eller bladkål"
       - amount: 1
@@ -30,14 +30,14 @@ ingredients:
       - text: "Ren sennep (uten tilsatt sukker eller konserveringsmidler)"
 tags: ["Proteinrik", "Uten frøolje", "Ingen raffinerte karbohydrater"]
 adapted: true
-adaptationNote: "Bisonkjøtt er erstattet med gressfôret kjøttdeig av storfe, og avokadoolje er erstattet med ghee til steking."
+adaptationNote: "Bisonkjøtt er erstattet med gressfôret kjøttdeig av storfe fordi bison ikke inngår i Mat vi spiser."
 ---
 
 ## Fremgangsmåte
 
 Kombiner storfekjøtt, hvitløkspulver, paprika, salt og pepper. Form til 2–3 burgere.
 
-Varm ghee i en stekepanne på middels høy varme. Brun burgerne i 3–4 minutter på hver side til ønsket stekegrad.
+Varm avokadoolje i en stekepanne på middels høy varme. Brun burgerne til de er gjennomstekte.
 
 Legg ut salatbladene, og legg på burger, avokado, løk, ost hvis du bruker det, og en skvis sennep.
 

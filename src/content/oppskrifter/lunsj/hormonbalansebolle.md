@@ -15,12 +15,9 @@ ingredients:
         text: "økologisk ruccola eller grønnkål"
       - amount: 1
         text: "moden avokado, i skiver"
-      - amount: 1
+      - amount: 2
         unit: "ss"
-        text: "ghee"
-      - amount: 1
-        unit: "ss"
-        text: "extra virgin olivenolje"
+        text: "olivenolje"
       - amount: 1
         text: "sitron, saften"
       - text: "Hvitløkspulver, havsalt og sort pepper etter smak"
@@ -30,16 +27,16 @@ tags:
   - Sunt fett
   - Balansert blodsukker
   - Biotilgjengelige næringsstoffer
-adapted: true
-adaptationNote: "Ghee brukes til varmebehandling, mens olivenoljen beholdes som kald dressing."
+adapted: false
+adaptationNote: ""
 ---
 
 ## Fremgangsmåte
 
 1. Forvarm ovnen til 200 °C.
-2. Vend søtpoteten i halvparten av gheen, hvitløkspulver, salt og pepper. Stek i 25–30 minutter til den er sprø.
-3. Krydre laksen med salt og pepper. Stek den i resten av gheen, eller bak den ved 190 °C i 12–15 minutter til den er gjennomstekt.
-4. Vend det grønne med sitronsaft og olivenolje.
+2. Vend søtpoteten i 1 ss olivenolje, hvitløkspulver, salt og pepper. Stek i 25–30 minutter til den er sprø.
+3. Krydre laksen med salt, pepper og olivenolje. Stek den i panne, eller bak den ved 190 °C i 12–15 minutter til den er gjennomstekt.
+4. Vend det grønne med sitronsaft og resten av olivenoljen.
 5. Sett sammen bollen: legg det grønne, stekt søtpotet, laks og avokadoskiver lagvis.
 6. Topp med hampfrø eller mikrogrønt om ønskelig.
 

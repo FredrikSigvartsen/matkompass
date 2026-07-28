@@ -1,12 +1,20 @@
 import {
+  familyShares,
   getCurrentPlanWeeks,
+  getDinnerIngredients,
   getFredrikPlanDay,
   getTodayInOslo,
   roundNutrition,
 } from "../src/lib/meal-plan";
+import { daytimeMeals } from "../src/content/meal-plan";
 
 const weeks = getCurrentPlanWeeks(new Date("2026-07-20T12:00:00Z"));
-const tolerances = { calories: 100, protein: 5, fat: 5, carbs: 5 };
+const calorieTolerance = 100;
+const proteinMinimum = 160;
+const preferredRanges = {
+  fat: { min: 50, max: 70 },
+  carbs: { min: 185, max: 210 },
+} as const;
 const expectedRotation = {
   A: [
     "sitron-og-urtekylling-med-gronnsaker-i-en-panne",
@@ -31,7 +39,22 @@ const steakRecipes = new Set([
   "biffbiter",
   "stopjernsbiff-med-avgiftende-bladgront",
 ]);
+const familyMembers = ["Fredrik", "Kamilla", "Josefine"] as const;
 let failed = false;
+
+if (familyShares.Fredrik !== familyShares.Kamilla) {
+  throw new Error("Fredrik og Kamilla skal alltid ha samme grunnandel av middagen");
+}
+
+if (Object.values(familyShares).reduce((sum, share) => sum + share, 0) !== 1) {
+  throw new Error("Middagsandelene skal til sammen være 100 %");
+}
+
+for (const [day, meals] of Object.entries(daytimeMeals)) {
+  if (meals.some((meal) => meal.ingredients.some((ingredient) => ingredient.foodId === "02.002"))) {
+    throw new Error(`${day} bruker eggehvite som separat proteintillegg`);
+  }
+}
 
 for (const week of weeks) {
   console.log(`\nUke ${week.weekNumber} (${week.type})`);
@@ -50,6 +73,25 @@ for (const week of weeks) {
   }
 
   for (const day of week.days) {
+    for (const person of familyMembers) {
+      const ingredients = getDinnerIngredients(person, day.dinner);
+      const hasExactShare =
+        ingredients.length === day.dinner.plannedIngredients.length &&
+        ingredients.every(
+          (ingredient, index) =>
+            ingredient.foodId === day.dinner.plannedIngredients[index].foodId &&
+            ingredient.grams ===
+              day.dinner.plannedIngredients[index].grams * familyShares[person],
+        );
+
+      if (!hasExactShare) {
+        console.error(
+          `FEIL ${day.profile.name}: ${person} har ingredienser utenfor den faste middagsandelen`,
+        );
+        failed = true;
+      }
+    }
+
     const plan = getFredrikPlanDay(day);
     const actual = roundNutrition(plan.nutrition);
     const differences = {
@@ -58,10 +100,17 @@ for (const week of weeks) {
       fat: actual.fat - plan.target.fat,
       carbs: actual.carbs - plan.target.carbs,
     };
-    const valid = Object.entries(differences).every(
-      ([key, difference]) =>
-        Math.abs(difference) <= tolerances[key as keyof typeof tolerances],
-    );
+    const valid =
+      Math.abs(differences.calories) <= calorieTolerance &&
+      actual.protein >= proteinMinimum;
+    const preferences = [
+      actual.fat < preferredRanges.fat.min || actual.fat > preferredRanges.fat.max
+        ? `fett ${actual.fat} g utenfor foretrukket ${preferredRanges.fat.min}–${preferredRanges.fat.max} g`
+        : null,
+      actual.carbs < preferredRanges.carbs.min || actual.carbs > preferredRanges.carbs.max
+        ? `karbohydrat ${actual.carbs} g utenfor foretrukket ${preferredRanges.carbs.min}–${preferredRanges.carbs.max} g`
+        : null,
+    ].filter((preference): preference is string => preference !== null);
 
     if (!valid) {
       failed = true;
@@ -75,6 +124,10 @@ for (const week of weeks) {
         `F ${differences.fat >= 0 ? "+" : ""}${differences.fat}, ` +
         `K ${differences.carbs >= 0 ? "+" : ""}${differences.carbs})`,
     );
+
+    if (preferences.length > 0) {
+      console.log(`  ADVARSEL ${preferences.join("; ")}`);
+    }
 
     if (!valid) {
       for (const meal of plan.meals) {

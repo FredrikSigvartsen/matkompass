@@ -1278,20 +1278,11 @@ button:focus-visible {
   white-space: nowrap;
 }
 
-.amount-list--extras strong {
-  white-space: normal;
-  text-align: right;
-}
-
 .seasoning-line,
 .meal-card__detail {
   margin: 1rem 0 0;
   color: var(--ink-soft);
   font-size: 0.86rem;
-}
-
-.plan-subheading {
-  margin-top: 2.5rem;
 }
 
 .plan-steps {

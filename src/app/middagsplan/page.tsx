@@ -9,7 +9,6 @@ import {
   formatGrams,
   getCurrentPlanWeeks,
   getDinnerIngredients,
-  getFamilyCarbExtras,
   getPlannedDinnerIngredients,
   getTodayInOslo,
   mealPlanNutritionMetadata,
@@ -39,7 +38,7 @@ export default async function DinnerPlanPage() {
         <h1>Middagsplan</h1>
         <p className="page-intro__description">
           En fast A/B-rotasjon med to biffdager hver uke. Grunnretten deles
-          mellom familien, og den som trener får mer karbohydrat ved siden av.
+          likt etter den faste familieprosenten, uten personlige tillegg.
         </p>
       </header>
 
@@ -59,11 +58,7 @@ export default async function DinnerPlanPage() {
           </div>
           <div>
             <dt>Josefine</dt>
-            <dd>15 % + 20 g karbohydrat</dd>
-          </div>
-          <div>
-            <dt>Den som trener</dt>
-            <dd>+ 60 g karbohydrat til middag</dd>
+            <dd>15 %</dd>
           </div>
         </dl>
       </section>
@@ -80,7 +75,6 @@ export default async function DinnerPlanPage() {
 
           <div className="dinner-plan-list">
             {week.days.map((day, dayIndex) => {
-              const extras = getFamilyCarbExtras(day.dinner, day.profile);
               const date = day.date.toISOString().slice(0, 10);
               const isToday = date === today;
 
@@ -124,20 +118,9 @@ export default async function DinnerPlanPage() {
                     </div>
 
                     <div className="dinner-plan-day__column">
-                      <p className="eyebrow">Karbohydrattillegg</p>
-                      <ul className="amount-list amount-list--extras">
-                        {extras.map((extra) => (
-                          <li key={extra.person}>
-                            <span>{extra.person}: {extra.carbs} g karbohydrat</span>
-                            <strong>{formatGrams(extra.grams)} {extra.label}</strong>
-                          </li>
-                        ))}
-                      </ul>
-
-                      <p className="eyebrow plan-subheading">Tilberedning</p>
+                      <p className="eyebrow">Tilberedning</p>
                       <ol className="plan-steps">
                         {day.dinner.instructions.map((step) => <li key={step}>{step}</li>)}
-                        <li>Tilpass mengden {extras[0].label.toLocaleLowerCase("nb")} til planmengden og tilleggene over.</li>
                       </ol>
                     </div>
 
@@ -145,8 +128,8 @@ export default async function DinnerPlanPage() {
                       {familyMembers.map((person) => (
                         <NutritionSummary
                           key={person}
-                          label={`${person} · ${familyShares[person] * 100} %${person === "Josefine" ? " + tillegg" : ""}`}
-                          nutrition={calculateNutrition(getDinnerIngredients(person, day.dinner, day.profile))}
+                          label={`${person} · ${familyShares[person] * 100} %`}
+                          nutrition={calculateNutrition(getDinnerIngredients(person, day.dinner))}
                         />
                       ))}
                     </div>

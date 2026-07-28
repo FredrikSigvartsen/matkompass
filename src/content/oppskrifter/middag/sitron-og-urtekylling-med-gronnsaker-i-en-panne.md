@@ -18,7 +18,7 @@ ingredients:
         text: "squash, hakket"
       - amount: 2
         unit: "ss"
-        text: "ghee"
+        text: "olivenolje"
       - amount: 1
         text: "sitron, saften"
       - amount: 1
@@ -29,15 +29,15 @@ ingredients:
         text: "rosmarin"
       - text: "Havsalt og svart pepper etter smak"
 tags: ["Støtte for mitokondriene", "Hormonvennlig", "Enkel måltidsforberedelse"]
-adapted: true
-adaptationNote: "Olivenolje er erstattet med ghee fordi retten stekes ved 200 °C."
+adapted: false
+adaptationNote: ""
 ---
 
 ## Fremgangsmåte
 
 Forvarm ovnen til 200 °C.
 
-Vend kylling og grønnsaker med smeltet ghee, sitronsaft og krydder.
+Vend kylling og grønnsaker med olivenolje, sitronsaft og krydder.
 
 Fordel jevnt på et stekebrett.
 

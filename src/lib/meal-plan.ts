@@ -2,10 +2,8 @@ import {
   dayProfiles,
   daytimeMeals,
   dinnerRotation,
-  longTrainingSnack,
   mealPlanNutritionMetadata,
   nutritionTargets,
-  trainingSnack,
   type DayProfile,
   type DinnerDefinition,
   type IngredientAmount,
@@ -41,13 +39,6 @@ export interface DatedPlanDay {
 export interface ResolvedDinnerDefinition
   extends DinnerDefinition,
     ResolvedRecipeReference {}
-
-export interface FamilyCarbExtra {
-  person: "Fredrik" | "Kamilla" | "Josefine";
-  carbs: number;
-  grams: number;
-  label: string;
-}
 
 export interface ResolvedIngredientAmount extends IngredientAmount {
   label: string;
@@ -144,54 +135,20 @@ export function roundNutrition(nutrition: Nutrition): Nutrition {
   };
 }
 
-export function getFamilyCarbExtras(
-  dinner: DinnerDefinition,
-  profile: DayProfile,
-): FamilyCarbExtra[] {
-  const extras: FamilyCarbExtra[] = [];
-
-  if (profile.fredrikTrains) {
-    extras.push(createCarbExtra("Fredrik", 60, dinner));
-  }
-
-  if (profile.kamillaTrains) {
-    extras.push(createCarbExtra("Kamilla", 60, dinner));
-  }
-
-  extras.push(createCarbExtra("Josefine", 20, dinner));
-  return extras;
-}
-
 export function getFredrikDinnerIngredients(
   dinner: DinnerDefinition,
-  profile: DayProfile,
 ): ResolvedIngredientAmount[] {
-  return getDinnerIngredients("Fredrik", dinner, profile);
+  return getDinnerIngredients("Fredrik", dinner);
 }
 
 export function getDinnerIngredients(
   person: FamilyMember,
   dinner: DinnerDefinition,
-  profile: DayProfile,
 ): ResolvedIngredientAmount[] {
-  const ingredients = resolveIngredientLabels(dinner.plannedIngredients).map((ingredient) => ({
+  return resolveIngredientLabels(dinner.plannedIngredients).map((ingredient) => ({
     ...ingredient,
     grams: ingredient.grams * familyShares[person],
   }));
-
-  const extra = getFamilyCarbExtras(dinner, profile).find(
-    (carbExtra) => carbExtra.person === person,
-  );
-
-  if (extra) {
-    ingredients.push({
-      foodId: dinner.carbFoodId,
-      grams: extra.grams,
-      label: `Ekstra ${extra.label.toLocaleLowerCase("nb")}`,
-    });
-  }
-
-  return ingredients;
 }
 
 export function getFredrikPlanDay(day: DatedPlanDay): FredrikPlanDay {
@@ -201,24 +158,13 @@ export function getFredrikPlanDay(day: DatedPlanDay): FredrikPlanDay {
     createFredrikMeal("Kl. 14", mealsForDay[1]),
   ];
 
-  if (day.profile.fredrikTrains) {
-    meals.push(
-      createFredrikMeal(
-        "Før treningsøkt",
-        day.profile.kind === "long" ? longTrainingSnack : trainingSnack,
-      ),
-    );
-  }
-
-  const dinnerIngredients = getFredrikDinnerIngredients(day.dinner, day.profile);
+  const dinnerIngredients = getFredrikDinnerIngredients(day.dinner);
   meals.push({
     time: "Kl. 17",
     title: day.dinner.title,
     href: day.dinner.href,
     ingredients: dinnerIngredients,
-    details: day.profile.fredrikTrains
-      ? [`Inkluderer 60 g ekstra karbohydrat fra ${day.dinner.carbLabel}.`]
-      : undefined,
+    details: undefined,
     nutrition: calculateNutrition(dinnerIngredients),
   });
 
@@ -273,25 +219,6 @@ function createFredrikMeal(time: string, meal: PlannedMeal): FredrikMeal {
     details: meal.details,
     time,
     nutrition: calculateNutrition(meal.ingredients),
-  };
-}
-
-function createCarbExtra(
-  person: FamilyCarbExtra["person"],
-  carbs: number,
-  dinner: DinnerDefinition,
-): FamilyCarbExtra {
-  const food = foodsById.get(dinner.carbFoodId);
-
-  if (!food || food.per100g.carbs <= 0) {
-    throw new Error(`Kan ikke beregne karbohydrattillegg for ${dinner.carbFoodId}`);
-  }
-
-  return {
-    person,
-    carbs,
-    grams: (carbs / food.per100g.carbs) * 100,
-    label: dinner.carbLabel,
   };
 }
 

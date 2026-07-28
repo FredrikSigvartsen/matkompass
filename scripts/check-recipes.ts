@@ -7,7 +7,7 @@ import { getAllRecipes } from "../src/lib/recipes";
 
 const recipes = getAllRecipes();
 
-assert(recipes.length === 57, `Forventet 57 oppskrifter, fant ${recipes.length}`);
+assert(recipes.length === 58, `Forventet 58 oppskrifter, fant ${recipes.length}`);
 
 for (const recipe of recipes) {
   assert(recipe.ingredients.length > 0, `${recipe.slug} mangler ingrediensgrupper`);
@@ -76,6 +76,29 @@ assert(
   "En halv løk skal ikke tolkes som liter",
 );
 
+assertRecipeFat("hormonbalansebolle", "olivenolje", 2);
+assertRecipeFat(
+  "sitron-og-urtekylling-med-gronnsaker-i-en-panne",
+  "olivenolje",
+  2,
+);
+assertRecipeFat(
+  "villaks-med-sitron-dill-og-ovnsstekte-gronnsaker",
+  "olivenolje",
+  1,
+);
+assertRecipeFat("salatinnpakkede-storfeburgere", "avokadoolje", 1);
+
+const hormoneHarmonyBowl = recipes.find(
+  (recipe) => recipe.slug === "hormonbalansebolle",
+);
+assert(
+  !hormoneHarmonyBowl?.ingredients
+    .flatMap((group) => group.items)
+    .some((ingredient) => ingredient.text.toLocaleLowerCase("nb").includes("ghee")),
+  "Hormonbalansebollen skal ikke inneholde ghee ifølge wiki-råkilden",
+);
+
 console.log(
   `Alle ${recipes.length} oppskrifter har gyldige strukturerte ingredienser og skaleringsregler.`,
 );
@@ -84,4 +107,16 @@ function assert(condition: boolean, message: string): asserts condition {
   if (!condition) {
     throw new Error(message);
   }
+}
+
+function assertRecipeFat(slug: string, text: string, amount: number) {
+  const recipe = recipes.find((candidate) => candidate.slug === slug);
+  const ingredient = recipe?.ingredients
+    .flatMap((group) => group.items)
+    .find((candidate) => candidate.text === text);
+
+  assert(
+    ingredient?.amount === amount && ingredient.unit === "ss",
+    `${slug} skal inneholde ${amount} ss ${text} ifølge wiki-råkilden`,
+  );
 }

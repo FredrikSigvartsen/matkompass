@@ -29,9 +29,8 @@ export default async function FredrikWeekPlanPage() {
         <p className="eyebrow">Uke {week.weekNumber} · Plan {week.type}</p>
         <h1>Fredriks ukeplan</h1>
         <p className="page-intro__description">
-          Tre faste måltider, med et enkelt mellommåltid før treningsøkten på
-          aktive dager. Protein er låst, karbohydrat prioriteres for glykogen og
-          prestasjon, og sunt fett brukes i målte mengder.
+          Tre faste måltider hver dag. Protein er et absolutt gulv, oppskriftene
+          beholdes, og karbohydrat maksimeres innenfor energirammen.
         </p>
         <p className="plan-intro__dates">{formatDateRange(week.start, week.end)}</p>
       </header>
@@ -47,13 +46,12 @@ export default async function FredrikWeekPlanPage() {
       <section className="macro-key" aria-labelledby="dagsmaal">
         <div>
           <p className="eyebrow">Dagsmål</p>
-          <h2 id="dagsmaal">Aktiv, hvile og langkjøring</h2>
+          <h2 id="dagsmaal">Samme grunnmål hver dag</h2>
         </div>
         <p>
-          Godkjent avvik er ±100 kcal og ±5 g protein, fett og karbohydrat.
-          Dagsmålet er omtrent 1 900 kcal, 152–157 g protein, 238 g karbohydrat
-          og 36–38 g fett. Det tilsvarer omtrent 33 % protein, 50 % karbohydrat
-          og 17 % fett. Alle dagene nedenfor ligger innenfor dette intervallet.
+          Grunnplanen skal ligge innenfor ±100 kcal av 1 950 kcal og aldri under
+          160 g protein. Omtrent 200 g karbohydrat er et mykt mål; fett får variere
+          med oppskriftene. Valgfritt treningsdrivstoff kommer i tillegg.
         </p>
       </section>
 
@@ -72,17 +70,17 @@ export default async function FredrikWeekPlanPage() {
             <h3>Gjør kontordagene klare</h3>
             <ul>
               <li>Bak søtpotet til mandag og tirsdag.</li>
-              <li>Stek eggehviter til mandagens cottage cheese-frokost.</li>
-              <li>Pakk de tørre og kalde delene; åpne avokado og tunfisk ved servering.</li>
+              <li>Porsjoner cottage cheese, banan, valnøtter, honning og ferdigbakt søtpotet.</li>
+              <li>Pakk de kalde delene; åpne tunfisken ved servering.</li>
             </ul>
           </section>
           <section>
             <p className="eyebrow">Tirsdag</p>
             <h3>Lag dobbelt</h3>
             <ul>
-              <li>Stek dobbel eggerørebase med karbonadedeig.</li>
+              <li>Stek dobbel eggerørebase med ytrefilet.</li>
               <li>Lag to hormonbalanseboller med kylling.</li>
-              <li>Sett onsdagsporsjonene raskt kaldt uten avokado.</li>
+              <li>Sett onsdagsporsjonene raskt kaldt og oppbevar avokadoen separat.</li>
             </ul>
           </section>
           <section>
@@ -90,7 +88,7 @@ export default async function FredrikWeekPlanPage() {
             <h3>Fyll opp til helgen</h3>
             <ul>
               <li>Bak søtpotet til torsdag–søndag.</li>
-              <li>Stek eggehvitene og pakk torsdagens to kontormåltider.</li>
+              <li>Pakk torsdagens cottage cheese-frokost og tunfisklunsj.</li>
               <li>Kok ekstra villris eller quinoa når middagen allerede bruker det, og frys porsjonene.</li>
             </ul>
           </section>

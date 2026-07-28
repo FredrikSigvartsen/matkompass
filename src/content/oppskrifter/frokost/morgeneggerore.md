@@ -29,8 +29,8 @@ tags:
   - "Proteinrik"
   - "Mitokondriell energi"
   - "Hormonstøtte"
-adapted: false
-adaptationNote: ""
+adapted: true
+adaptationNote: "Kildealternativet bison er utelatt fordi bison ikke inngår i Mat vi spiser; gressfôret storfekjøtt beholdes."
 ---
 
 ## Fremgangsmåte
