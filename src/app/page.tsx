@@ -56,6 +56,11 @@ export default function Index() {
             <h3>Fredriks ukeplan</h3>
             <p>Faste måltider og porsjoner beregnet mot dagsmålet.</p>
           </Link>
+          <Link href="/handleliste" className="home-card home-card--groceries">
+            <span>06</span>
+            <h3>Handleliste</h3>
+            <p>Ukens behov samlet etter butikk, med lenker til Oda, KIWI og MENY.</p>
+          </Link>
         </div>
       </section>
     </main>

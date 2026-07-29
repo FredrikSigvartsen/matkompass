@@ -152,7 +152,7 @@ export function getDinnerIngredients(
 }
 
 export function getFredrikPlanDay(day: DatedPlanDay): FredrikPlanDay {
-  const mealsForDay = daytimeMeals[day.profile.name];
+  const mealsForDay = getFredrikDaytimePlan(day);
   const meals: FredrikMeal[] = [
     createFredrikMeal("Kl. 10–11", mealsForDay[0]),
     createFredrikMeal("Kl. 14", mealsForDay[1]),
@@ -174,6 +174,12 @@ export function getFredrikPlanDay(day: DatedPlanDay): FredrikPlanDay {
     nutrition: sumNutrition(meals.map((meal) => meal.nutrition)),
     target: nutritionTargets[day.profile.kind],
   };
+}
+
+export function getFredrikDaytimePlan(
+  day: DatedPlanDay,
+): readonly [PlannedMeal, PlannedMeal] {
+  return daytimeMeals[day.profile.name];
 }
 
 export function getCurrentPlanWeeks(now = new Date()): [DatedPlanWeek, DatedPlanWeek] {
