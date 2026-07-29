@@ -28,7 +28,6 @@ const sectionLabels = {
   optional: "Valgfritt",
 } as const;
 const sectionOrder = { buy: 0, check: 1, optional: 2 } as const;
-const retailerOrder = { oda: 0, kiwi: 1, meny: 2 } as const;
 
 export function GroceryListClient({ list }: GroceryListClientProps) {
   const checkedStorageKey = `matkompass:grocery-checked:${list.week.startDate}:v1`;
@@ -140,6 +139,9 @@ export function GroceryListClient({ list }: GroceryListClientProps) {
                             <dd>{offer.purchaseLabel}</dd>
                           </div>
                         </dl>
+                        {line.conversionNote ? (
+                          <p className={styles.conversionNote}>{line.conversionNote}</p>
+                        ) : null}
                       </div>
                     </div>
 
@@ -195,7 +197,7 @@ function groupLines(lines: DisplayLine[], sortMode: SortMode) {
   for (const line of sorted) {
     const label =
       sortMode === "store"
-        ? line.offer.retailerLabel
+        ? `${line.offer.retailerLabel} · ${sectionLabels[line.line.section]}`
         : sortMode === "category"
           ? line.line.category
           : "Alle varer";
@@ -213,8 +215,7 @@ function groupLines(lines: DisplayLine[], sortMode: SortMode) {
 
 function compareDisplayLines(a: DisplayLine, b: DisplayLine, sortMode: SortMode) {
   if (sortMode === "store") {
-    const storeDifference =
-      retailerOrder[a.offer.retailerId] - retailerOrder[b.offer.retailerId];
+    const storeDifference = a.offer.retailerOrder - b.offer.retailerOrder;
     const sectionDifference = sectionOrder[a.line.section] - sectionOrder[b.line.section];
     return storeDifference || sectionDifference || a.line.label.localeCompare(b.line.label, "nb");
   }

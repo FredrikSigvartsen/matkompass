@@ -33,6 +33,7 @@ export interface GroceryRetailerOffer {
   id: string;
   retailerId: RetailerId;
   retailerLabel: string;
+  retailerOrder: number;
   url: string;
   linkKind: "search";
   purchaseLabel: string;
@@ -46,6 +47,7 @@ export interface GroceryListLine {
   section: GrocerySection;
   requiredLabel: string;
   purchaseLabel: string;
+  conversionNote?: string;
   sources: string[];
   offers: GroceryRetailerOffer[];
   defaultOfferId: string;
@@ -112,22 +114,10 @@ const planFoodMappings: Partial<Record<FoodId, GroceryItemId>> = {
   "06.616": "quinoa",
   "06.701": "coconut-milk",
   "06.752": "cherry-tomato",
-  "08.112": "olive",
+  "08.112": "olive-oil",
   "08.249": "coconut-oil",
   "08.252": "ghee",
   "09.003": "honey",
-};
-
-const planPurchaseFactors: Partial<Record<FoodId, number>> = {
-  "05.340": 0.34,
-  "06.262": 1.1,
-  "06.616": 0.34,
-};
-
-const recipeReplacementExceptions: Partial<Record<string, GroceryItemId[]>> = {
-  morgeneggerore: ["ground-beef"],
-  hormonbalansebolle: ["salmon"],
-  "tacobowl-med-sotpotet-og-cottage-cheese": ["ghee"],
 };
 
 export function getWeeklyGroceryList(
@@ -186,7 +176,13 @@ function getMealContributions(
     return planned;
   }
 
-  return mergeRecipeWithPlan(meal.recipe, family, planned, source);
+  return mergeRecipeWithPlan(
+    meal.recipe,
+    family,
+    planned,
+    source,
+    meal.omittedRecipeGroceryItems,
+  );
 }
 
 function getDinnerContributions(
@@ -205,6 +201,7 @@ function mergeRecipeWithPlan(
   family: FamilySize,
   planned: GroceryContribution[],
   source: string,
+  omittedRecipeGroceryItems: GroceryItemId[] = [],
 ): GroceryContribution[] {
   const recipe = getRecipe(reference.category, reference.slug);
 
@@ -214,7 +211,7 @@ function mergeRecipeWithPlan(
 
   const scale = getFamilyScale(recipe.baseAdultPortions, family);
   const plannedIds = new Set(planned.map((contribution) => contribution.id));
-  const replacements = new Set(recipeReplacementExceptions[reference.slug] ?? []);
+  const replacements = new Set(omittedRecipeGroceryItems);
   const recipeContributions = recipe.ingredients.flatMap((group) =>
     group.items.flatMap((ingredient) => {
       const contribution = getRecipeContribution(ingredient, scale, source);
@@ -240,7 +237,8 @@ function getPlanContribution(
 ): GroceryContribution {
   const id = getPlanGroceryId(ingredient);
   const catalogItem = getGroceryCatalogItem(id);
-  const purchaseGrams = ingredient.grams * (planPurchaseFactors[ingredient.foodId] ?? 1);
+  const purchaseGrams =
+    ingredient.grams * (catalogItem.conversion?.planGramsToPurchase ?? 1);
   const amount = convertQuantity(id, "g", purchaseGrams);
 
   if (amount === null) {
@@ -262,7 +260,7 @@ function getPlanGroceryId(ingredient: IngredientAmount): GroceryItemId {
   }
 
   if (ingredient.label === "avokadoolje") {
-    return "olive";
+    return "avocado-oil";
   }
 
   const id = planFoodMappings[ingredient.foodId];
@@ -317,7 +315,7 @@ function getRecipeGroceryId(text: string): GroceryItemId {
     [/reker/, "shrimp"],
     [/kalkun/, "turkey"],
     [/kjøttdeig|storfekjøtt/, "ground-beef"],
-    [/biffbiter|fileter av gressfôret storfe/, "steak"],
+    [/biffbiter|fileter av gressfôret storfe/, "sirloin"],
     [/kyllingbryst/, "chicken-breast"],
     [/kyllinglår/, "chicken-thigh"],
     [/egg fra/, "egg"],
@@ -327,7 +325,8 @@ function getRecipeGroceryId(text: string): GroceryItemId {
     [/kokosmelk/, "coconut-milk"],
     [/kokosolje/, "coconut-oil"],
     [/avokadoolje eller ghee|ghee eller avokadoolje|smeltet ghee|olivenolje eller ghee/, "ghee"],
-    [/olivenolje|extra virgin/, "olive"],
+    [/avokadoolje/, "avocado-oil"],
+    [/olivenolje|extra virgin/, "olive-oil"],
     [/smør/, "ghee"],
     [/avokado/, "avocado"],
     [/blomkål/, "cauliflower"],
@@ -342,6 +341,8 @@ function getRecipeGroceryId(text: string): GroceryItemId {
     [/rød paprika,|rød paprika$/, "red-pepper"],
     [/cherrytomat/, "cherry-tomato"],
     [/rødløk/, "red-onion"],
+    [/hvitløkspulver/, "garlic-powder"],
+    [/hvitløk/, "garlic"],
     [/løk,/, "onion"],
     [/agurk/, "cucumber"],
     [/gulrot/, "carrot"],
@@ -350,8 +351,6 @@ function getRecipeGroceryId(text: string): GroceryItemId {
     [/valnøtt/, "walnuts"],
     [/lime/, "lime"],
     [/sitron|sitronsaft/, "lemon"],
-    [/hvitløkspulver/, "garlic-powder"],
-    [/hvitløk/, "garlic"],
     [/kokosaminos/, "coconut-aminos"],
     [/ingefær/, "ginger"],
     [/gurkemeie/, "turmeric"],
@@ -426,28 +425,28 @@ function convertQuantity(
     return amount;
   }
 
-  if (sourceUnit === "g" && item.purchaseUnit === "stk" && item.gramsPerEach) {
-    return amount / item.gramsPerEach;
+  if (sourceUnit === "g" && item.purchaseUnit === "stk" && item.conversion?.gramsPerEach) {
+    return amount / item.conversion.gramsPerEach;
   }
 
-  if (sourceUnit === "g" && item.purchaseUnit === "ml" && item.gramsPerMl) {
-    return amount / item.gramsPerMl;
+  if (sourceUnit === "g" && item.purchaseUnit === "ml" && item.conversion?.gramsPerMl) {
+    return amount / item.conversion.gramsPerMl;
   }
 
-  if (sourceUnit === "stk" && item.purchaseUnit === "g" && item.gramsPerEach) {
-    return amount * item.gramsPerEach;
+  if (sourceUnit === "stk" && item.purchaseUnit === "g" && item.conversion?.gramsPerEach) {
+    return amount * item.conversion.gramsPerEach;
   }
 
-  if (sourceUnit === "stk" && item.purchaseUnit === "ml" && item.mlPerEach) {
-    return amount * item.mlPerEach;
+  if (sourceUnit === "stk" && item.purchaseUnit === "ml" && item.conversion?.mlPerEach) {
+    return amount * item.conversion.mlPerEach;
   }
 
-  if (sourceUnit === "ml" && item.purchaseUnit === "g" && item.gramsPerMl) {
-    return amount * item.gramsPerMl;
+  if (sourceUnit === "ml" && item.purchaseUnit === "g" && item.conversion?.gramsPerMl) {
+    return amount * item.conversion.gramsPerMl;
   }
 
-  if (sourceUnit === "ml" && item.purchaseUnit === "stk" && item.mlPerEach) {
-    return amount / item.mlPerEach;
+  if (sourceUnit === "ml" && item.purchaseUnit === "stk" && item.conversion?.mlPerEach) {
+    return amount / item.conversion.mlPerEach;
   }
 
   return null;
@@ -481,6 +480,7 @@ function aggregateContributions(contributions: GroceryContribution[]): GroceryLi
         id: `${id}:${retailer.id}`,
         retailerId: retailer.id,
         retailerLabel: retailer.label,
+        retailerOrder: retailer.order,
         url: `${retailer.searchUrl}${encodeURIComponent(catalogItem.searchTerm ?? catalogItem.label)}`,
         linkKind: "search" as const,
         purchaseLabel,
@@ -494,6 +494,7 @@ function aggregateContributions(contributions: GroceryContribution[]): GroceryLi
         section,
         requiredLabel,
         purchaseLabel,
+        conversionNote: catalogItem.conversion?.note,
         sources: [...entry.sources].toSorted((a, b) => a.localeCompare(b, "nb")),
         offers,
         defaultOfferId: `${id}:oda`,

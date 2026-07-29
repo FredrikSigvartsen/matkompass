@@ -226,6 +226,14 @@
   font-weight: 850;
 }
 
+.conversionNote {
+  max-width: 42rem;
+  margin: 0.35rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
 .itemActions {
   display: grid;
   grid-template-columns: minmax(8rem, 0.8fr) minmax(0, 1.2fr);

@@ -1,5 +1,6 @@
 import { foods } from "./matvaretabellen.generated";
 import type { RecipeReference } from "../lib/recipes";
+import type { GroceryItemId } from "./grocery-catalog";
 
 export type FoodId = (typeof foods)[number]["id"];
 
@@ -13,6 +14,7 @@ export interface PlannedMeal {
   title?: string;
   recipe?: RecipeReference;
   ingredients: IngredientAmount[];
+  omittedRecipeGroceryItems?: GroceryItemId[];
   details?: string[];
 }
 
@@ -172,6 +174,7 @@ const morningScramble = (
     { foodId: "06.136", grams: sweetPotato, label: "søtpotet til servering" },
     { foodId: "08.252", grams: 14, label: "ghee" },
   ],
+  omittedRecipeGroceryItems: protein === "ytrefilet" ? ["ground-beef"] : undefined,
   details,
 });
 
@@ -193,6 +196,7 @@ const hormoneHarmonyBowl = (
     { foodId: "06.524", grams: 75, label: "avokado" },
     { foodId: "08.112", grams: 14, label: "olivenolje" },
   ],
+  omittedRecipeGroceryItems: ["salmon"],
   details,
 });
 

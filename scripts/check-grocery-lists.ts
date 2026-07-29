@@ -47,12 +47,33 @@ for (const list of lists) {
   }
 
   const wildRice = list.lines.find((line) => line.id === "wild-rice");
+  const sirloin = list.lines.find((line) => line.id === "sirloin");
+  const garlic = list.lines.find((line) => line.id === "garlic");
   const dinnerSources = new Set(
     list.lines.flatMap((line) => line.sources.filter((source) => source.endsWith("middag"))),
   );
 
   assert(wildRice !== undefined, `Uke ${list.week.weekNumber} mangler villris`);
+  assert(
+    wildRice.conversionNote?.includes("faktor 0,34") === true,
+    `Uke ${list.week.weekNumber} mangler synlig omregning for villris`,
+  );
+  assert(
+    sirloin?.requiredLabel === "1,87 kg",
+    `Uke ${list.week.weekNumber} dobbeltteller biff eller ytrefilet`,
+  );
+  assert(
+    garlic?.sources.some((source) => source.endsWith("middag")) === true,
+    `Uke ${list.week.weekNumber} mangler hvitløk fra middagsoppskriftene`,
+  );
   assert(dinnerSources.size === 7, `Uke ${list.week.weekNumber} mangler en familiemiddag`);
+
+  if (list.week.type === "A") {
+    assert(
+      list.lines.some((line) => line.id === "avocado-oil"),
+      "Plan A skal kjøpe avokadoolje til storfeburgerne",
+    );
+  }
   console.log(
     `OK Uke ${list.week.weekNumber} (${list.week.type}): ${list.lines.length} dagligvarer, ` +
       `${list.lines.filter((line) => line.section === "buy").length} må kjøpes`,
