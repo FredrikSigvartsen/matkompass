@@ -49,6 +49,7 @@ for (const list of lists) {
   const wildRice = list.lines.find((line) => line.id === "wild-rice");
   const sirloin = list.lines.find((line) => line.id === "sirloin");
   const garlic = list.lines.find((line) => line.id === "garlic");
+  const eggs = list.lines.find((line) => line.id === "egg");
   const dinnerSources = new Set(
     list.lines.flatMap((line) => line.sources.filter((source) => source.endsWith("middag"))),
   );
@@ -66,12 +67,27 @@ for (const list of lists) {
     garlic?.sources.some((source) => source.endsWith("middag")) === true,
     `Uke ${list.week.weekNumber} mangler hvitløk fra middagsoppskriftene`,
   );
+  assert(
+    eggs?.purchaseLabel === "2 × 6 stk",
+    `Uke ${list.week.weekNumber} runder ikke egg til praktiske pakker`,
+  );
+  assert(
+    !list.lines.some((line) => line.id === "protein-powder"),
+    `Uke ${list.week.weekNumber} inkluderer proteinpulver som planen har utelatt`,
+  );
   assert(dinnerSources.size === 7, `Uke ${list.week.weekNumber} mangler en familiemiddag`);
 
   if (list.week.type === "A") {
     assert(
       list.lines.some((line) => line.id === "avocado-oil"),
       "Plan A skal kjøpe avokadoolje til storfeburgerne",
+    );
+  }
+
+  if (list.week.type === "B") {
+    assert(
+      list.lines.some((line) => line.id === "butter"),
+      "Plan B skal bevare smør fra tacobowl-oppskriften",
     );
   }
   console.log(

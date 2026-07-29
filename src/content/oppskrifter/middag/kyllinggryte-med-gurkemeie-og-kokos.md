@@ -9,28 +9,39 @@ ingredients:
       - amount: 450
         unit: "g"
         text: "økologiske kyllinglår, i terninger"
+        groceryItems: ["chicken-thigh"]
       - amount: 2.4
         unit: "dl"
         text: "kokosmelk (uten gummi eller tilsetningsstoffer)"
+        groceryItems: ["coconut-milk"]
       - amount: 0.5
         text: "løk, i terninger"
+        groceryItems: ["onion"]
       - amount: 1
         text: "fedd hvitløk, finhakket"
+        groceryItems: ["garlic"]
       - amount: 1
         unit: "ts"
         text: "gurkemeie"
+        groceryItems: ["turmeric"]
       - amount: 0.5
         unit: "ts"
         text: "malt ingefær"
+        groceryItems: ["ginger"]
       - text: "kokosolje til steking"
+        groceryItems: ["coconut-oil"]
       - amount: 2.4
         unit: "dl"
         text: "squash, hakket"
+        groceryItems: ["squash"]
       - amount: 1.2
         unit: "dl"
         text: "beinbuljong"
+        groceryItems: ["bone-broth"]
       - text: "Havsalt og svart pepper etter smak"
+        groceryItems: ["salt-pepper"]
       - text: "server med blomkålris"
+        groceryItems: ["cauliflower"]
         optional: true
 tags: ["Betennelsesdempende", "Tarmhelende", "Trøstende og funksjonell"]
 adapted: false

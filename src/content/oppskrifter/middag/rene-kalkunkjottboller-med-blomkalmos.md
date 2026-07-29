@@ -10,30 +10,41 @@ ingredients:
       - amount: 450
         unit: "g"
         text: "økologisk kalkunkjøttdeig fra beiteoppdrett"
+        groceryItems: ["turkey"]
       - amount: 1
         text: "fedd hvitløk, finhakket"
+        groceryItems: ["garlic"]
       - amount: 1
         unit: "ts"
         text: "tørket oregano"
+        groceryItems: ["oregano"]
       - amount: 0.5
         unit: "ts"
         text: "havsalt"
+        groceryItems: ["salt-pepper"]
       - amount: 1
         text: "egg fra beitehøns"
+        groceryItems: ["egg"]
       - amount: 1
         unit: "ss"
         text: "mandelmel"
+        groceryItems: ["almond-flour"]
   - title: "Blomkålmos"
     items:
       - amount: 1
         text: "blomkålhode, dampet"
+        groceryItems: ["cauliflower"]
       - amount: 2
         unit: "ss"
         text: "olivenolje eller ghee"
+        groceryItems: ["ghee"]
       - amount: 1
         text: "fedd hvitløk"
+        groceryItems: ["garlic"]
       - text: "Baja Gold-havsalt og svart pepper etter smak"
+        groceryItems: ["salt-pepper"]
       - text: "et dryss næringsgjær"
+        groceryItems: ["nutritional-yeast"]
         optional: true
 tags: ["Trøstemat", "Proteinrik", "Blodsukkerbalanse"]
 adapted: false

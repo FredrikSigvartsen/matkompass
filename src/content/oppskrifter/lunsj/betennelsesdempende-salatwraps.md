@@ -9,19 +9,26 @@ ingredients:
       - amount: 225
         unit: "g"
         text: "økologisk kvernet kalkun eller gressfôret storfekjøtt"
+        groceryItems: ["turkey"]
       - amount: 1
         unit: "ss"
         text: "kokosaminos"
+        groceryItems: ["coconut-aminos"]
       - amount: 1
         unit: "ts"
         text: "fersk ingefær, revet"
+        groceryItems: ["ginger"]
       - amount: 0.5
         text: "hvitløksfedd, finhakket"
+        groceryItems: ["garlic"]
       - amount: 1
         unit: "ss"
         text: "olivenolje eller avokadoolje"
+        groceryItems: ["avocado-oil"]
       - text: "Blader av hjertesalat eller romanosalat"
+        groceryItems: ["romaine"]
       - text: "Strimlede gulrøtter, agurkskiver og mikrogrønt til garnityr"
+        groceryItems: ["carrot", "cucumber", "microgreens"]
 tags:
   - Proteinrik
   - Lite karbohydrater

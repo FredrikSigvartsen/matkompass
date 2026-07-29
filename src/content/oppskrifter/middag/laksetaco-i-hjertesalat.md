@@ -10,35 +10,49 @@ ingredients:
       - amount: 500
         unit: "g"
         text: "villfanget laksefilet"
+        groceryItems: ["salmon"]
       - text: "Havsalt og sort pepper etter smak"
+        groceryItems: ["salt-pepper"]
       - amount: 2
         text: "lime, saften"
+        groceryItems: ["lime"]
       - amount: 1.5
         text: "avokado"
+        groceryItems: ["avocado"]
       - amount: 2
         text: "fedd hvitløk"
+        groceryItems: ["garlic"]
       - amount: 1
         text: "rødløk"
+        groceryItems: ["red-onion"]
       - amount: 75
         unit: "g"
         text: "cherrytomater"
+        groceryItems: ["cherry-tomato"]
       - amount: 1
         text: "pakke hjertesalat"
+        groceryItems: ["heart-lettuce"]
       - amount: 1
         text: "liten håndfull koriander"
+        groceryItems: ["coriander"]
   - title: "Agurk- og tomatsalsa"
     items:
       - amount: 1
         text: "agurk"
+        groceryItems: ["cucumber"]
       - amount: 75
         unit: "g"
         text: "cherrytomater"
+        groceryItems: ["cherry-tomato"]
       - amount: 1
         text: "rødløk"
+        groceryItems: ["red-onion"]
       - amount: 1
         text: "lime, saften"
+        groceryItems: ["lime"]
       - amount: 1
         text: "liten håndfull koriander"
+        groceryItems: ["coriander"]
 tags: ["Fisk", "Grønnsaksrik", "Mild familiemiddag"]
 adapted: true
 adaptationNote: "Chili, mango og reddik er utelatt. Salsaen er gjort mild med agurk, tomat, rødløk, lime og koriander."

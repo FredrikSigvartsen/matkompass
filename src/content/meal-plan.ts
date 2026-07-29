@@ -275,6 +275,7 @@ export const daytimeMeals: Record<DayName, [PlannedMeal, PlannedMeal]> = {
         "Lag omtrent 2,5 ganger oppskriften til hele familien; mengdene under er Fredriks porsjon.",
         "Planversjonen bruker cottage cheese og ikke valgfritt proteinpulver.",
       ],
+      omittedRecipeGroceryItems: ["protein-powder"],
     },
   ],
 };

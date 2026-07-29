@@ -9,25 +9,36 @@ ingredients:
       - amount: 450
         unit: "g"
         text: "gressfôret kjøttdeig av storfe"
+        groceryItems: ["ground-beef"]
       - amount: 1
         unit: "ts"
         text: "hvitløkspulver"
+        groceryItems: ["garlic-powder"]
       - amount: 0.5
         unit: "ts"
         text: "røkt paprika"
+        groceryItems: ["smoked-paprika"]
       - text: "Baja Gold-havsalt og grovkvernet pepper etter smak"
+        groceryItems: ["salt-pepper"]
       - amount: 1
         unit: "ss"
         text: "avokadoolje"
+        groceryItems: ["avocado-oil"]
       - amount: 4
         text: "store blader romanosalat eller bladkål"
+        groceryItems: ["romaine"]
       - amount: 1
         text: "avokado, i skiver"
+        groceryItems: ["avocado"]
       - amount: 0.25
         text: "rødløk, i tynne skiver"
+        groceryItems: ["red-onion"]
       - amount: 1
         text: "skive ost av rå geite- eller sauemelk (valgfritt)"
+        groceryItems: ["cheese"]
+        optional: true
       - text: "Ren sennep (uten tilsatt sukker eller konserveringsmidler)"
+        groceryItems: ["mustard"]
 tags: ["Proteinrik", "Uten frøolje", "Ingen raffinerte karbohydrater"]
 adapted: true
 adaptationNote: "Bisonkjøtt er erstattet med gressfôret kjøttdeig av storfe fordi bison ikke inngår i Mat vi spiser."

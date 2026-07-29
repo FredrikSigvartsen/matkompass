@@ -8,23 +8,31 @@ ingredients:
   - items:
       - amount: 2
         text: "egg fra beitehøns"
+        groceryItems: ["egg"]
       - amount: 55
         unit: "g"
         text: "kjøttdeig av gressfôret storfe"
+        groceryItems: ["ground-beef"]
       - amount: 2.4
         unit: "dl"
         text: "økologisk spinat"
+        groceryItems: ["spinach"]
       - amount: 0.6
         unit: "dl"
         text: "sopp, hakket"
+        groceryItems: ["mushroom"]
       - amount: 1
         unit: "ss"
         text: "avokadoolje eller ghee"
+        groceryItems: ["ghee"]
       - amount: 0.25
         unit: "ts"
         text: "gurkemeie"
+        groceryItems: ["turmeric"]
       - text: "En klype sort pepper"
+        groceryItems: ["salt-pepper"]
       - text: "Baja Gold-havsalt etter smak"
+        groceryItems: ["salt-pepper"]
 tags:
   - "Proteinrik"
   - "Mitokondriell energi"

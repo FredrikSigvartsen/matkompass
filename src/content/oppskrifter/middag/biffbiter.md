@@ -9,27 +9,36 @@ ingredients:
       - amount: 450
         unit: "g"
         text: "biffbiter av gressfôret storfe (entrecôte eller ytrefilet)"
+        groceryItems: ["sirloin"]
       - amount: 3
         unit: "ss"
         text: "kaldpresset ekstra jomfruolivenolje"
+        groceryItems: ["olive-oil"]
       - amount: 3
         text: "fedd hvitløk, finhakket"
+        groceryItems: ["garlic"]
       - amount: 2
         unit: "ss"
         text: "fersk sitronsaft"
+        groceryItems: ["lemon"]
       - amount: 1
         unit: "ss"
         text: "kokosaminos"
+        groceryItems: ["coconut-aminos"]
       - amount: 1
         unit: "ts"
         text: "Baja Gold-havsalt"
+        groceryItems: ["salt-pepper"]
       - amount: 1
         unit: "ts"
         text: "grovkvernet svart pepper"
+        groceryItems: ["salt-pepper"]
       - amount: 1
         unit: "ss"
         text: "fersk rosmarin eller timian"
+        groceryItems: ["rosemary"]
       - text: "en klype chiliflak"
+        groceryItems: ["chili"]
         optional: true
 tags: ["Gressfôret", "Hormonstøtte", "Drivstoff for hjernen"]
 adapted: false

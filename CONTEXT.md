@@ -84,4 +84,6 @@ Søtpotet bakes i større porsjoner søndag og onsdag. Når familiemiddagen alle
 
 Markdown-filen under `src/content/oppskrifter/` er eneste sannhetskilde for oppskriftens tittel, ingredienser og fremgangsmåte. Ingrediensene ligger strukturert i frontmatter. Oppskriftssiden kan skalere deklarerte mengder fra oppskriftens `baseAdultPortions`; én voksen tilsvarer Fredriks grunnporsjon, og ett barn tilsvarer 0,35 voksenporsjon. Ingredienser uten en sikker mengde, som «etter smak», skaleres ikke. Plandata skal bevare oppskriftens kjerneingredienser og fettmengder. Eventuelle planjusteringer gjøres i hele familiens grunnrett før den faste fordelingen; personlige middagstillegg brukes ikke.
 
+Planlagte oppskrifter knytter hver ingrediens til én eller flere stabile dagligvareidentiteter i frontmatter. Plandata kan uttrykkelig utelate en slik dagligvare når planversjonen erstatter eller fjerner råvaren, men skal ikke kopiere oppskriftens originalmengde.
+
 Det versjonerte uttrekket fra Matvaretabellen oppdateres med `pnpm run update:foods`. Begge A/B-ukene valideres mot makrotoleransene med `pnpm run check:plans`.

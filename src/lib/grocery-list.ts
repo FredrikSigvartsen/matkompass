@@ -214,17 +214,10 @@ function mergeRecipeWithPlan(
   const replacements = new Set(omittedRecipeGroceryItems);
   const recipeContributions = recipe.ingredients.flatMap((group) =>
     group.items.flatMap((ingredient) => {
-      const contribution = getRecipeContribution(ingredient, scale, source);
-
-      if (
-        contribution === null ||
-        plannedIds.has(contribution.id) ||
-        replacements.has(contribution.id)
-      ) {
-        return [];
-      }
-
-      return [contribution];
+      return getRecipeContributions(ingredient, scale, source).filter(
+        (contribution) =>
+          !plannedIds.has(contribution.id) && !replacements.has(contribution.id),
+      );
     }),
   );
 
@@ -238,7 +231,7 @@ function getPlanContribution(
   const id = getPlanGroceryId(ingredient);
   const catalogItem = getGroceryCatalogItem(id);
   const purchaseGrams =
-    ingredient.grams * (catalogItem.conversion?.planGramsToPurchase ?? 1);
+    ingredient.grams * (catalogItem.conversion?.purchaseGramsPerPlanGram ?? 1);
   const amount = convertQuantity(id, "g", purchaseGrams);
 
   if (amount === null) {
@@ -272,113 +265,32 @@ function getPlanGroceryId(ingredient: IngredientAmount): GroceryItemId {
   return id;
 }
 
-function getRecipeContribution(
+function getRecipeContributions(
   ingredient: RecipeIngredient,
   scale: number,
   source: string,
-): GroceryContribution | null {
-  if (ingredient.text.trim().toLocaleLowerCase("nb") === "vann") {
-    return null;
+): GroceryContribution[] {
+  if (ingredient.groceryItems === undefined) {
+    throw new Error(
+      `Oppskriftsingrediensen «${ingredient.text}» mangler strukturerte dagligvarer`,
+    );
   }
 
-  const id = getRecipeGroceryId(ingredient.text);
-  const catalogItem = getGroceryCatalogItem(id);
   const sourceQuantity = getRecipeSourceQuantity(ingredient, scale);
-  const amount = sourceQuantity
-    ? convertQuantity(id, sourceQuantity.unit, sourceQuantity.amount)
-    : null;
-  const lowerText = ingredient.text.toLocaleLowerCase("nb");
-  const optional =
-    ingredient.optional === true ||
-    lowerText.startsWith("valgfritt") ||
-    lowerText.includes("(valgfritt)") ||
-    lowerText.startsWith("chiliflak") ||
-    lowerText.startsWith("hot honey");
+  return ingredient.groceryItems.map((id) => {
+    const catalogItem = getGroceryCatalogItem(id);
+    const amount = sourceQuantity
+      ? convertQuantity(id, sourceQuantity.unit, sourceQuantity.amount)
+      : null;
 
-  return {
-    id,
-    amount,
-    unit: catalogItem.purchaseUnit,
-    optional,
-    source,
-  };
-}
-
-function getRecipeGroceryId(text: string): GroceryItemId {
-  const value = text.toLocaleLowerCase("nb");
-  const rules: Array<[RegExp, GroceryItemId]> = [
-    [/perfectaminos|kollagen/, "protein-powder"],
-    [/cottage cheese/, "cottage-cheese"],
-    [/tunfisk/, "tuna"],
-    [/røkt laks/, "smoked-salmon"],
-    [/laks/, "salmon"],
-    [/reker/, "shrimp"],
-    [/kalkun/, "turkey"],
-    [/kjøttdeig|storfekjøtt/, "ground-beef"],
-    [/biffbiter|fileter av gressfôret storfe/, "sirloin"],
-    [/kyllingbryst/, "chicken-breast"],
-    [/kyllinglår/, "chicken-thigh"],
-    [/egg fra/, "egg"],
-    [/mandelmel/, "almond-flour"],
-    [/moden banan/, "banana"],
-    [/søtpotet/, "sweet-potato"],
-    [/kokosmelk/, "coconut-milk"],
-    [/kokosolje/, "coconut-oil"],
-    [/avokadoolje eller ghee|ghee eller avokadoolje|smeltet ghee|olivenolje eller ghee/, "ghee"],
-    [/avokadoolje/, "avocado-oil"],
-    [/olivenolje|extra virgin/, "olive-oil"],
-    [/smør/, "ghee"],
-    [/avokado/, "avocado"],
-    [/blomkål/, "cauliflower"],
-    [/brokkoli/, "broccoli"],
-    [/grønnkål|ruccola/, "kale"],
-    [/spinat/, "spinach"],
-    [/sopp/, "mushroom"],
-    [/squash/, "squash"],
-    [/hjertesalat/, "heart-lettuce"],
-    [/romanosalat|bladkål/, "romaine"],
-    [/rødkål/, "red-cabbage"],
-    [/rød paprika,|rød paprika$/, "red-pepper"],
-    [/cherrytomat/, "cherry-tomato"],
-    [/rødløk/, "red-onion"],
-    [/hvitløkspulver/, "garlic-powder"],
-    [/hvitløk/, "garlic"],
-    [/løk,/, "onion"],
-    [/agurk/, "cucumber"],
-    [/gulrot/, "carrot"],
-    [/quinoa/, "quinoa"],
-    [/sesamfrø/, "sesame"],
-    [/valnøtt/, "walnuts"],
-    [/lime/, "lime"],
-    [/sitron|sitronsaft/, "lemon"],
-    [/kokosaminos/, "coconut-aminos"],
-    [/ingefær/, "ginger"],
-    [/gurkemeie/, "turmeric"],
-    [/ceylonkanel/, "cinnamon"],
-    [/røkt paprika/, "smoked-paprika"],
-    [/paprikapulver/, "paprika"],
-    [/spisskummen/, "cumin"],
-    [/oregano/, "oregano"],
-    [/rosmarin/, "rosemary"],
-    [/timian/, "thyme"],
-    [/dill/, "dill"],
-    [/koriander/, "coriander"],
-    [/mikrogrønt|hampfrø/, "microgreens"],
-    [/sennep/, "mustard"],
-    [/ost av rå/, "cheese"],
-    [/beinbuljong/, "bone-broth"],
-    [/næringsgjær/, "nutritional-yeast"],
-    [/hot honey/, "hot-honey"],
-    [/chiliflak/, "chili"],
-    [/havsalt|salt|sort pepper|svart pepper|grovkvernet pepper/, "salt-pepper"],
-  ];
-  const match = rules.find(([pattern]) => pattern.test(value));
-
-  if (!match) {
-    throw new Error(`Mangler dagligvaremapping for oppskriftsingrediensen «${text}»`);
-  }
-
-  return match[1];
+    return {
+      id,
+      amount,
+      unit: catalogItem.purchaseUnit,
+      optional: ingredient.optional === true,
+      source,
+    };
+  });
 }
 
 function getRecipeSourceQuantity(
@@ -540,6 +452,13 @@ function formatPurchaseAmount(entry: GroceryAccumulator, id: GroceryItemId): str
   }
 
   const item = getGroceryCatalogItem(id);
+
+  if (item.packageSize) {
+    const packages = Math.ceil(entry.amount / item.packageSize);
+    const packageLabel = formatAmount(item.packageSize, item.purchaseUnit);
+    return packages === 1 ? packageLabel : `${packages} × ${packageLabel}`;
+  }
+
   const rounded = Math.ceil(entry.amount / item.roundTo) * item.roundTo;
   return formatAmount(rounded, item.purchaseUnit);
 }

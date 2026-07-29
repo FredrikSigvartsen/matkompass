@@ -9,17 +9,24 @@ ingredients:
       - amount: 450
         unit: "g"
         text: "villfangede reker, skrelt og renset"
+        groceryItems: ["shrimp"]
       - amount: 2
         text: "squash, spiralisert"
+        groceryItems: ["squash"]
       - amount: 1
         text: "fedd hvitløk, finhakket"
+        groceryItems: ["garlic"]
       - amount: 2
         unit: "ss"
         text: "olivenolje"
+        groceryItems: ["olive-oil"]
       - amount: 0.5
         text: "sitron, saften"
+        groceryItems: ["lemon"]
       - text: "Havsalt og grovkvernet svart pepper etter smak"
+        groceryItems: ["salt-pepper"]
       - text: "chiliflak, servert separat"
+        groceryItems: ["chili"]
         optional: true
 tags: ["Støtte for mitokondriene", "Magert protein", "Lett og mettende"]
 adapted: true
