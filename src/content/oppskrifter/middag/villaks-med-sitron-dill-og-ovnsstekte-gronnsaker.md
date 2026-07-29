@@ -8,22 +8,30 @@ ingredients:
   - items:
       - amount: 2
         text: "fileter av villfanget laks (115–170 g hver)"
+        groceryItems: ["salmon"]
       - amount: 1
         text: "sitron, saft og revet skall"
+        groceryItems: ["lemon"]
       - amount: 1
         unit: "ss"
         text: "olivenolje"
+        groceryItems: ["olive-oil"]
       - amount: 1
         unit: "ss"
         text: "fersk dill, hakket"
+        groceryItems: ["dill"]
       - amount: 1
         text: "fedd hvitløk, finhakket"
+        groceryItems: ["garlic"]
       - amount: 1
         text: "squash, hakket"
+        groceryItems: ["squash"]
       - amount: 2.4
         unit: "dl"
         text: "brokkolibuketter"
+        groceryItems: ["broccoli"]
       - text: "Havsalt og svart pepper etter smak"
+        groceryItems: ["salt-pepper"]
 tags: ["Omega-3-økning", "Avgiftning av østrogen", "Støtte for hud og hjerne"]
 adapted: false
 adaptationNote: ""

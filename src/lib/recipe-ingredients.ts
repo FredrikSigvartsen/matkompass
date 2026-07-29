@@ -1,3 +1,5 @@
+import type { GroceryItemId } from "../content/grocery-catalog";
+
 export const childPortionFactor = 0.35;
 export const familyPreset = { adults: 2, children: 1 } as const;
 
@@ -14,6 +16,7 @@ export interface RecipeIngredient {
   approximate?: boolean;
   optional?: boolean;
   scalable?: false;
+  groceryItems?: GroceryItemId[];
 }
 
 export interface RecipeIngredientGroup {

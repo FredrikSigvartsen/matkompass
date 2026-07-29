@@ -9,25 +9,34 @@ ingredients:
       - amount: 680
         unit: "g"
         text: "økologiske kyllinglår, helst med skinn og bein"
+        groceryItems: ["chicken-thigh"]
       - amount: 2.4
         unit: "dl"
         text: "brokkolibuketter"
+        groceryItems: ["broccoli"]
       - amount: 1
         text: "rød paprika, i skiver"
+        groceryItems: ["red-pepper"]
       - amount: 1
         text: "squash, hakket"
+        groceryItems: ["squash"]
       - amount: 2
         unit: "ss"
         text: "olivenolje"
+        groceryItems: ["olive-oil"]
       - amount: 1
         text: "sitron, saften"
+        groceryItems: ["lemon"]
       - amount: 1
         unit: "ts"
         text: "hvitløkspulver"
+        groceryItems: ["garlic-powder"]
       - amount: 0.5
         unit: "ts"
         text: "rosmarin"
+        groceryItems: ["rosemary"]
       - text: "Havsalt og svart pepper etter smak"
+        groceryItems: ["salt-pepper"]
 tags: ["Støtte for mitokondriene", "Hormonvennlig", "Enkel måltidsforberedelse"]
 adapted: false
 adaptationNote: ""

@@ -8,22 +8,32 @@ ingredients:
   - items:
       - amount: 2
         text: "egg fra beitehøns"
+        groceryItems: ["egg"]
       - amount: 1
         text: "moden banan"
+        groceryItems: ["banana"]
       - amount: 1
         unit: "måleskje"
         text: "PerfectAminos med vaniljesmak eller kollagen"
+        groceryItems: ["protein-powder"]
         optional: true
       - amount: 1
         unit: "ss"
         text: "mandelmel"
+        groceryItems: ["almond-flour"]
       - amount: 0.5
         unit: "ts"
         text: "ceylonkanel"
+        groceryItems: ["cinnamon"]
       - text: "En klype Baja Gold-havsalt"
+        groceryItems: ["salt-pepper"]
       - text: "Kokosolje til smøring"
+        groceryItems: ["coconut-oil"]
       - text: "Til servering: cottage cheese"
+        groceryItems: ["cottage-cheese"]
       - text: "Valgfritt tilbehør: økologiske bær, nøttesmør, kokosyoghurt"
+        groceryItems: ["waffle-toppings"]
+        optional: true
 tags:
   - "Uten korn"
   - "Ingen sukkerkrasj"

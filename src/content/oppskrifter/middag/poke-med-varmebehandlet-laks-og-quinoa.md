@@ -9,22 +9,29 @@ ingredients:
       - amount: 300
         unit: "g"
         text: "villfanget laksefilet uten skinn og bein"
+        groceryItems: ["salmon"]
       - amount: 1
         unit: "dl"
         text: "quinoa"
+        groceryItems: ["quinoa"]
       - amount: 1
         unit: "ss"
         text: "extra virgin olivenolje"
+        groceryItems: ["olive-oil"]
       - amount: 1
         unit: "ss"
         text: "sesamfrø"
+        groceryItems: ["sesame"]
       - amount: 150
         unit: "g"
         text: "rødkål, finsnittet"
+        groceryItems: ["red-cabbage"]
       - amount: 1
         text: "gulrot, revet"
+        groceryItems: ["carrot"]
       - amount: 0.5
         text: "agurk, i terninger"
+        groceryItems: ["cucumber"]
 tags: ["Fisk", "Grønnsaksrik", "Restitusjonsmåltid"]
 adapted: true
 adaptationNote: "Laksen varmebehandles. Sesamolje, soyasaus og uspesifisert råkost er erstattet med extra virgin olivenolje og navngitte grønnsaker."

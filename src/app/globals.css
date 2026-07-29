@@ -345,6 +345,10 @@ button:focus-visible {
   background: #9fb7a2;
 }
 
+.home-card--groceries {
+  background: #c6a8b1;
+}
+
 .content-page,
 .recipe-page {
   padding-bottom: clamp(5rem, 10vw, 9rem);

@@ -8,18 +8,24 @@ ingredients:
   - items:
       - amount: 2
         text: "fileter av gressfôret storfe (115–170 g hver)"
+        groceryItems: ["sirloin"]
       - amount: 1
         unit: "ss"
         text: "olivenolje eller ghee"
+        groceryItems: ["ghee"]
       - amount: 4.8
         unit: "dl"
         text: "økologisk grønnkål eller mangold"
+        groceryItems: ["kale"]
       - amount: 1
         text: "fedd hvitløk, finhakket"
+        groceryItems: ["garlic"]
       - amount: 1
         unit: "ss"
         text: "sitronsaft"
+        groceryItems: ["lemon"]
       - text: "Havsalt og grovkvernet svart pepper etter smak"
+        groceryItems: ["salt-pepper"]
 tags: ["Muskelrestitusjon", "Jernstøtte", "Fase II-avgiftning i leveren"]
 adapted: false
 adaptationNote: ""

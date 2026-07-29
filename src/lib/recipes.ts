@@ -1,5 +1,6 @@
 import matter from "gray-matter";
 import recipeSources from "../content/recipes.generated.json";
+import { isGroceryItemId } from "../content/grocery-catalog";
 import {
   recipeCategories,
   type RecipeCategory,
@@ -165,6 +166,7 @@ function isIngredient(value: unknown): value is RecipeIngredient {
     "approximate",
     "optional",
     "scalable",
+    "groceryItems",
   ]);
 
   if (!isRecord(value) || typeof value.text !== "string" || !value.text.trim()) {
@@ -208,7 +210,10 @@ function isIngredient(value: unknown): value is RecipeIngredient {
     (value.unit === undefined || typeof value.unit === "string") &&
     (value.approximate === undefined || typeof value.approximate === "boolean") &&
     (value.optional === undefined || typeof value.optional === "boolean") &&
-    (value.scalable === undefined || value.scalable === false)
+    (value.scalable === undefined || value.scalable === false) &&
+    (value.groceryItems === undefined ||
+      (Array.isArray(value.groceryItems) &&
+        value.groceryItems.every(isGroceryItemId)))
   );
 }
 

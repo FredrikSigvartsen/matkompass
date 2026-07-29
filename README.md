@@ -13,6 +13,8 @@ Produksjonsbygget verifiseres med:
 
 ```bash
 pnpm run check:plans
+pnpm run check:recipes
+pnpm run check:groceries
 pnpm run check:units
 pnpm run build
 ```
@@ -22,9 +24,11 @@ pnpm run build
 - `src/content/oppskrifter/`: oppskrifter i Markdown
 - `src/content/site-content.ts`: prinsipper og råvarelister
 - `src/content/meal-plan.ts`: måltider, middagsrotasjon og gramvekter
+- `src/content/grocery-catalog.ts`: dagligvareidentiteter og kjøpsenheter
+- `src/content/retailers.ts`: butikkene som kan velges i handlelisten
 - `CONTEXT.md`: avklarte domenebegreper og planregler
 
-Markdown-oppskriftene er eneste sannhetskilde for oppskriftstitler, ingredienser og fremgangsmåter. Ingrediensene lagres strukturert i filens frontmatter, slik at mengdene kan skaleres til voksne og barn. Ukeplanene refererer til oppskriftene med kategori og slug og lagrer bare planjusterte mengder.
+Markdown-oppskriftene er eneste sannhetskilde for oppskriftstitler, ingredienser og fremgangsmåter. Ingrediensene lagres strukturert i filens frontmatter, slik at mengdene kan skaleres til voksne og barn. Planlagte oppskrifter har også stabile dagligvareidentiteter i frontmatter. Ukeplanene refererer til oppskriftene med kategori og slug, lagrer planjusterte mengder og kan uttrykkelig utelate en oppskriftsråvare når planen erstatter den.
 
 ## Matvaretabellen
 

@@ -8,44 +8,60 @@ ingredients:
   - items:
       - amount: 1
         text: "stor søtpotet"
+        groceryItems: ["sweet-potato"]
       - amount: 2
         unit: "ss"
         text: "smeltet ghee"
+        groceryItems: ["ghee"]
       - text: "Havsalt og sort pepper etter smak"
+        groceryItems: ["salt-pepper"]
       - amount: 2
         unit: "ss"
         text: "hot honey, servert separat"
+        groceryItems: ["hot-honey"]
+        optional: true
       - amount: 300
         unit: "g"
         text: "gressfôret kjøttdeig av storfe"
+        groceryItems: ["ground-beef"]
       - amount: 1
         unit: "ts"
         text: "smør"
+        groceryItems: ["butter"]
       - amount: 1
         unit: "ts"
         text: "paprikapulver"
+        groceryItems: ["paprika"]
       - amount: 0.5
         unit: "ts"
         text: "spisskummen"
+        groceryItems: ["cumin"]
       - amount: 0.25
         unit: "ts"
         text: "hvitløkspulver"
+        groceryItems: ["garlic-powder"]
       - amount: 0.25
         unit: "ts"
         text: "oregano"
+        groceryItems: ["oregano"]
       - amount: 0.5
         unit: "dl"
         text: "vann"
+        groceryItems: []
       - amount: 1
         text: "avokado"
+        groceryItems: ["avocado"]
       - amount: 2
         unit: "dl"
         text: "cottage cheese"
+        groceryItems: ["cottage-cheese"]
       - amount: 100
         unit: "g"
         text: "cherrytomater, delt i to"
+        groceryItems: ["cherry-tomato"]
       - amount: 4
         text: "store blader romanosalat, strimlet"
+        groceryItems: ["romaine"]
 tags: ["Proteinrik", "Langsomme karbohydrater", "Familievennlig"]
 adapted: true
 adaptationNote: "Olivenolje og ferdig tacokrydder er erstattet med ghee og enkeltkrydder. Salat og tomat er lagt til, og hot honey serveres separat."

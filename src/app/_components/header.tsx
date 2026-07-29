@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 
 const navigation = [
   { href: "/prinsipper", label: "Prinsipper" },
@@ -9,10 +10,16 @@ const navigation = [
   { href: "/oppskrifter", label: "Oppskrifter" },
   { href: "/middagsplan", label: "Middagsplan" },
   { href: "/fredriks-ukeplan", label: "Fredriks ukeplan" },
+  { href: "/handleliste", label: "Handleliste" },
 ];
 
 const Header = () => {
   const pathname = usePathname();
+  const activeLinkRef = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    activeLinkRef.current?.scrollIntoView({ block: "nearest", inline: "center" });
+  }, [pathname]);
 
   return (
     <header className="site-header">
@@ -27,6 +34,7 @@ const Header = () => {
               <li key={item.href}>
                 <Link
                   href={item.href}
+                  ref={pathname.startsWith(item.href) ? activeLinkRef : undefined}
                   className={pathname.startsWith(item.href) ? "is-active" : undefined}
                   aria-current={pathname.startsWith(item.href) ? "page" : undefined}
                 >

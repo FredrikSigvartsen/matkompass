@@ -8,18 +8,27 @@ ingredients:
   - items:
       - amount: 1
         text: "BPA-fri boks villfanget tunfisk i olivenolje"
+        groceryItems: ["tuna"]
       - amount: 100
         unit: "g"
         text: "agurk, hakket"
+        groceryItems: ["cucumber"]
       - amount: 1
         unit: "ss"
         text: "rødløk, hakket"
+        groceryItems: ["red-onion"]
       - amount: 0.5
         text: "sitron, saften"
+        groceryItems: ["lemon"]
       - amount: 200
         unit: "g"
         text: "bakt søtpotet"
-      - text: "Havsalt, sort pepper og valgfritt gurkemeie etter smak"
+        groceryItems: ["sweet-potato"]
+      - text: "Havsalt og sort pepper etter smak"
+        groceryItems: ["salt-pepper"]
+      - text: "Gurkemeie etter smak"
+        groceryItems: ["turmeric"]
+        optional: true
 tags:
   - Proteinrik
   - Kontorvennlig

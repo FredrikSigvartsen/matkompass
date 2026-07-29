@@ -8,20 +8,28 @@ ingredients:
   - items:
       - amount: 2
         text: "villfangede laksefileter (ca. 115 g hver)"
+        groceryItems: ["salmon"]
       - amount: 1
         text: "middels stor søtpotet, i terninger"
+        groceryItems: ["sweet-potato"]
       - amount: 9.5
         unit: "dl"
         text: "økologisk ruccola eller grønnkål"
+        groceryItems: ["kale"]
       - amount: 1
         text: "moden avokado, i skiver"
+        groceryItems: ["avocado"]
       - amount: 2
         unit: "ss"
         text: "olivenolje"
+        groceryItems: ["olive-oil"]
       - amount: 1
         text: "sitron, saften"
+        groceryItems: ["lemon"]
       - text: "Hvitløkspulver, havsalt og sort pepper etter smak"
+        groceryItems: ["garlic-powder", "salt-pepper"]
       - text: "hampfrø eller mikrogrønt"
+        groceryItems: ["microgreens"]
         optional: true
 tags:
   - Sunt fett

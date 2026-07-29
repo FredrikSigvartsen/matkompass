@@ -8,19 +8,26 @@ ingredients:
   - items:
       - amount: 0.5
         text: "japansk søtpotet, skåret i terninger"
+        groceryItems: ["sweet-potato"]
       - amount: 0.5
         text: "squash, hakket"
+        groceryItems: ["squash"]
       - amount: 0.25
         text: "rødløk, skivet"
+        groceryItems: ["red-onion"]
       - amount: 1.2
         unit: "dl"
         text: "økologisk spinat, hakket"
+        groceryItems: ["spinach"]
       - amount: 2
         text: "egg fra beitehøns"
+        groceryItems: ["egg"]
       - amount: 1
         unit: "ss"
         text: "ghee eller avokadoolje"
+        groceryItems: ["ghee"]
       - text: "Havsalt, gurkemeie og grovkvernet sort pepper etter smak"
+        groceryItems: ["salt-pepper", "turmeric"]
 tags:
   - "Støtter avgiftning"
   - "Uten korn"
