@@ -1,6 +1,5 @@
-import fs from "node:fs";
-import path from "node:path";
 import matter from "gray-matter";
+import recipeSources from "../content/recipes.generated.json";
 import {
   recipeCategories,
   type RecipeCategory,
@@ -47,32 +46,32 @@ export type RecipeSummary = Pick<
   "slug" | "title" | "category" | "yield" | "tags"
 >;
 
-const recipesDirectory = path.join(process.cwd(), "src/content/oppskrifter");
+const recipes = recipeSources.map((source) => {
+  const category = recipeCategories.find(
+    (candidate) => candidate.slug === source.category,
+  )?.slug;
+
+  if (!category) {
+    throw new Error(`Ugyldig oppskriftskategori: ${source.category}`);
+  }
+
+  return readRecipe(category, source.slug, source.markdown);
+});
 
 export function getAllRecipes(): Recipe[] {
-  return recipeCategories
-    .flatMap(({ slug }) => getRecipesByCategory(slug))
-    .toSorted((a, b) => a.title.localeCompare(b.title, "nb"));
+  return recipes.toSorted((a, b) => a.title.localeCompare(b.title, "nb"));
 }
 
 export function getRecipesByCategory(category: RecipeCategory): Recipe[] {
-  const categoryDirectory = path.join(recipesDirectory, category);
-
-  return fs
-    .readdirSync(categoryDirectory)
-    .filter((fileName) => fileName.endsWith(".md"))
-    .map((fileName) => readRecipe(category, fileName.replace(/\.md$/, "")))
+  return recipes
+    .filter((recipe) => recipe.category === category)
     .toSorted((a, b) => a.title.localeCompare(b.title, "nb"));
 }
 
 export function getRecipe(category: RecipeCategory, slug: string): Recipe | null {
-  const filePath = path.join(recipesDirectory, category, `${slug}.md`);
-
-  if (!fs.existsSync(filePath)) {
-    return null;
-  }
-
-  return readRecipe(category, slug);
+  return recipes.find(
+    (recipe) => recipe.category === category && recipe.slug === slug,
+  ) ?? null;
 }
 
 export function resolveRecipeReference(
@@ -101,9 +100,12 @@ export function resolveRecipeReference(
   };
 }
 
-function readRecipe(category: RecipeCategory, slug: string): Recipe {
-  const filePath = path.join(recipesDirectory, category, `${slug}.md`);
-  const { data, content } = matter(fs.readFileSync(filePath, "utf8"));
+function readRecipe(
+  category: RecipeCategory,
+  slug: string,
+  markdown: string,
+): Recipe {
+  const { data, content } = matter(markdown);
 
   if (
     typeof data.title !== "string" ||
@@ -118,7 +120,7 @@ function readRecipe(category: RecipeCategory, slug: string): Recipe {
     !Array.isArray(data.tags) ||
     !data.tags.every((tag) => typeof tag === "string")
   ) {
-    throw new Error(`Ugyldig oppskriftsdata i ${filePath}`);
+    throw new Error(`Ugyldig oppskriftsdata i ${category}/${slug}.md`);
   }
 
   return {

@@ -2,15 +2,21 @@
   "packageManager": "pnpm@11.3.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "generate:recipes": "node scripts/generate-recipes.mjs",
+    "dev": "pnpm run generate:recipes && next dev --turbopack",
+    "build": "pnpm run generate:recipes && next build",
     "start": "next start",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "update:foods": "node scripts/update-matvaretabellen.mjs",
-    "check:plans": "tsc --module commonjs --moduleResolution node --target es2023 --esModuleInterop --skipLibCheck --outDir /tmp/matkompass-plan-check --rootDir . scripts/check-meal-plans.ts src/lib/meal-plan.ts src/content/meal-plan.ts src/content/matvaretabellen.generated.ts && NODE_PATH=$PWD/node_modules node /tmp/matkompass-plan-check/scripts/check-meal-plans.js",
-    "check:recipes": "tsc --module commonjs --moduleResolution node --target es2023 --esModuleInterop --skipLibCheck --outDir /tmp/matkompass-recipe-check --rootDir . scripts/check-recipes.ts src/lib/recipes.ts src/lib/recipe-categories.ts src/lib/recipe-ingredients.ts && NODE_PATH=$PWD/node_modules node /tmp/matkompass-recipe-check/scripts/check-recipes.js",
+    "check:plans": "pnpm run generate:recipes && tsc --module commonjs --moduleResolution node --target es2023 --esModuleInterop --resolveJsonModule --skipLibCheck --outDir /tmp/matkompass-plan-check --rootDir . scripts/check-meal-plans.ts src/lib/meal-plan.ts src/lib/recipes.ts src/lib/recipe-categories.ts src/lib/recipe-ingredients.ts src/content/meal-plan.ts src/content/matvaretabellen.generated.ts src/content/recipes.generated.json && NODE_PATH=$PWD/node_modules node /tmp/matkompass-plan-check/scripts/check-meal-plans.js",
+    "check:recipes": "pnpm run generate:recipes && tsc --module commonjs --moduleResolution node --target es2023 --esModuleInterop --resolveJsonModule --skipLibCheck --outDir /tmp/matkompass-recipe-check --rootDir . scripts/check-recipes.ts src/lib/recipes.ts src/lib/recipe-categories.ts src/lib/recipe-ingredients.ts src/content/recipes.generated.json && NODE_PATH=$PWD/node_modules node /tmp/matkompass-recipe-check/scripts/check-recipes.js",
     "check:units": "node scripts/check-recipe-units.mjs"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "^1.20.2",
     "gray-matter": "^4.0.3",
     "next": "latest",
     "react": "^19",
@@ -25,6 +31,7 @@
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.2",
+    "wrangler": "^4.114.0"
   }
 }
