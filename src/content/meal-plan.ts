@@ -271,9 +271,6 @@ export const daytimeMeals: Record<DayName, [PlannedMeal, PlannedMeal]> = {
     },
   ],
   Søndag: [
-    morningScramble("ytrefilet", 240, 110, [
-      "Ytrefileten stekes raskt i strimler før egg og grønnsaker tilsettes.",
-    ]),
     {
       recipe: recipeRef("frokost", "barnevennlige-proteinvafler"),
       ingredients: [
@@ -282,7 +279,6 @@ export const daytimeMeals: Record<DayName, [PlannedMeal, PlannedMeal]> = {
         { foodId: "05.420", grams: 15, label: "mandelmel" },
         { foodId: "08.249", grams: 3, label: "kokosolje til vaffeljernet" },
         { foodId: "01.028", grams: 285, label: "cottage cheese til servering" },
-        { foodId: "05.340", grams: 65, label: "kokt villris til servering" },
       ],
       details: [
         "Lag omtrent 2,5 ganger oppskriften til hele familien; mengdene under er Fredriks porsjon.",
@@ -290,6 +286,9 @@ export const daytimeMeals: Record<DayName, [PlannedMeal, PlannedMeal]> = {
       ],
       omittedRecipeGroceryItems: ["protein-powder"],
     },
+    morningScramble("ytrefilet", 245, 196, [
+      "Ytrefileten stekes raskt i strimler før egg og grønnsaker tilsettes.",
+    ]),
   ],
 };
 
