@@ -1,5 +1,6 @@
 import {
   familyShares,
+  getActiveFredrikFuelTrial,
   getCurrentPlanWeeks,
   getDinnerIngredients,
   getFredrikPlanDay,
@@ -166,4 +167,21 @@ if (osloDateAfterUtcMidnight !== "2026-07-27") {
   process.exitCode = 1;
 } else {
   console.log("OK Oslo-dato følger lokal kalenderdag");
+}
+
+const fuelTrialAtStart = getActiveFredrikFuelTrial(
+  new Date("2026-08-03T12:00:00Z"),
+);
+const fuelTrialAfterReview = getActiveFredrikFuelTrial(
+  new Date("2026-08-17T12:00:00Z"),
+);
+
+if (
+  fuelTrialAtStart?.preTrainingCarbs !== 30 ||
+  fuelTrialAfterReview !== undefined
+) {
+  console.error("FEIL Den tidsavgrensede drivstoffprøven har feil gyldighet");
+  process.exitCode = 1;
+} else {
+  console.log("OK Drivstoffprøven er datobundet og utløper etter vurderingsdatoen");
 }

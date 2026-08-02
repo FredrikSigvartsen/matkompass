@@ -60,7 +60,7 @@ for (const list of lists) {
     `Uke ${list.week.weekNumber} mangler synlig omregning for villris`,
   );
   assert(
-    sirloin?.requiredLabel === "1,87 kg",
+    sirloin?.requiredLabel === "1,88 kg",
     `Uke ${list.week.weekNumber} dobbeltteller biff eller ytrefilet`,
   );
   assert(

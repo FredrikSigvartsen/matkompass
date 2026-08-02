@@ -119,6 +119,19 @@ export const mealPlanNutritionMetadata = {
   ],
 } as const;
 
+export const fredrikFuelTrial = {
+  visibleFrom: "2026-08-02",
+  startsOn: "2026-08-03",
+  endsOn: "2026-08-16",
+  reviewOn: "2026-08-16",
+  preTrainingCarbs: 30,
+  previousGuidance: "Valgfri banan eller dadler uten fast mengde før aktive dager.",
+  guidance:
+    "karbohydrat 20–30 minutter før morgenøkter. Dette kommer i tillegg til grunnplanen; de tre faste måltidene og proteinmålet beholdes.",
+  successCriteria:
+    "Vurder følelse og fart ved sammenlignbar intensitet, evne til å holde planlagt sykkelwatt og vekttrend.",
+} as const;
+
 const recipeRef = (
   category: RecipeReference["category"],
   slug: string,
@@ -258,9 +271,6 @@ export const daytimeMeals: Record<DayName, [PlannedMeal, PlannedMeal]> = {
     },
   ],
   Søndag: [
-    morningScramble("ytrefilet", 240, 110, [
-      "Ytrefileten stekes raskt i strimler før egg og grønnsaker tilsettes.",
-    ]),
     {
       recipe: recipeRef("frokost", "barnevennlige-proteinvafler"),
       ingredients: [
@@ -269,7 +279,6 @@ export const daytimeMeals: Record<DayName, [PlannedMeal, PlannedMeal]> = {
         { foodId: "05.420", grams: 15, label: "mandelmel" },
         { foodId: "08.249", grams: 3, label: "kokosolje til vaffeljernet" },
         { foodId: "01.028", grams: 285, label: "cottage cheese til servering" },
-        { foodId: "05.340", grams: 65, label: "kokt villris til servering" },
       ],
       details: [
         "Lag omtrent 2,5 ganger oppskriften til hele familien; mengdene under er Fredriks porsjon.",
@@ -277,6 +286,9 @@ export const daytimeMeals: Record<DayName, [PlannedMeal, PlannedMeal]> = {
       ],
       omittedRecipeGroceryItems: ["protein-powder"],
     },
+    morningScramble("ytrefilet", 245, 196, [
+      "Ytrefileten stekes raskt i strimler før egg og grønnsaker tilsettes.",
+    ]),
   ],
 };
 
