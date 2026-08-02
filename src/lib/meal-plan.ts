@@ -2,6 +2,7 @@ import {
   dayProfiles,
   daytimeMeals,
   dinnerRotation,
+  fredrikFuelTrial,
   mealPlanNutritionMetadata,
   nutritionTargets,
   type DayProfile,
@@ -74,6 +75,7 @@ const millisecondsPerWeek = 7 * 86_400_000;
 export {
   familyShares,
   foodDataSource,
+  fredrikFuelTrial,
   mealPlanNutritionMetadata,
   nutritionTargets,
 };
@@ -190,6 +192,16 @@ export function getCurrentPlanWeeks(now = new Date()): [DatedPlanWeek, DatedPlan
 
 export function getTodayInOslo(now = new Date()): Date {
   return getOsloDate(now);
+}
+
+export function getActiveFredrikFuelTrial(now = new Date()) {
+  const today = getOsloDate(now).toISOString().slice(0, 10);
+
+  if (today < fredrikFuelTrial.visibleFrom || today > fredrikFuelTrial.reviewOn) {
+    return undefined;
+  }
+
+  return fredrikFuelTrial;
 }
 
 export function formatDate(date: Date, options?: Intl.DateTimeFormatOptions): string {

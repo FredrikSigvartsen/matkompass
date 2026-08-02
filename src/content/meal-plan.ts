@@ -119,6 +119,19 @@ export const mealPlanNutritionMetadata = {
   ],
 } as const;
 
+export const fredrikFuelTrial = {
+  visibleFrom: "2026-08-02",
+  startsOn: "2026-08-03",
+  endsOn: "2026-08-16",
+  reviewOn: "2026-08-16",
+  preTrainingCarbs: 30,
+  previousGuidance: "Valgfri banan eller dadler uten fast mengde før aktive dager.",
+  guidance:
+    "karbohydrat 20–30 minutter før morgenøkter. Dette kommer i tillegg til grunnplanen; de tre faste måltidene og proteinmålet beholdes.",
+  successCriteria:
+    "Vurder følelse og fart ved sammenlignbar intensitet, evne til å holde planlagt sykkelwatt og vekttrend.",
+} as const;
+
 const recipeRef = (
   category: RecipeReference["category"],
   slug: string,

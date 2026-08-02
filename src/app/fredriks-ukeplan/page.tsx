@@ -5,6 +5,7 @@ import {
   formatDate,
   formatDateRange,
   formatGrams,
+  getActiveFredrikFuelTrial,
   getCurrentPlanWeeks,
   getFredrikPlanDay,
   getTodayInOslo,
@@ -22,9 +23,11 @@ export const metadata: Metadata = {
 
 export default async function FredrikWeekPlanPage() {
   await connection();
-  const [week] = getCurrentPlanWeeks();
+  const now = new Date();
+  const [week] = getCurrentPlanWeeks(now);
   const days = week.days.map(getFredrikPlanDay);
-  const today = getTodayInOslo().toISOString().slice(0, 10);
+  const today = getTodayInOslo(now).toISOString().slice(0, 10);
+  const fuelTrial = getActiveFredrikFuelTrial(now);
 
   return (
     <main className="content-page plan-page fredrik-plan">
@@ -66,6 +69,27 @@ export default async function FredrikWeekPlanPage() {
           med oppskriftene. Valgfritt treningsdrivstoff kommer i tillegg.
         </p>
       </section>
+
+      {fuelTrial ? (
+        <section className="macro-key fuel-trial" aria-labelledby="drivstofftest">
+          <div>
+            <p className="eyebrow">Tidsavgrenset prøve</p>
+            <h2 id="drivstofftest">Karbohydrat før morgenøkter</h2>
+          </div>
+          <p>
+            <time dateTime={fuelTrial.startsOn}>
+              {formatDate(new Date(`${fuelTrial.startsOn}T00:00:00Z`))}
+            </time>
+            –
+            <time dateTime={fuelTrial.endsOn}>
+              {formatDate(new Date(`${fuelTrial.endsOn}T00:00:00Z`))}
+            </time>
+            : Spis omtrent {fuelTrial.preTrainingCarbs} g {fuelTrial.guidance} Før
+            forsøket var regelen: {fuelTrial.previousGuidance}
+            {` Vurderes ${formatDate(new Date(`${fuelTrial.reviewOn}T00:00:00Z`))}: ${fuelTrial.successCriteria}`}
+          </p>
+        </section>
+      ) : null}
 
       <section className="prep-guide" aria-labelledby="batchplan">
         <header>

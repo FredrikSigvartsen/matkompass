@@ -1415,6 +1415,10 @@ button:focus-visible {
   color: var(--ink-soft);
 }
 
+.fuel-trial {
+  border-top: 0;
+}
+
 .prep-guide {
   display: grid;
   gap: clamp(2rem, 5vw, 3.5rem);
